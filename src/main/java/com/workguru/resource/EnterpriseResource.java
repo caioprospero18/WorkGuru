@@ -17,42 +17,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.workguru.domain.model.Usuario;
-import com.workguru.repository.UserRepository;
-import com.workguru.service.UserService;
+import com.workguru.domain.model.Empresa;
+import com.workguru.repository.EnterpriseRepository;
+import com.workguru.service.EnterpriseService;
 
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/users")
-public class UserResource {
+@RequestMapping("/enterprise")
+public class EnterpriseResource {
 	
 	@Autowired
-	private UserRepository userRepository;
+	private EnterpriseRepository enterpriseRepository;
 	
 	@Autowired
-	private UserService userService;
+	private EnterpriseService enterpriseService;
 
 	@GetMapping
 	@PreAuthorize("hasAuthority('ROLE_SEARCH_USER') and hasAuthority('SCOPE_read')")
-	public List<Usuario> list(){
-		return userRepository.findAll();
+	public List<Empresa> list(){
+		return enterpriseRepository.findAll();
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and hasAuthority('SCOPE_write')")
-	public Usuario create(@Valid @RequestBody Usuario user, HttpServletResponse response) {
-		return userRepository.save(user);
+	public Empresa create(@Valid @RequestBody Empresa enterprise, HttpServletResponse response) {
+		return enterpriseRepository.save(enterprise);
 	}
 	
 	@GetMapping("/{id}")
 	@PreAuthorize("hasRole('ROLE_SEARCH_USER') and hasAuthority('SCOPE_read')")
-	public ResponseEntity<Usuario> findById(@PathVariable Long id){
-		Optional<Usuario> user = userRepository.findById(id);
-		if(user.isPresent()) {
-			return ResponseEntity.ok(user.get());
+	public ResponseEntity<Empresa> findById(@PathVariable Long id){
+		Optional<Empresa> enterprise = enterpriseRepository.findById(id);
+		if(enterprise.isPresent()) {
+			return ResponseEntity.ok(enterprise.get());
 		}
 		return ResponseEntity.notFound().build();
 	}
@@ -61,13 +61,13 @@ public class UserResource {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@PreAuthorize("hasAuthority('ROLE_REMOVE_USER') and hasAuthority('SCOPE_write')")
 	public void remove(@PathVariable Long id) {
-		userRepository.deleteById(id);
+		enterpriseRepository.deleteById(id);
 	}
 
 	@PutMapping("/{id}")
 	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and hasAuthority('SCOPE_write')")
-	public ResponseEntity<Usuario> update(@PathVariable Long id, @Valid @RequestBody Usuario user) {
-		Usuario userSaved = userService.update(id, user);
+	public ResponseEntity<Empresa> update(@PathVariable Long id, @Valid @RequestBody Empresa enterprise) {
+		Empresa userSaved = enterpriseService.update(id, enterprise);
 		return ResponseEntity.ok(userSaved);
 	}
 }

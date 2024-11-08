@@ -1,6 +1,7 @@
 package com.workguru.domain.model;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -8,10 +9,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -50,6 +54,10 @@ public class Vaga {
 	@ManyToOne
 	@JoinColumn(name = "empresa_id")
 	private Empresa empresa;
+	@ManyToMany(fetch = FetchType.EAGER) // fetch = buscar - eager = ancioso
+	@JoinTable(name = "vaga_pessoa", joinColumns = @JoinColumn(name = "vaga_id"), 
+	inverseJoinColumns = @JoinColumn(name = "pessoa_id"))
+	private List<Pessoa> pessoa;
 	public Long getId() {
 		return id;
 	}

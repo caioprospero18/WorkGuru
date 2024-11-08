@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.workguru.domain.model.Usuario;
+import com.workguru.domain.model.Empresa;
 import com.workguru.domain.model.Vaga;
+import com.workguru.repository.EnterpriseRepository;
 import com.workguru.repository.JobRepository;
-import com.workguru.repository.UserRepository;
 import com.workguru.service.exception.NonExistentUserException;
 
 
@@ -21,11 +21,11 @@ public class JobService {
 	private JobRepository jobRepository;
 	
 	@Autowired
-	private UserRepository userRepository;
+	private EnterpriseRepository enterpriseRepository;
 	
 	public Vaga save(Vaga vaga) {
-		Optional<Usuario> user = userRepository.findById(vaga.getEmpresa().getId());
-		if(!user.isPresent()) {
+		Optional<Empresa> enterprise = enterpriseRepository.findById(vaga.getEmpresa().getId());
+		if(!enterprise.isPresent()) {
 			throw new NonExistentUserException();
 		}
 		return jobRepository.save(vaga);
@@ -38,7 +38,7 @@ public class JobService {
 	}
 	
 	public Vaga findJobById(Long id) {
-		Vaga activitySaved = jobRepository.findById(id).orElseThrow(() -> new EmptyResultDataAccessException(1));
-		return activitySaved;
+		Vaga jobSaved = jobRepository.findById(id).orElseThrow(() -> new EmptyResultDataAccessException(1));
+		return jobSaved;
 	}
 }
