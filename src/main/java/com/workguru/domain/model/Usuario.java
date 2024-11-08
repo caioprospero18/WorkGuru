@@ -5,15 +5,22 @@ import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table (name = "usuario")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -25,6 +32,9 @@ public class Usuario {
 	private String senha;
 	@Column (name = "tipo_usuario")
 	private String tipoUsuario;
+	@ManyToMany(fetch = FetchType.EAGER) // fetch = buscar - eager = ancioso
+	@JoinTable(name = "permissao_usuario", joinColumns = @JoinColumn(name = "usuario_id"), 
+	inverseJoinColumns = @JoinColumn(name = "permisao_id"))
 	private List<Permissao> permissao;
 	public Long getId() {
 		return id;

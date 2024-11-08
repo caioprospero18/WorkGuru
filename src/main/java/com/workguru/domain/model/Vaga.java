@@ -12,7 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
@@ -47,7 +47,7 @@ public class Vaga {
 	@Column(name = "data_publicacao")
 	private LocalDate dataPublicacao;
 	@NotNull
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name = "empresa_id")
 	private Empresa empresa;
 	public Long getId() {

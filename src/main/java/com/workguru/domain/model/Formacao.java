@@ -12,7 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -41,7 +41,7 @@ public class Formacao {
 	private LocalDate periodoFim;
 	@NotNull
 	@JoinColumn(name = "pessoa_id")
-	@OneToMany
+	@ManyToOne
 	private Pessoa pessoa;
 	public Long getId() {
 		return id;

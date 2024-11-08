@@ -123,7 +123,7 @@ public class AuthorizationServerConfig {
                 authorities.add(grantedAuthority.getAuthority());
             }
 
-            context.getClaims().claim("name", systemUser.getUser().getName;
+            //context.getClaims().claim("name", systemUser.getUser().getName;
             context.getClaims().claim("authorities", authorities);
         };
     }
@@ -131,13 +131,13 @@ public class AuthorizationServerConfig {
 
     @Bean
     JWKSet jwkSet() throws Exception {
-        final InputStream inputStream = new ClassPathResource("keystore/ifitness.jks")
+        final InputStream inputStream = new ClassPathResource("keystore/workguru.jks")
         		.getInputStream();
         
         final KeyStore keyStore = KeyStore.getInstance("JKS");
         keyStore.load(inputStream, "123456".toCharArray());
     	
-    	RSAKey rsa = RSAKey.load(keyStore, "ifitness", "123456".toCharArray());
+    	RSAKey rsa = RSAKey.load(keyStore, "workguru", "123456".toCharArray());
 
         return new JWKSet(rsa);
     }

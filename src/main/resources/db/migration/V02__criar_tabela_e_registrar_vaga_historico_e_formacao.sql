@@ -14,7 +14,7 @@ CREATE TABLE vaga (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO vaga (id, titulo, area_atuacao, tecnologia, descricao, nivel, modelo, salario, status, data_publicacao, empresa_id ) 
-	values (1, 'Dev Backend', 'java', 'Atuar como dev', 'Júnior', 'Híbrido', '1200', 'Aberta', '2024/11/06', 1);
+	values (1, 'Dev Backend', 'Backend' , 'java', 'Atuar como dev', 'Júnior', 'Híbrido', '1200', 'Aberta', '2024/11/06', 1);
 	
 CREATE TABLE formacao (
 	`id`BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
@@ -39,11 +39,11 @@ CREATE TABLE historico_profissional (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE vaga_pessoa (
-	vaga_id BIGINT(20) AUTO_INCREMENT,
-	pessoa_id BIGINT(20) AUTO_INCREMENT,
+	vaga_id BIGINT(20),
+	pessoa_id BIGINT(20),
 	PRIMARY KEY (vaga_id, pessoa_id),
-	FOREIGN KEY (vaga_id) REFERENCES vaga(id)
+	FOREIGN KEY (vaga_id) REFERENCES vaga(id),
 	FOREIGN KEY (pessoa_id) REFERENCES pessoa(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO vaga_pessoa (vaga_id, pessoa_id) values (1, 1) 
+INSERT INTO vaga_pessoa (vaga_id, pessoa_id) values (1, 1);
