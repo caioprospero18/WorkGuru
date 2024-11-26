@@ -1,5 +1,6 @@
 package com.workguru.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
@@ -23,6 +24,7 @@ public class JobService {
 	@Autowired
 	private EnterpriseRepository enterpriseRepository;
 	
+	
 	public Vaga save(Vaga vaga) {
 		Optional<Empresa> enterprise = enterpriseRepository.findById(vaga.getEmpresa().getId());
 		if(!enterprise.isPresent()) {
@@ -41,4 +43,11 @@ public class JobService {
 		Vaga jobSaved = jobRepository.findById(id).orElseThrow(() -> new EmptyResultDataAccessException(1));
 		return jobSaved;
 	}
+	
+	public List<Vaga> findJobsByEnterprise(Empresa empresa) {		
+		return  jobRepository.findJobsByEmpresa(empresa);
+	}
+	
+	
+	
 }

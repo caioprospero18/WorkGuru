@@ -34,13 +34,13 @@ public class JobResource {
 	private JobService jobService;	
 	
 	@GetMapping
-	@PreAuthorize("hasAuthority('ROLE_SEARCH_ACTIVITY') and hasAuthority('SCOPE_read')")
+	@PreAuthorize("hasAuthority('FUNCAO_PROCURAR_VAGA') and hasAuthority('SCOPE_read')")
 	public List<Vaga> list(){
 		return jobRepository.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	@PreAuthorize("hasAuthority('ROLE_SEARCH_ACTIVITY') and hasAuthority('SCOPE_read')")
+	@PreAuthorize("hasAuthority('FUNCAO_PROCURAR_VAGA') and hasAuthority('SCOPE_read')")
 	public ResponseEntity<Vaga> findById(@PathVariable Long id) {
 		Optional<Vaga> job = jobRepository.findById(id);
 		if(job.isPresent()) {
@@ -51,20 +51,20 @@ public class JobResource {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	@PreAuthorize("hasAuthority('ROLE_REGISTER_ACTIVITY') and hasAuthority('SCOPE_write')")
+	@PreAuthorize("hasAuthority('FUNCAO_REGISTRAR_VAGA') and hasAuthority('SCOPE_write')")
 	public Vaga create(@Valid @RequestBody Vaga job) {
 		return jobService.save(job);
 	}
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@PreAuthorize("hasAuthority('ROLE_REMOVE_ACTIVITY') and hasAuthority('SCOPE_write')")
+	@PreAuthorize("hasAuthority('FUNCAO_DELETAR_VAGA') and hasAuthority('SCOPE_write')")
 	public void delete(@PathVariable Long id) {
 		jobRepository.deleteById(id);
 	}
 	
 	@PutMapping("/{id}")
-	@PreAuthorize("hasAuthority('ROLE_REGISTER_ACTIVITY') and hasAuthority('SCOPE_write')")
+	@PreAuthorize("hasAuthority('FUNCAO_REGISTRAR_VAGA') and hasAuthority('SCOPE_write')")
 	public ResponseEntity<Vaga> update(@PathVariable Long id, @Valid @RequestBody Vaga job) {
 		Vaga activitySaved = jobService.update(id, job);
 		return ResponseEntity.ok(activitySaved);

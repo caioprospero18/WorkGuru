@@ -12,18 +12,18 @@ CREATE TABLE permissao_usuario (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- senha admin
-INSERT INTO usuario (id, email, senha) values (3, 'admin@workguru.com', '123456');
+INSERT INTO usuario (id, nome,email, senha) values (3, 'Admin', 'admin@workguru.com', '$2a$10$X607ZPhQ4EgGNaYKt3n4SONjIv9zc.VMWdEuhCuba7oLAL5IvcL5.');
 
 -- usuario
-INSERT INTO permissao (id, descricao) values (1, 'FUNÇÃO_REGISTRAR_USUARIO');
-INSERT INTO permissao (id, descricao) values (2, 'FUNÇÃO_DELETAR_USUARIO');
-INSERT INTO permissao (id, descricao) values (3, 'FUNÇÃO_PROCURAR_USUARIO');
+INSERT INTO permissao (id, descricao) values (1, 'FUNCAO_REGISTRAR_USUARIO');
+INSERT INTO permissao (id, descricao) values (2, 'FUNCAO_DELETAR_USUARIO');
+INSERT INTO permissao (id, descricao) values (3, 'FUNCAO_PROCURAR_USUARIO');
 
 -- vaga
-INSERT INTO permissao (id, descricao) values (4, 'FUNÇÃO_REGISTRAR_VAGA');
-INSERT INTO permissao (id, descricao) values (5, 'FUNÇÃO_DELETAR_VAGA');
-INSERT INTO permissao (id, descricao) values (6, 'FUNÇÃO_PROCURAR_VAGA');
-INSERT INTO permissao (id, descricao) values (7, 'FUNÇÃO_APLICAR_VAGA');
+INSERT INTO permissao (id, descricao) values (4, 'FUNCAO_REGISTRAR_VAGA');
+INSERT INTO permissao (id, descricao) values (5, 'FUNCAO_DELETAR_VAGA');
+INSERT INTO permissao (id, descricao) values (6, 'FUNCAO_PROCURAR_VAGA');
+INSERT INTO permissao (id, descricao) values (7, 'FUNCAO_APLICAR_VAGA');
 
 -- admin
 INSERT INTO permissao_usuario (usuario_id, permissao_id) values (3, 1);

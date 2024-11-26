@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.workguru.domain.model.Empresa;
 import com.workguru.repository.EnterpriseRepository;
+import com.workguru.repository.UserRepository;
 import com.workguru.service.EnterpriseService;
 
 import jakarta.servlet.http.HttpServletResponse;
@@ -33,22 +34,25 @@ public class EnterpriseResource {
 	
 	@Autowired
 	private EnterpriseService enterpriseService;
+	
+	@Autowired
+	private UserRepository userRepository;
 
 	@GetMapping
-	@PreAuthorize("hasAuthority('ROLE_SEARCH_USER') and hasAuthority('SCOPE_read')")
+	@PreAuthorize("hasAuthority('FUNCAO_PROCURAR_USUARIO') and hasAuthority('SCOPE_read')")
 	public List<Empresa> list(){
-		return enterpriseRepository.findAll();
+		return userRepository.findAllEnterprise();
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and hasAuthority('SCOPE_write')")
+	@PreAuthorize("hasAuthority('FUNCAO_REGISTRAR_USUARIO') and hasAuthority('SCOPE_write')")
 	public Empresa create(@Valid @RequestBody Empresa enterprise, HttpServletResponse response) {
 		return enterpriseRepository.save(enterprise);
 	}
 	
 	@GetMapping("/{id}")
-	@PreAuthorize("hasRole('ROLE_SEARCH_USER') and hasAuthority('SCOPE_read')")
+	@PreAuthorize("hasRole('FUNCAO_PROCURAR_USUARIO') and hasAuthority('SCOPE_read')")
 	public ResponseEntity<Empresa> findById(@PathVariable Long id){
 		Optional<Empresa> enterprise = enterpriseRepository.findById(id);
 		if(enterprise.isPresent()) {
@@ -59,13 +63,13 @@ public class EnterpriseResource {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@PreAuthorize("hasAuthority('ROLE_REMOVE_USER') and hasAuthority('SCOPE_write')")
+	@PreAuthorize("hasAuthority('FUNCAO_DELETAR_USUARIO') and hasAuthority('SCOPE_write')")
 	public void remove(@PathVariable Long id) {
 		enterpriseRepository.deleteById(id);
 	}
 
 	@PutMapping("/{id}")
-	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and hasAuthority('SCOPE_write')")
+	@PreAuthorize("hasAuthority('FUNCAO_REGISTRAR_USUARIO') and hasAuthority('SCOPE_write')")
 	public ResponseEntity<Empresa> update(@PathVariable Long id, @Valid @RequestBody Empresa enterprise) {
 		Empresa userSaved = enterpriseService.update(id, enterprise);
 		return ResponseEntity.ok(userSaved);

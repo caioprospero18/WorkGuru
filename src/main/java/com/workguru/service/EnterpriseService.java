@@ -1,11 +1,14 @@
 package com.workguru.service;
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.workguru.domain.model.Empresa;
+import com.workguru.domain.model.Vaga;
 import com.workguru.repository.EnterpriseRepository;
 
 
@@ -25,5 +28,7 @@ public class EnterpriseService {
 		Empresa enterpriseSaved = enterpriseRepository.findById(id).orElseThrow(() -> new EmptyResultDataAccessException(1));
 		return enterpriseSaved;
 	}
+	
+	
 
 }

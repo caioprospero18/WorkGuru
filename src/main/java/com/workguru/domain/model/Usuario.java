@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -17,10 +19,12 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table (name = "usuario")
 @Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "tipo_usuario", discriminatorType = DiscriminatorType.STRING)
 public class Usuario {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -29,12 +33,15 @@ public class Usuario {
 	@Email
 	private String email;
 	@NotNull
+	@Size(min = 3, max = 45)
+	private String nome;
+	@NotNull
 	private String senha;
-	@Column (name = "tipo_usuario")
+	@Column (insertable=false, updatable=false, name = "tipo_usuario")
 	private String tipoUsuario;
 	@ManyToMany(fetch = FetchType.EAGER) // fetch = buscar - eager = ancioso
 	@JoinTable(name = "permissao_usuario", joinColumns = @JoinColumn(name = "usuario_id"), 
-	inverseJoinColumns = @JoinColumn(name = "permisao_id"))
+	inverseJoinColumns = @JoinColumn(name = "permissao_id"))
 	private List<Permissao> permissao;
 	public Long getId() {
 		return id;
@@ -60,7 +67,12 @@ public class Usuario {
 	public void setTipoUsuario(String tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
-	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 	public List<Permissao> getPermissao() {
 		return permissao;
 	}

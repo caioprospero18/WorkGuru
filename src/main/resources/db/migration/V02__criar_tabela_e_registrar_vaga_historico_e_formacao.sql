@@ -23,7 +23,7 @@ CREATE TABLE formacao (
 	`grau` VARCHAR (20) NOT NULL,
 	`periodo_inicio` DATE NOT NULL,
 	`periodo_fim` DATE NULL,
-	`pessoa_id` BIGINT NOT NULL,
+	`pessoa_id` BIGINT(20) NOT NULL,
 	FOREIGN KEY (pessoa_id) REFERENCES pessoa(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -46,4 +46,4 @@ CREATE TABLE vaga_pessoa (
 	FOREIGN KEY (pessoa_id) REFERENCES pessoa(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO vaga_pessoa (vaga_id, pessoa_id) values (1, 1);
+

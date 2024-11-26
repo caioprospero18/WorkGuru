@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.workguru.domain.model.Pessoa;
 import com.workguru.repository.PeopleRepository;
+import com.workguru.repository.UserRepository;
 import com.workguru.service.PeopleService;
 
 import jakarta.servlet.http.HttpServletResponse;
@@ -32,23 +33,26 @@ public class PeopleResource {
 	private PeopleRepository peopleRepository;
 	
 	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
 	private PeopleService peopleService;
 
 	@GetMapping
-	@PreAuthorize("hasAuthority('ROLE_SEARCH_USER') and hasAuthority('SCOPE_read')")
+	@PreAuthorize("hasAuthority('FUNCAO_PROCURAR_USUARIO') and hasAuthority('SCOPE_read')")
 	public List<Pessoa> list(){
-		return peopleRepository.findAll();
+		return userRepository.findAllPeople();
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and hasAuthority('SCOPE_write')")
+	@PreAuthorize("hasAuthority('FUNCAO_REGISTRAR_USUARIO') and hasAuthority('SCOPE_write')")
 	public Pessoa create(@Valid @RequestBody Pessoa people, HttpServletResponse response) {
 		return peopleRepository.save(people);
 	}
 	
 	@GetMapping("/{id}")
-	@PreAuthorize("hasRole('ROLE_SEARCH_USER') and hasAuthority('SCOPE_read')")
+	@PreAuthorize("hasRole('FUNCAO_PROCURAR_USUARIO') and hasAuthority('SCOPE_read')")
 	public ResponseEntity<Pessoa> findById(@PathVariable Long id){
 		Optional<Pessoa> people = peopleRepository.findById(id);
 		if(people.isPresent()) {
@@ -59,13 +63,13 @@ public class PeopleResource {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@PreAuthorize("hasAuthority('ROLE_REMOVE_USER') and hasAuthority('SCOPE_write')")
+	@PreAuthorize("hasAuthority('FUNCAO_DELETAR_USUARIO') and hasAuthority('SCOPE_write')")
 	public void remove(@PathVariable Long id) {
 		peopleRepository.deleteById(id);
 	}
 
 	@PutMapping("/{id}")
-	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and hasAuthority('SCOPE_write')")
+	@PreAuthorize("hasAuthority('FUNCAO_REGISTRAR_USUARIO') and hasAuthority('SCOPE_write')")
 	public ResponseEntity<Pessoa> update(@PathVariable Long id, @Valid @RequestBody Pessoa people) {
 		Pessoa peopleSaved = peopleService.update(id, people);
 		return ResponseEntity.ok(peopleSaved);
