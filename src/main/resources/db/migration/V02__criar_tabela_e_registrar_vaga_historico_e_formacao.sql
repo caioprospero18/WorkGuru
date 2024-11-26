@@ -14,7 +14,7 @@ CREATE TABLE vaga (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO vaga (id, titulo, area_atuacao, tecnologia, descricao, nivel, modelo, salario, status, data_publicacao, empresa_id ) 
-	values (1, 'Dev Backend', 'Backend' , 'java', 'Atuar como dev', 'Júnior', 'Híbrido', '1200', 'Aberta', '2024/11/06', 1);
+	values (1, 'Dev Backend', 'Backend' , 'JAVA', 'Atuar como dev', 'JUNIOR', 'PRESENCIAL', 'DE_0_A_2000', 'ABERTA', '2024/11/06', 1);
 	
 CREATE TABLE formacao (
 	`id`BIGINT(20) PRIMARY KEY AUTO_INCREMENT,

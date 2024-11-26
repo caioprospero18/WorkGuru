@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -30,21 +31,21 @@ public class Vaga {
 	@NotNull
 	private String titulo;
 	@NotNull
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private Tecnologia tecnologia;
 	@NotNull
 	private String descricao;
 	@NotNull
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private Nivel nivel;
 	@NotNull
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private Modelo modelo;
 	@NotNull
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private Salario salario;
 	@NotNull
-	@Enumerated	
+	@Enumerated(EnumType.STRING)
 	private StatusVaga status;
 	@NotNull
 	@JsonFormat(pattern = "dd/MM/yyyy")

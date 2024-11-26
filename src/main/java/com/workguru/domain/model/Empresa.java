@@ -1,13 +1,10 @@
 package com.workguru.domain.model;
 
-import java.util.List;
-
 import org.hibernate.validator.constraints.br.CNPJ;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
@@ -25,8 +22,6 @@ public class Empresa extends Usuario{
 	@Column(name = "link_site")
 	private String linkSite;
 	private String endereco;
-	@OneToMany(mappedBy = "empresa")
-	private List<Vaga> vagas;
 
 	public String getTelefone() {
 		return telefone;
@@ -58,13 +53,6 @@ public class Empresa extends Usuario{
 	}
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
-	}
-	
-	public List<Vaga> getVagas() {
-		return vagas;
-	}
-	public void setVagas(List<Vaga> vagas) {
-		this.vagas = vagas;
 	}
 
 	
