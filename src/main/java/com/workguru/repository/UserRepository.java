@@ -6,18 +6,18 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.workguru.domain.model.Empresa;
-import com.workguru.domain.model.Pessoa;
-import com.workguru.domain.model.Usuario;
+import com.workguru.domain.model.Enterprise;
+import com.workguru.domain.model.Candidate;
+import com.workguru.domain.model.User;
 
-public interface UserRepository extends JpaRepository<Usuario, Long>{
+public interface UserRepository extends JpaRepository<User, Long>{
 
-	Optional<Usuario> findByEmail(String email);
+	Optional<User> findByEmail(String email);
 	
-	@Query(value = "SELECT * FROM pessoa p JOIN usuario u ON p.usuario_id = u.id", nativeQuery = true)
-	List<Pessoa> findAllPeople();
+	@Query(value = "SELECT * FROM candidate c JOIN user u ON c.user_id = u.id", nativeQuery = true)
+	List<Candidate> findAllCandidate();
 	
-	@Query(value = "SELECT * FROM empresa e JOIN usuario u ON e.usuario_id = u.id", nativeQuery = true)
-	List<Empresa> findAllEnterprise();
+	@Query(value = "SELECT * FROM enterprise e JOIN user u ON e.user_id = u.id", nativeQuery = true)
+	List<Enterprise> findAllEnterprise();
 	
 }

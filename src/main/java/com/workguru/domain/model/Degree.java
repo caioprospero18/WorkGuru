@@ -1,6 +1,6 @@
 package com.workguru.domain.model;
 
-public enum Grau {
+public enum Degree {
 
 		BACHARELADO("Bacharelado"),
 		LICENCIATURA("Licenciatura"),
@@ -11,13 +11,13 @@ public enum Grau {
 		TECNICO("Técnico"),
 		ENSINO_MEDIO("Ensino médio");
 	
-	private String grau;
+	private String degree;
 	
-	private Grau(String grau) {
-		this.grau = grau;
+	private Degree(String degree) {
+		this.degree = degree;
 	}
 	
-	public String getGrau() {
-		return grau;
+	public String getDegree() {
+		return degree;
 	}
 }

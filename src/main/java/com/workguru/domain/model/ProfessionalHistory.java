@@ -16,61 +16,60 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "historico_profissional")
-public class HistoricoProfissional {
+@Table(name = "professional_history")
+public class ProfessionalHistory {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotNull
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	@Column(name = "periodo_inicio")
-	private LocalDate periodoInicio;
+	private LocalDate start;
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	@Column(name = "periodo_fim")
-	private LocalDate periodoFim;
+	private LocalDate finish;
 	@NotNull
-	private String cargo;
-	private String descricao;
+	private String position;
+	private String description;
 	@NotNull
-	@JoinColumn(name = "pessoa_id")
+	@JoinColumn(name = "candidate_id")
 	@ManyToOne
-	private Pessoa pessoa;
+	private Candidate candidate;
+	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public LocalDate getPeriodoInicio() {
-		return periodoInicio;
+	public LocalDate getStart() {
+		return start;
 	}
-	public void setPeriodoInicio(LocalDate periodoInicio) {
-		this.periodoInicio = periodoInicio;
+	public void setStart(LocalDate start) {
+		this.start = start;
 	}
-	public LocalDate getPeriodoFim() {
-		return periodoFim;
+	public LocalDate getFinish() {
+		return finish;
 	}
-	public void setPeriodoFim(LocalDate periodoFim) {
-		this.periodoFim = periodoFim;
+	public void setFinish(LocalDate finish) {
+		this.finish = finish;
 	}
-	public String getCargo() {
-		return cargo;
+	public String getPosition() {
+		return position;
 	}
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
+	public void setPosition(String position) {
+		this.position = position;
 	}
-	public String getDescricao() {
-		return descricao;
+	public String getDescription() {
+		return description;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	public Pessoa getPessoa() {
-		return pessoa;
+	public Candidate getCandidate() {
+		return candidate;
 	}
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
+	public void setCandidate(Candidate candidate) {
+		this.candidate = candidate;
 	}
 	@Override
 	public int hashCode() {
@@ -84,7 +83,7 @@ public class HistoricoProfissional {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		HistoricoProfissional other = (HistoricoProfissional) obj;
+		ProfessionalHistory other = (ProfessionalHistory) obj;
 		return Objects.equals(id, other.id);
 	}
 	

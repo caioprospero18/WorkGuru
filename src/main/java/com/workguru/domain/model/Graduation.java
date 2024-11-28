@@ -18,72 +18,72 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "formacao")
-public class Formacao {
+@Table(name = "graduation")
+public class Graduation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotNull
-	@Column(name = "nome_instituicao")
+	@Column(name = "institution_name")
 	@Size(min = 3, max = 45)
-	private String nomeInstituicao;
-	private String curso;
+	private String institutionName;
+	private String major;
 	@NotNull
 	@Enumerated
-	private Grau grau;
+	private Degree degree;
 	@NotNull
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	@Column(name = "periodo_inicio")
-	private LocalDate periodoInicio;
+	private LocalDate start;
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	@Column(name = "periodo_fim")
-	private LocalDate periodoFim;
+	private LocalDate finish;
 	@NotNull
-	@JoinColumn(name = "pessoa_id")
+	@JoinColumn(name = "candidate_id")
 	@ManyToOne
-	private Pessoa pessoa;
+	private Candidate candidate;
+
+	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNomeInstituicao() {
-		return nomeInstituicao;
+	public String getInstitutionName() {
+		return institutionName;
 	}
-	public void setNomeInstituicao(String nomeInstituicao) {
-		this.nomeInstituicao = nomeInstituicao;
+	public void setInstitutionName(String institutionName) {
+		this.institutionName = institutionName;
 	}
-	public String getCurso() {
-		return curso;
+	public String getMajor() {
+		return major;
 	}
-	public void setCurso(String curso) {
-		this.curso = curso;
+	public void setMajor(String major) {
+		this.major = major;
 	}
-	public Grau getGrau() {
-		return grau;
+	public Degree getDegree() {
+		return degree;
 	}
-	public void setGrau(Grau grau) {
-		this.grau = grau;
+	public void setDegree(Degree degree) {
+		this.degree = degree;
 	}
-	public LocalDate getPeriodoInicio() {
-		return periodoInicio;
+	public LocalDate getStart() {
+		return start;
 	}
-	public void setPeriodoInicio(LocalDate periodoInicio) {
-		this.periodoInicio = periodoInicio;
+	public void setStart(LocalDate start) {
+		this.start = start;
 	}
-	public LocalDate getPeriodoFim() {
-		return periodoFim;
+	public LocalDate getFinish() {
+		return finish;
 	}
-	public void setPeriodoFim(LocalDate periodoFim) {
-		this.periodoFim = periodoFim;
+	public void setFinish(LocalDate finish) {
+		this.finish = finish;
 	}
-	public Pessoa getPessoa() {
-		return pessoa;
+	public Candidate getCandidate() {
+		return candidate;
 	}
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
+	public void setCandidate(Candidate candidate) {
+		this.candidate = candidate;
 	}
 	@Override
 	public int hashCode() {
@@ -97,7 +97,7 @@ public class Formacao {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Formacao other = (Formacao) obj;
+		Graduation other = (Graduation) obj;
 		return Objects.equals(id, other.id);
 	}
 	

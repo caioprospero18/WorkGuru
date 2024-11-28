@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.workguru.domain.model.Empresa;
+import com.workguru.domain.model.Enterprise;
 import com.workguru.repository.EnterpriseRepository;
 import com.workguru.repository.UserRepository;
 import com.workguru.service.EnterpriseService;
@@ -39,22 +39,22 @@ public class EnterpriseResource {
 	private UserRepository userRepository;
 
 	@GetMapping
-	@PreAuthorize("hasAuthority('FUNCAO_PROCURAR_USUARIO') and hasAuthority('SCOPE_read')")
-	public List<Empresa> list(){
+	@PreAuthorize("hasAuthority('ROLE_SEARCH_USER') and hasAuthority('SCOPE_read')")
+	public List<Enterprise> list(){
 		return userRepository.findAllEnterprise();
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	@PreAuthorize("hasAuthority('FUNCAO_REGISTRAR_USUARIO') and hasAuthority('SCOPE_write')")
-	public Empresa create(@Valid @RequestBody Empresa enterprise, HttpServletResponse response) {
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and hasAuthority('SCOPE_write')")
+	public Enterprise create(@Valid @RequestBody Enterprise enterprise, HttpServletResponse response) {
 		return enterpriseRepository.save(enterprise);
 	}
 	
 	@GetMapping("/{id}")
-	@PreAuthorize("hasRole('FUNCAO_PROCURAR_USUARIO') and hasAuthority('SCOPE_read')")
-	public ResponseEntity<Empresa> findById(@PathVariable Long id){
-		Optional<Empresa> enterprise = enterpriseRepository.findById(id);
+	@PreAuthorize("hasRole('ROLE_SEARCH_USER') and hasAuthority('SCOPE_read')")
+	public ResponseEntity<Enterprise> findById(@PathVariable Long id){
+		Optional<Enterprise> enterprise = enterpriseRepository.findById(id);
 		if(enterprise.isPresent()) {
 			return ResponseEntity.ok(enterprise.get());
 		}
@@ -63,15 +63,15 @@ public class EnterpriseResource {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@PreAuthorize("hasAuthority('FUNCAO_DELETAR_USUARIO') and hasAuthority('SCOPE_write')")
+	@PreAuthorize("hasAuthority('ROLE_REMOVE_USER') and hasAuthority('SCOPE_write')")
 	public void remove(@PathVariable Long id) {
 		enterpriseRepository.deleteById(id);
 	}
 
 	@PutMapping("/{id}")
-	@PreAuthorize("hasAuthority('FUNCAO_REGISTRAR_USUARIO') and hasAuthority('SCOPE_write')")
-	public ResponseEntity<Empresa> update(@PathVariable Long id, @Valid @RequestBody Empresa enterprise) {
-		Empresa userSaved = enterpriseService.update(id, enterprise);
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and hasAuthority('SCOPE_write')")
+	public ResponseEntity<Enterprise> update(@PathVariable Long id, @Valid @RequestBody Enterprise enterprise) {
+		Enterprise userSaved = enterpriseService.update(id, enterprise);
 		return ResponseEntity.ok(userSaved);
 	}
 }

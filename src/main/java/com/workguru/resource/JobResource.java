@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.workguru.domain.model.Vaga;
+import com.workguru.domain.model.Job;
 import com.workguru.repository.JobRepository;
 import com.workguru.service.JobService;
 
@@ -34,15 +34,15 @@ public class JobResource {
 	private JobService jobService;	
 	
 	@GetMapping
-	@PreAuthorize("hasAuthority('FUNCAO_PROCURAR_VAGA') and hasAuthority('SCOPE_read')")
-	public List<Vaga> list(){
+	@PreAuthorize("hasAuthority('ROLE_SEARCH_JOB') and hasAuthority('SCOPE_read')")
+	public List<Job> list(){
 		return jobRepository.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	@PreAuthorize("hasAuthority('FUNCAO_PROCURAR_VAGA') and hasAuthority('SCOPE_read')")
-	public ResponseEntity<Vaga> findById(@PathVariable Long id) {
-		Optional<Vaga> job = jobRepository.findById(id);
+	@PreAuthorize("hasAuthority('ROLE_SEARCH_JOB') and hasAuthority('SCOPE_read')")
+	public ResponseEntity<Job> findById(@PathVariable Long id) {
+		Optional<Job> job = jobRepository.findById(id);
 		if(job.isPresent()) {
 			return ResponseEntity.ok(job.get());
 		}
@@ -51,22 +51,22 @@ public class JobResource {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	@PreAuthorize("hasAuthority('FUNCAO_REGISTRAR_VAGA') and hasAuthority('SCOPE_write')")
-	public Vaga create(@Valid @RequestBody Vaga job) {
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_JOB') and hasAuthority('SCOPE_write')")
+	public Job create(@Valid @RequestBody Job job) {
 		return jobService.save(job);
 	}
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@PreAuthorize("hasAuthority('FUNCAO_DELETAR_VAGA') and hasAuthority('SCOPE_write')")
+	@PreAuthorize("hasAuthority('ROLE_REMOVE_JOB') and hasAuthority('SCOPE_write')")
 	public void delete(@PathVariable Long id) {
 		jobRepository.deleteById(id);
 	}
 	
 	@PutMapping("/{id}")
-	@PreAuthorize("hasAuthority('FUNCAO_REGISTRAR_VAGA') and hasAuthority('SCOPE_write')")
-	public ResponseEntity<Vaga> update(@PathVariable Long id, @Valid @RequestBody Vaga job) {
-		Vaga activitySaved = jobService.update(id, job);
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_JOB') and hasAuthority('SCOPE_write')")
+	public ResponseEntity<Job> update(@PathVariable Long id, @Valid @RequestBody Job job) {
+		Job activitySaved = jobService.update(id, job);
 		return ResponseEntity.ok(activitySaved);
 	}
 }

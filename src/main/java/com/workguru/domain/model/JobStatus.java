@@ -1,6 +1,6 @@
 package com.workguru.domain.model;
 
-public enum StatusVaga {
+public enum JobStatus {
 	
 	ABERTA("Aberta"),
 	EM_ANDAMENTO("Em andamento"),
@@ -8,7 +8,7 @@ public enum StatusVaga {
 	
 	private String status;
 	
-	private StatusVaga(String status) {
+	private JobStatus(String status) {
 		this.status = status;
 	}
 	

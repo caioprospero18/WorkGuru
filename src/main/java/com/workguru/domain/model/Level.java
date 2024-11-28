@@ -1,6 +1,6 @@
 package com.workguru.domain.model;
 
-public enum Nivel {
+public enum Level {
 
 	JUNIOR("Júnior"),
 	SENIOR("Sênior"),
@@ -8,13 +8,13 @@ public enum Nivel {
 	ESTAGIO("Estágio"),
 	TREINEE("Treinee");
 	
-	private String nivel;
+	private String level;
 	
-	private Nivel(String nivel) {
-		this.nivel = nivel;
+	private Level(String level) {
+		this.level = level;
 	}
 	
-	public String getNivel() {
-		return nivel;
+	public String getLevel() {
+		return level;
 	}
 }

@@ -1,49 +1,49 @@
-CREATE TABLE vaga (
+CREATE TABLE job (
 	`id` BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-	`titulo` VARCHAR(45) NOT NULL,
-	`area_atuacao` VARCHAR(45) NOT NULL,
-	`tecnologia` VARCHAR(45) NOT NULL,
-	`descricao` VARCHAR(45) NOT NULL,
-	`nivel` VARCHAR(45) NOT NULL,
-	`modelo` VARCHAR(45) NOT NULL,
-	`salario` VARCHAR(45) NOT NULL,
+	`title` VARCHAR(45) NOT NULL,
+	`job_area` VARCHAR(45) NOT NULL,
+	`tecnology` VARCHAR(45) NOT NULL,
+	`description` VARCHAR(45) NOT NULL,
+	`level` VARCHAR(45) NOT NULL,
+	`model` VARCHAR(45) NOT NULL,
+	`salary` VARCHAR(45) NOT NULL,
 	`status` VARCHAR(45) NOT NULL,
-	`data_publicacao` DATE NOT NULL,
-	`empresa_id` BIGINT(20) NOT NULL,
-	FOREIGN KEY (empresa_id) REFERENCES empresa(id)
+	`publish_date` DATE NOT NULL,
+	`enterprise_id` BIGINT(20) NOT NULL,
+	FOREIGN KEY (enterprise_id) REFERENCES enterprise(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO vaga (id, titulo, area_atuacao, tecnologia, descricao, nivel, modelo, salario, status, data_publicacao, empresa_id ) 
+INSERT INTO job (id, title, job_area, tecnology, description, level, model, salary, status, publish_date, enterprise_id ) 
 	values (1, 'Dev Backend', 'Backend' , 'JAVA', 'Atuar como dev', 'JUNIOR', 'PRESENCIAL', 'DE_0_A_2000', 'ABERTA', '2024/11/06', 1);
 	
-CREATE TABLE formacao (
+CREATE TABLE graduation (
 	`id`BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-	`nome_instituicao` VARCHAR(45) NOT NULL,
-	`curso` VARCHAR(45) NULL,
-	`grau` VARCHAR (20) NOT NULL,
-	`periodo_inicio` DATE NOT NULL,
-	`periodo_fim` DATE NULL,
-	`pessoa_id` BIGINT(20) NOT NULL,
-	FOREIGN KEY (pessoa_id) REFERENCES pessoa(id)
+	`institution_name` VARCHAR(45) NOT NULL,
+	`major` VARCHAR(45) NULL,
+	`degree` VARCHAR (20) NOT NULL,
+	`start` DATE NOT NULL,
+	`finish` DATE NULL,
+	`candidate_id` BIGINT(20) NOT NULL,
+	FOREIGN KEY (candidate_id) REFERENCES candidate(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE historico_profissional (
+CREATE TABLE professional_history (
 	`id`BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-	`nome_empresa` VARCHAR(45) NOT NULL,
-	`periodo_inicio` DATE NOT NULL,
-	`periodo_fim` DATE NULL,
-	`cargo` VARCHAR(45) NOT NULL,
-	`descricao` TEXT,
-	`pessoa_id` BIGINT(20) NOT NULL,
-	FOREIGN KEY (pessoa_id) REFERENCES pessoa(id)
+	`enterprise_name` VARCHAR(45) NOT NULL,
+	`start` DATE NOT NULL,
+	`finish` DATE NULL,
+	`position` VARCHAR(45) NOT NULL,
+	`description` TEXT,
+	`candidate_id` BIGINT(20) NOT NULL,
+	FOREIGN KEY (candidate_id) REFERENCES candidate(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE vaga_pessoa (
-	vaga_id BIGINT(20),
-	pessoa_id BIGINT(20),
-	PRIMARY KEY (vaga_id, pessoa_id),
-	FOREIGN KEY (vaga_id) REFERENCES vaga(id),
-	FOREIGN KEY (pessoa_id) REFERENCES pessoa(id)
+CREATE TABLE job_candidate (
+	job_id BIGINT(20),
+	candidate_id BIGINT(20),
+	PRIMARY KEY (job_id, candidate_id),
+	FOREIGN KEY (job_id) REFERENCES job(id),
+	FOREIGN KEY (candidate_id) REFERENCES candidate(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

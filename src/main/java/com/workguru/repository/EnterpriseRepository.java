@@ -5,13 +5,13 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.workguru.domain.model.Empresa;
-import com.workguru.domain.model.Vaga;
+import com.workguru.domain.model.Enterprise;
+import com.workguru.domain.model.Job;
 
-public interface EnterpriseRepository extends JpaRepository<Empresa, Long>{
+public interface EnterpriseRepository extends JpaRepository<Enterprise, Long>{
 
-	Optional<Empresa> findByCnpj(String cnpj);
+	Optional<Enterprise> findByName(String name);
 
-	Optional<Empresa> findById(Long id);
+	Optional<Enterprise> findById(Long id);
 
 }

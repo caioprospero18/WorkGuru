@@ -39,8 +39,8 @@ import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
-import com.workguru.domain.model.Empresa;
-import com.workguru.domain.model.Usuario;
+import com.workguru.domain.model.Enterprise;
+import com.workguru.domain.model.User;
 import com.workguru.security.SystemUser;
 
 
@@ -119,7 +119,7 @@ public class AuthorizationServerConfig {
                 authorities.add(grantedAuthority.getAuthority());
             }
 
-            context.getClaims().claim("name", systemUser.getUser().getNome());
+            context.getClaims().claim("name", systemUser.getUser().getName());
             context.getClaims().claim("authorities", authorities);
         };
     }

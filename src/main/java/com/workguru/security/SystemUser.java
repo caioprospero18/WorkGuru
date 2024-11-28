@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import com.workguru.domain.model.Usuario;
+import com.workguru.domain.model.User;
 
 
 
@@ -12,14 +12,14 @@ public class SystemUser extends org.springframework.security.core.userdetails.Us
 
 	private static final long serialVersionUID = 1L;
 
-	private Usuario usuario;
+	private User usuario;
 
-	public SystemUser(Usuario usuario, Collection<? extends GrantedAuthority> authorities) {
-		super(usuario.getEmail(), usuario.getSenha(), authorities);
+	public SystemUser(User usuario, Collection<? extends GrantedAuthority> authorities) {
+		super(usuario.getEmail(), usuario.getPassword(), authorities);
 		this.usuario = usuario;
 	}
 
-	public Usuario getUser() {
+	public User getUser() {
 		return usuario;
 	}
 	

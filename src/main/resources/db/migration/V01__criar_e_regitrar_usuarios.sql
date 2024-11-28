@@ -1,41 +1,58 @@
-CREATE TABLE `usuario` (
+CREATE TABLE `user` (
   `id` bigint(20) PRIMARY KEY AUTO_INCREMENT,
-  `nome` varchar(45) NOT NULL,
+  `name` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `senha` varchar(150) NOT NULL,
-  `tipo_usuario` varchar(1) NULL
+  `password` varchar(150) NOT NULL,
+  `user_type` varchar(1) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO usuario (id, nome, email, senha, tipo_usuario) 
-	values (1, 'Marlabs', 'marlabs@gmail.com', '$2a$10$Ot4XGuyPP7r82nN3WXA0bOL1Qk9gShKDlVuPoyp89HoFnHcwO4Tji', 'E');
-INSERT INTO usuario (id, nome, email, senha, tipo_usuario) 
-	values (2, 'Gislaine Rosales', 'gislainerosales@ifsp.edu.br', '$2a$10$Ot4XGuyPP7r82nN3WXA0bOL1Qk9gShKDlVuPoyp89HoFnHcwO4Tji', 'P');
+INSERT INTO user (id, name, email, password, user_type) 
+	values (2, 'Marlabs', 'marlabs@gmail.com', '$2a$10$Ot4XGuyPP7r82nN3WXA0bOL1Qk9gShKDlVuPoyp89HoFnHcwO4Tji', 'E');
+INSERT INTO user (id, name, email, password, user_type) 
+	values (3, 'Gislaine Rosales', 'gislainerosales@gmail.com', '$2a$10$Ot4XGuyPP7r82nN3WXA0bOL1Qk9gShKDlVuPoyp89HoFnHcwO4Tji', 'P');
+INSERT INTO user (id, name, email, password, user_type) 
+	values (4, 'Rose', 'rose@gmail.com', '$2a$10$Ot4XGuyPP7r82nN3WXA0bOL1Qk9gShKDlVuPoyp89HoFnHcwO4Tji', 'P');
+INSERT INTO user (id, name, email, password, user_type) 
+	values (5, 'Carlos', 'carlos@gmail.com', '$2a$10$Ot4XGuyPP7r82nN3WXA0bOL1Qk9gShKDlVuPoyp89HoFnHcwO4Tji', 'P');
+INSERT INTO user (id, name, email, password, user_type) 
+	values (6, 'Shx', 'shx@gmail.com', '$2a$10$Ot4XGuyPP7r82nN3WXA0bOL1Qk9gShKDlVuPoyp89HoFnHcwO4Tji', 'E');
+INSERT INTO user (id, name, email, password, user_type) 
+	values (7, 'Ibm', 'ibm@gmail.com', '$2a$10$Ot4XGuyPP7r82nN3WXA0bOL1Qk9gShKDlVuPoyp89HoFnHcwO4Tji', 'E');
 	
-CREATE TABLE `empresa` (
+	
+CREATE TABLE `enterprise` (
     `id` bigint(20) PRIMARY KEY AUTO_INCREMENT,
 	`cnpj` varchar(18) NOT NULL,
-	`telefone` varchar(20) NOT NULL,
-	`descricao` text NULL,
+	`phone` varchar(20) NOT NULL,
+	`description` text NULL,
 	`link_site` varchar(50) NULL,
-	`endereco` varchar(45) NULL,
-	`usuario_id` bigint(20) NOT NULL,
-	FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+	`address` varchar(45) NULL,
+	`user_id` bigint(20) NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES user(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO empresa (cnpj, telefone, usuario_id)
-	values ('99.999.999/9999-99', '10000-0000', 1);
+INSERT INTO enterprise (cnpj, phone, user_id)
+	values ('99.999.999/9999-99', '10000-0000', 2);
+INSERT INTO enterprise (cnpj, phone, user_id)
+	values ('89.999.999/9999-99', '10000-0001', 6);
+INSERT INTO enterprise (cnpj, phone, user_id)
+	values ('79.999.999/9999-99', '10000-0002', 7);
 
-CREATE TABLE `pessoa` (
+CREATE TABLE `candidate` (
     `id` bigint(20) PRIMARY KEY AUTO_INCREMENT,
 	`cpf` varchar(14) NOT NULL,
 	`status` varchar(45) NOT NULL,
-    `telefone` varchar(20),
-	`data_nascimento` date NOT NULL,
-	`genero` varchar(10) NOT NULL,
-	`endereco` varchar(45) NULL,
-	`usuario_id` bigint(20) NOT NULL,
-	FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+    `phone` varchar(20),
+	`birth_date` date NOT NULL,
+	`gender` varchar(10) NOT NULL,
+	`address` varchar(45) NULL,
+	`user_id` bigint(20) NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES user(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO pessoa (cpf, status, telefone, data_nascimento, genero, usuario_id)
-	values ('000.000.000-00', 'TRABALHANDO', '20000-0000', '1984/08/08' ,'FEMININO', 2);
+INSERT INTO candidate (cpf, status, phone, birth_date, gender, user_id)
+	values ('000.000.000-00', 'TRABALHANDO', '20000-0000', '1984/08/08' ,'FEMININO', 3);
+INSERT INTO candidate (cpf, status, phone, birth_date, gender, user_id)
+	values ('100.000.000-00', 'TRABALHANDO', '30000-0000', '1993/08/08' ,'FEMININO', 4);
+INSERT INTO candidate (cpf, status, phone, birth_date, gender, user_id)
+	values ('200.000.000-00', 'TRABALHANDO', '40000-0000', '1989/08/08' ,'FEMININO', 5);

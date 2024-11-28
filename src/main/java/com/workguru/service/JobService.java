@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.workguru.domain.model.Empresa;
-import com.workguru.domain.model.Vaga;
+import com.workguru.domain.model.Enterprise;
+import com.workguru.domain.model.Job;
 import com.workguru.repository.EnterpriseRepository;
 import com.workguru.repository.JobRepository;
 import com.workguru.service.exception.NonExistentUserException;
@@ -25,27 +25,27 @@ public class JobService {
 	private EnterpriseRepository enterpriseRepository;
 	
 	
-	public Vaga save(Vaga vaga) {
-		Optional<Empresa> enterprise = enterpriseRepository.findById(vaga.getEmpresa().getId());
+	public Job save(Job job) {
+		Optional<Enterprise> enterprise = enterpriseRepository.findById(job.getEnterprise().getId());
 		if(!enterprise.isPresent()) {
 			throw new NonExistentUserException();
 		}
-		return jobRepository.save(vaga);
+		return jobRepository.save(job);
 	}
 	
-	public Vaga update(Long id, Vaga vaga) {
-		Vaga jobSaved = findJobById(id);
-		BeanUtils.copyProperties(vaga, jobSaved, "id");
+	public Job update(Long id, Job job) {
+		Job jobSaved = findJobById(id);
+		BeanUtils.copyProperties(job, jobSaved, "id");
 		return jobRepository.save(jobSaved);
 	}
 	
-	public Vaga findJobById(Long id) {
-		Vaga jobSaved = jobRepository.findById(id).orElseThrow(() -> new EmptyResultDataAccessException(1));
+	public Job findJobById(Long id) {
+		Job jobSaved = jobRepository.findById(id).orElseThrow(() -> new EmptyResultDataAccessException(1));
 		return jobSaved;
 	}
 	
-	public List<Vaga> findJobsByEnterprise(Empresa empresa) {		
-		return  jobRepository.findJobsByEmpresa(empresa);
+	public List<Job> findJobsByEnterprise(Enterprise enterprise) {		
+		return  jobRepository.findJobByEnterprise(enterprise);
 	}
 	
 	

@@ -10,30 +10,30 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @DiscriminatorValue("E")
-@Table(name = "empresa")
-public class Empresa extends Usuario{
+@Table(name = "enterprise")
+public class Enterprise extends User{
 
 	@NotNull
 	@CNPJ
 	private String cnpj;
 	@NotNull
-	private String telefone;
-	private String descricao;
+	private String phone;
+	private String description;
 	@Column(name = "link_site")
 	private String linkSite;
-	private String endereco;
+	private String address;
 
-	public String getTelefone() {
-		return telefone;
+	public String getPhone() {
+		return phone;
 	}
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	public String getDescricao() {
-		return descricao;
+	public String getDescription() {
+		return description;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public String getLinkSite() {
 		return linkSite;
@@ -41,11 +41,11 @@ public class Empresa extends Usuario{
 	public void setLinkSite(String linkSite) {
 		this.linkSite = linkSite;
 	}
-	public String getEndereco() {
-		return endereco;
+	public String getAddress() {
+		return address;
 	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getCnpj() {

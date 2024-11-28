@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.workguru.domain.model.Usuario;
+import com.workguru.domain.model.User;
 import com.workguru.repository.UserRepository;
 
 
@@ -26,15 +26,15 @@ public class AppUserDetailsService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		Optional<Usuario> userOptional = userRepository.findByEmail(email);
-		Usuario user = userOptional.orElseThrow(() -> new UsernameNotFoundException("Usuário e/ou senha incorretos"));
+		Optional<User> userOptional = userRepository.findByEmail(email);
+		User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("Usuário e/ou senha incorretos"));
 		return new SystemUser(user, getPermissions(user));
 	}
 
-	private Collection<? extends GrantedAuthority> getPermissions(Usuario user) {
+	private Collection<? extends GrantedAuthority> getPermissions(User user) {
 		Set<SimpleGrantedAuthority> authorities = new HashSet<>();
-		user.getPermissao().forEach(p -> authorities.add(
-				new SimpleGrantedAuthority(p.getDescricao().toUpperCase())));
+		user.getPermission().forEach(p -> authorities.add(
+				new SimpleGrantedAuthority(p.getDescription().toUpperCase())));
 		return authorities;
 	}
 

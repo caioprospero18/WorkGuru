@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.workguru.domain.model.Empresa;
-import com.workguru.domain.model.Vaga;
+import com.workguru.domain.model.Enterprise;
+import com.workguru.domain.model.Job;
 
-public interface JobRepository extends JpaRepository<Vaga, Long>{
+public interface JobRepository extends JpaRepository<Job, Long>{
 
-	List<Vaga> findJobsByEmpresa(Empresa empresa);
+	List<Job> findJobByEnterprise(Enterprise enterprise);
 
 
 }

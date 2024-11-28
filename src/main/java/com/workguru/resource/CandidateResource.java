@@ -17,44 +17,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.workguru.domain.model.Pessoa;
-import com.workguru.repository.PeopleRepository;
+import com.workguru.domain.model.Candidate;
+import com.workguru.repository.CandidateRepository;
 import com.workguru.repository.UserRepository;
-import com.workguru.service.PeopleService;
+import com.workguru.service.CandidateService;
 
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/people")
-public class PeopleResource {
+@RequestMapping("/candidate")
+public class CandidateResource {
 
 	@Autowired
-	private PeopleRepository peopleRepository;
+	private CandidateRepository peopleRepository;
 	
 	@Autowired
 	private UserRepository userRepository;
 	
 	@Autowired
-	private PeopleService peopleService;
+	private CandidateService peopleService;
 
 	@GetMapping
-	@PreAuthorize("hasAuthority('FUNCAO_PROCURAR_USUARIO') and hasAuthority('SCOPE_read')")
-	public List<Pessoa> list(){
-		return userRepository.findAllPeople();
+	@PreAuthorize("hasAuthority('ROLE_SEARCH_USER') and hasAuthority('SCOPE_read')")
+	public List<Candidate> list(){
+		return userRepository.findAllCandidate();
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	@PreAuthorize("hasAuthority('FUNCAO_REGISTRAR_USUARIO') and hasAuthority('SCOPE_write')")
-	public Pessoa create(@Valid @RequestBody Pessoa people, HttpServletResponse response) {
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and hasAuthority('SCOPE_write')")
+	public Candidate create(@Valid @RequestBody Candidate people, HttpServletResponse response) {
 		return peopleRepository.save(people);
 	}
 	
 	@GetMapping("/{id}")
-	@PreAuthorize("hasRole('FUNCAO_PROCURAR_USUARIO') and hasAuthority('SCOPE_read')")
-	public ResponseEntity<Pessoa> findById(@PathVariable Long id){
-		Optional<Pessoa> people = peopleRepository.findById(id);
+	@PreAuthorize("hasRole('ROLE_SEARCH_USER') and hasAuthority('SCOPE_read')")
+	public ResponseEntity<Candidate> findById(@PathVariable Long id){
+		Optional<Candidate> people = peopleRepository.findById(id);
 		if(people.isPresent()) {
 			return ResponseEntity.ok(people.get());
 		}
@@ -63,15 +63,15 @@ public class PeopleResource {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@PreAuthorize("hasAuthority('FUNCAO_DELETAR_USUARIO') and hasAuthority('SCOPE_write')")
+	@PreAuthorize("hasAuthority('ROLE_REMOVE_USER') and hasAuthority('SCOPE_write')")
 	public void remove(@PathVariable Long id) {
 		peopleRepository.deleteById(id);
 	}
 
 	@PutMapping("/{id}")
-	@PreAuthorize("hasAuthority('FUNCAO_REGISTRAR_USUARIO') and hasAuthority('SCOPE_write')")
-	public ResponseEntity<Pessoa> update(@PathVariable Long id, @Valid @RequestBody Pessoa people) {
-		Pessoa peopleSaved = peopleService.update(id, people);
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and hasAuthority('SCOPE_write')")
+	public ResponseEntity<Candidate> update(@PathVariable Long id, @Valid @RequestBody Candidate people) {
+		Candidate peopleSaved = peopleService.update(id, people);
 		return ResponseEntity.ok(peopleSaved);
 	}
 }

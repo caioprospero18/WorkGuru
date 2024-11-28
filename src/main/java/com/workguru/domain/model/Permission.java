@@ -7,23 +7,23 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "permissao")
-public class Permissao {
+@Table(name = "permission")
+public class Permission {
 	
 	@Id
 	private Long id;
-	private String descricao;
+	private String description;
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getDescricao() {
-		return descricao;
+	public String getDescription() {
+		return description;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	@Override
 	public int hashCode() {
@@ -37,7 +37,7 @@ public class Permissao {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Permissao other = (Permissao) obj;
+		Permission other = (Permission) obj;
 		return Objects.equals(id, other.id);
 	}
 	

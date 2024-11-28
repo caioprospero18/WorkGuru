@@ -22,10 +22,10 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table (name = "usuario")
+@Table (name = "user")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "tipo_usuario", discriminatorType = DiscriminatorType.STRING)
-public class Usuario {
+@DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
+public class User {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -34,15 +34,15 @@ public class Usuario {
 	private String email;
 	@NotNull
 	@Size(min = 3, max = 45)
-	private String nome;
+	private String name;
 	@NotNull
-	private String senha;
-	@Column (insertable=false, updatable=false, name = "tipo_usuario")
-	private String tipoUsuario;
+	private String password;
+	@Column (insertable=false, updatable=false, name = "user_type")
+	private String userType;
 	@ManyToMany(fetch = FetchType.EAGER) // fetch = buscar - eager = ancioso
-	@JoinTable(name = "permissao_usuario", joinColumns = @JoinColumn(name = "usuario_id"), 
-	inverseJoinColumns = @JoinColumn(name = "permissao_id"))
-	private List<Permissao> permissao;
+	@JoinTable(name = "user_permission", joinColumns = @JoinColumn(name = "user_id"), 
+	inverseJoinColumns = @JoinColumn(name = "permission_id"))
+	private List<Permission> permission;
 	public Long getId() {
 		return id;
 	}
@@ -55,29 +55,29 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return password;
 	}
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getTipoUsuario() {
-		return tipoUsuario;
+	public String getUserType() {
+		return userType;
 	}
-	public void setTipoUsuario(String tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public List<Permissao> getPermissao() {
-		return permissao;
+	public List<Permission> getPermission() {
+		return permission;
 	}
-	public void setPermissao(List<Permissao> permissao) {
-		this.permissao = permissao;
+	public void setPermission(List<Permission> permission) {
+		this.permission = permission;
 	}
 	@Override
 	public int hashCode() {
@@ -91,7 +91,7 @@ public class Usuario {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		User other = (User) obj;
 		return Objects.equals(id, other.id);
 	}
 	
