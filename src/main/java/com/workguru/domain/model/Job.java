@@ -34,6 +34,9 @@ public class Job {
 	@Enumerated(EnumType.STRING)
 	private Tecnology tecnology;
 	@NotNull
+	@Column(name="job_area")
+	private String jobArea;
+	@NotNull
 	private String description;
 	@NotNull
 	@Enumerated(EnumType.STRING)
@@ -125,6 +128,12 @@ public class Job {
 	}
 	public void setCandidate(List<Candidate> candidate) {
 		this.candidate = candidate;
+	}
+	public String getJobArea() {
+		return jobArea;
+	}
+	public void setJobArea(String jobArea) {
+		this.jobArea = jobArea;
 	}
 	@Override
 	public int hashCode() {

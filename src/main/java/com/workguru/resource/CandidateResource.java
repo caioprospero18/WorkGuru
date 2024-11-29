@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.workguru.domain.model.Candidate;
+import com.workguru.domain.model.User;
 import com.workguru.repository.CandidateRepository;
 import com.workguru.repository.UserRepository;
 import com.workguru.service.CandidateService;
@@ -47,16 +48,16 @@ public class CandidateResource {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and hasAuthority('SCOPE_write')")
-	public Candidate create(@Valid @RequestBody Candidate people, HttpServletResponse response) {
-		return peopleRepository.save(people);
+	public Candidate create(@Valid @RequestBody Candidate candidate, HttpServletResponse response) {
+		return peopleRepository.save(candidate);
 	}
 	
 	@GetMapping("/{id}")
 	@PreAuthorize("hasRole('ROLE_SEARCH_USER') and hasAuthority('SCOPE_read')")
 	public ResponseEntity<Candidate> findById(@PathVariable Long id){
-		Optional<Candidate> people = peopleRepository.findById(id);
-		if(people.isPresent()) {
-			return ResponseEntity.ok(people.get());
+		Optional<Candidate> candidate = peopleRepository.findById(id);
+		if(candidate.isPresent()) {
+			return ResponseEntity.ok(candidate.get());
 		}
 		return ResponseEntity.notFound().build();
 	}
@@ -70,8 +71,8 @@ public class CandidateResource {
 
 	@PutMapping("/{id}")
 	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and hasAuthority('SCOPE_write')")
-	public ResponseEntity<Candidate> update(@PathVariable Long id, @Valid @RequestBody Candidate people) {
-		Candidate peopleSaved = peopleService.update(id, people);
-		return ResponseEntity.ok(peopleSaved);
+	public ResponseEntity<Candidate> update(@PathVariable Long id, @Valid @RequestBody Candidate candidate) {
+		Candidate candidateSaved = peopleService.update(id, candidate);
+		return ResponseEntity.ok(candidateSaved);
 	}
 }

@@ -11,12 +11,16 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
 @DiscriminatorValue("P")
 @Table (name = "candidate")
+@PrimaryKeyJoinColumn(name="user_id")
 public class Candidate extends User{
 	@NotNull
 	@CPF
@@ -34,6 +38,7 @@ public class Candidate extends User{
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 	private String address;
+
 	public String getCpf() {
 		return cpf;
 	}
@@ -71,10 +76,5 @@ public class Candidate extends User{
 		this.address = address;
 	}
 
-	
-	
-	
-	
-	
 	
 }

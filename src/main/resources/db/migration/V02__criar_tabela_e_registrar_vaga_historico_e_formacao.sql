@@ -14,7 +14,7 @@ CREATE TABLE job (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO job (id, title, job_area, tecnology, description, level, model, salary, status, publish_date, enterprise_id ) 
-	values (1, 'Dev Backend', 'Backend' , 'JAVA', 'Atuar como dev', 'JUNIOR', 'PRESENCIAL', 'DE_0_A_2000', 'ABERTA', '2024/11/06', 1);
+	values (1, 'Dev Backend', 'Backend' , 'JAVA', 'Atuar como dev', 'JUNIOR', 'PRESENCIAL', 'DE_0_A_2000', 'ABERTA', '2024/11/06', 2);
 	
 CREATE TABLE graduation (
 	`id`BIGINT(20) PRIMARY KEY AUTO_INCREMENT,

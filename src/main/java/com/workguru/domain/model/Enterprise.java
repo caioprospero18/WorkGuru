@@ -5,12 +5,16 @@ import org.hibernate.validator.constraints.br.CNPJ;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
 @DiscriminatorValue("E")
 @Table(name = "enterprise")
+@PrimaryKeyJoinColumn(name="user_id")
 public class Enterprise extends User{
 
 	@NotNull
@@ -22,6 +26,7 @@ public class Enterprise extends User{
 	@Column(name = "link_site")
 	private String linkSite;
 	private String address;
+
 
 	public String getPhone() {
 		return phone;
@@ -54,6 +59,8 @@ public class Enterprise extends User{
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
+
+	
 
 	
 	
