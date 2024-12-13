@@ -27,6 +27,11 @@ CREATE TABLE `enterprise` (
 	`description` text NULL,
 	`link_site` varchar(50) NULL,
 	`address` varchar(45) NULL,
+	`number` varchar(5) NULL,
+	`complement` varchar (45) NULL,
+	`city` varchar (45) NULL,
+	`state` varchar (45) NULL,
+	`cep` varcar (9) NULL,
 	`user_id` bigint(20) NOT NULL,
 	FOREIGN KEY (user_id) REFERENCES user(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -46,6 +51,11 @@ CREATE TABLE `candidate` (
 	`birth_date` date NOT NULL,
 	`gender` varchar(10) NOT NULL,
 	`address` varchar(45) NULL,
+	`number` varchar(5) NULL,
+	`complement` varchar (45) NULL,
+	`city` varchar (45) NULL,
+	`state` varchar (45) NULL,
+	`cep` varchar (9) NULL,
 	`user_id` bigint(20) NOT NULL,
 	FOREIGN KEY (user_id) REFERENCES user(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

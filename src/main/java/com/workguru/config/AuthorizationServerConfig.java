@@ -53,7 +53,7 @@ public class AuthorizationServerConfig {
 
     @Bean
     RegisteredClientRepository registeredClientRepository() {
-    	List<String> allowedRedirects = Arrays.asList("https://oidcdebugger.com/debug");
+    	List<String> allowedRedirects = Arrays.asList("http://local-workguru.com/authorized", "https://oidcdebugger.com/debug");
     	
         RegisteredClient angularClient = RegisteredClient
                 .withId(UUID.randomUUID().toString())
@@ -118,11 +118,14 @@ public class AuthorizationServerConfig {
             for (GrantedAuthority grantedAuthority : systemUser.getAuthorities()) {
                 authorities.add(grantedAuthority.getAuthority());
             }
-
+            
+            context.getClaims().claim("user_id", systemUser.getUser().getId());
             context.getClaims().claim("name", systemUser.getUser().getName());
             context.getClaims().claim("authorities", authorities);
         };
     }
+    
+    
 
 
     @Bean

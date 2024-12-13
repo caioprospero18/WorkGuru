@@ -4,9 +4,8 @@ import org.hibernate.validator.constraints.br.CNPJ;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -25,7 +24,8 @@ public class Enterprise extends User{
 	private String description;
 	@Column(name = "link_site")
 	private String linkSite;
-	private String address;
+	@Embedded
+	private Address address;
 
 
 	public String getPhone() {
@@ -46,10 +46,10 @@ public class Enterprise extends User{
 	public void setLinkSite(String linkSite) {
 		this.linkSite = linkSite;
 	}
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 

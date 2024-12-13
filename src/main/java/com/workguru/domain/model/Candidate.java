@@ -8,11 +8,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -37,7 +36,8 @@ public class Candidate extends User{
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
-	private String address;
+	@Embedded
+	private Address address;
 
 	public String getCpf() {
 		return cpf;
@@ -69,10 +69,10 @@ public class Candidate extends User{
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 

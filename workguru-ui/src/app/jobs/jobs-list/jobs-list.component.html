@@ -1,0 +1,70 @@
+<div class="container">
+
+  <div class="p-col-12">
+    <h1>Atividades Físicas</h1>
+  </div>
+
+  <div class="p-grid">
+    <div class="p-col-12">
+      <p-table [value]="jobs" responsiveLayout="stack" [breakpoint]="'768px'">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Título</th>
+            <th>Tecnologia</th>
+            <th>Área</th>
+            <th>Descrição</th>
+            <th>Nível</th>
+            <th>Modelo</th>
+            <th>Salário</th>
+            <th>Status</th>
+            <th class="col-actions-header"></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-activity>
+          <tr>
+            <td>
+              <span class="p-column-title">Título</span>
+              {{ job.title }}
+            </td>
+            <td>
+              <span class="p-column-title">Tipo</span>
+              <span *ngIf="activity.type === 'CORRIDA'">
+                <img src="assets/running_icon.png" alt="Corrida">
+              </span>
+              <span *ngIf="activity.type === 'CAMINHADA'">
+                <img src="assets/walking_icon.png" alt="Corrida">
+              </span>
+              <span *ngIf="activity.type === 'CICLISMO'">
+                <img src="assets/cycling_icon.png" alt="Corrida">
+              </span>
+              <span *ngIf="activity.type === 'NATACAO'">
+                <img src="assets/swimming_icon.png" alt="Corrida">
+              </span>
+            </td>
+            <td>
+              <span class="p-column-title">Data</span>
+              {{ activity.date }}
+            </td>
+            <td>
+              <span class="p-column-title">Distância</span>
+              {{ activity.distance | number: '1.1-1'}} km
+            </td>
+            <td>
+              <span class="p-column-title">Duração</span>
+              {{ activity.duration }} min
+            </td>
+            <td class="col-actions">
+              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+                [routerLink]="['/activities', activity.id]"></a>
+                <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+                (click)="confirmRemoval(activity)"></buttona>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="p-col-12">
+      <p><a pButton label="Nova Atividade" routerLink="/activities/new"></a></p>
+    </div>
+  </div>
+</div>

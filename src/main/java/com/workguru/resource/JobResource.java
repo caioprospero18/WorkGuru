@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.workguru.domain.model.Enterprise;
 import com.workguru.domain.model.Job;
 import com.workguru.repository.JobRepository;
 import com.workguru.service.JobService;
@@ -45,6 +46,16 @@ public class JobResource {
 		Optional<Job> job = jobRepository.findById(id);
 		if(job.isPresent()) {
 			return ResponseEntity.ok(job.get());
+		}
+		return ResponseEntity.notFound().build();
+	}
+	
+	@GetMapping("/job/{email}")
+	@PreAuthorize("hasAuthority('ROLE_SEARCH_ACTIVITY') and hasAuthority('SCOPE_read')")
+	public ResponseEntity<List<Job>> findByEnterprise(@PathVariable Enterprise enterprise){
+		List<Job> jobs = jobService.findJobsByEnterprise(enterprise);
+		if(!jobs.isEmpty()) {
+			return ResponseEntity.ok(jobs);
 		}
 		return ResponseEntity.notFound().build();
 	}

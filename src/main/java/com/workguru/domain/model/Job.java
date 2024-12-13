@@ -35,7 +35,8 @@ public class Job {
 	private Tecnology tecnology;
 	@NotNull
 	@Column(name="job_area")
-	private String jobArea;
+	@Enumerated(EnumType.STRING)
+	private JobArea jobArea;
 	@NotNull
 	private String description;
 	@NotNull
@@ -129,10 +130,10 @@ public class Job {
 	public void setCandidate(List<Candidate> candidate) {
 		this.candidate = candidate;
 	}
-	public String getJobArea() {
+	public JobArea getJobArea() {
 		return jobArea;
 	}
-	public void setJobArea(String jobArea) {
+	public void setJobArea(JobArea jobArea) {
 		this.jobArea = jobArea;
 	}
 	@Override
