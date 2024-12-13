@@ -28,7 +28,8 @@ export class AuthService {
     const challengeMethod = 'S256'
     const codeChallenge = 'hZSegNfnAKeSp4viKw9gAt_GYZkKUrvx_6KfxX_u0q4';
 
-    const redirectURI = encodeURIComponent('http://cti-optiplex-3080:8000/authorized');
+    const redirectURI =
+      encodeURIComponent('http://local-workguru.com/authorized');
 
     const clientId = 'angular'
     const scope = 'read write'
@@ -59,7 +60,7 @@ export class AuthService {
     const payload = new HttpParams()
       .append('grant_type', 'authorization_code')
       .append('code', code)
-      .append('redirect_uri', 'http://cti-optiplex-3080:8000/authorized')
+      .append('redirect_uri', 'http://local-workguru.com/authorized')
       .append('code_verifier', codeVerifier);
 
     const headers = new HttpHeaders()
@@ -67,7 +68,8 @@ export class AuthService {
       .append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==');
 
     try {
-      const response = await this.http.post<any>(this.oauthTokenUrl, payload, { headers })
+      const response =
+        await this.http.post<any>(this.oauthTokenUrl, payload, { headers })
         .toPromise();
       this.storeToken(response['access_token']);
       this.storeRefreshToken(response['refresh_token']);
@@ -78,6 +80,29 @@ export class AuthService {
       return await Promise.resolve();
     } catch (response_1) {
       console.error('Erro ao gerar o token com o code.', response_1);
+      return await Promise.resolve();
+    }
+  }
+
+  async getNewAccessToken(): Promise<void> {
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/x-www-form-urlencoded')
+      .append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==');
+
+    const payload = new HttpParams()
+      .append('grant_type', 'refresh_token')
+      .append('refresh_token', localStorage.getItem('refreshToken')!)
+
+    try {
+      const response = await this.http.post<any>(this.oauthTokenUrl, payload,
+        { headers })
+        .toPromise();
+      this.storeToken(response['access_token']);
+      this.storeRefreshToken(response['refresh_token']);
+      console.log('Novo access token criado!');
+      return await Promise.resolve();
+    } catch (response_1) {
+      console.error('Erro ao renovar token.', response_1);
       return await Promise.resolve();
     }
   }
@@ -104,6 +129,19 @@ export class AuthService {
   isInvalidAccessToken() {
     const token = localStorage.getItem('token');
     return !token || this.jwtHelper.isTokenExpired(token);
+  }
+
+  hasPermission(permission: string): boolean {
+    return this.jwtPayload && this.jwtPayload.authorities.includes(permission);
+  }
+
+  hasAnyPermission(roles: any): boolean {
+    for (const role of roles) {
+      if (this.hasPermission(role)) {
+        return true;
+      }
+    }
+    return false;
   }
 
 }

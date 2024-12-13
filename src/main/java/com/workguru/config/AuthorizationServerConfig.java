@@ -84,7 +84,7 @@ public class AuthorizationServerConfig {
                 .redirectUris(uris -> uris.addAll(allowedRedirects))
                 .scope("read")
                 .tokenSettings(TokenSettings.builder()
-                        .accessTokenTimeToLive(Duration.ofMinutes(30))
+                        .accessTokenTimeToLive(Duration.ofMinutes(1))
                         .refreshTokenTimeToLive(Duration.ofDays(30))
                         .build())
                 .clientSettings(ClientSettings.builder()

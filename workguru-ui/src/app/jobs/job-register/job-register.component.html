@@ -3,35 +3,64 @@
 
     <div class="p-grid">
       <div class="p-col-12">
-        <h1>{{ editing ? 'Edição de' : 'Nova' }} Atividade</h1>
+        <h1>{{ editing ? 'Edição de' : 'Nova' }} Vaga</h1>
       </div>
 
       <div class="p-col-12 p-md-6 p-fluid">
-        <label>Tipo</label>
-        <p-dropdown name="type" [options]="types" placeholder="Selecione"
-        [(ngModel)]="activity.type" #type="ngModel" required></p-dropdown>
+        <label>Título</label>
+        <input name="title" type="text"
+        [(ngModel)]="job.title" #title="ngModel" required>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-fluid">
+        <label>Tecnologia</label>
+        <p-dropdown name="tecnology" [options]="tecnologies" placeholder="Selecione"
+        [(ngModel)]="job.tecnology" #tecnology="ngModel" required></p-dropdown>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-fluid">
+        <label>Área de Atuação</label>
+        <p-dropdown name="jobArea" [options]="jobAreas" placeholder="Selecione"
+        [(ngModel)]="job.jobArea" #jobArea="ngModel" required></p-dropdown>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-fluid">
+        <label>Descrição</label>
+        <input name="description" type="text"
+        [(ngModel)]="job.tecnology" #description="ngModel" required>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-fluid">
+        <label>Nível</label>
+        <p-dropdown name="level" [options]="levels" placeholder="Selecione"
+        [(ngModel)]="job.level" #level="ngModel" required></p-dropdown>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-fluid">
+        <label>Modelo</label>
+        <p-dropdown name="model" [options]="models" placeholder="Selecione"
+        [(ngModel)]="job.model" #model="ngModel" required></p-dropdown>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-fluid">
+        <label>Salário</label>
+        <p-dropdown name="salary" [options]="salaries" placeholder="Selecione"
+        [(ngModel)]="job.salary" #salary="ngModel" required></p-dropdown>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-fluid">
+        <label>Salário</label>
+        <p-dropdown name="status" [options]="status" placeholder="Selecione"
+        [(ngModel)]="job.status" #status="ngModel" required></p-dropdown>
       </div>
 
       <div class="p-col-6 p-md-3 p-fluid">
-        <label>Data</label>
+        <label>Data de Publicação</label>
         <p-calendar name="date" dateFormat="dd/mm/yy" [inline]="false"
-        [(ngModel)]="activity.date" #date="ngModel" required></p-calendar>
+        [(ngModel)]="job.publishDate" #date="ngModel" required></p-calendar>
         <app-message [control]="date" error="required" text="Informe uma data"></app-message>
       </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Distância (Km)</label>
-        <input pInputText name="distance" type="number" step="0.1"
-        [(ngModel)]="activity.distance" #distance="ngModel" required>
-        <app-message [control]="distance" error="required" text="Informe uma distância"></app-message>
-      </div>
-
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Duração (Min)</label>
-        <input pInputText name="duration" type="number" step="1"
-        [(ngModel)]="activity.duration" #duration="ngModel" required>
-        <app-message [control]="duration" error="required" text="Informe uma duração"></app-message>
-      </div>
       <div class="p-col-12">
         <p>
           <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>

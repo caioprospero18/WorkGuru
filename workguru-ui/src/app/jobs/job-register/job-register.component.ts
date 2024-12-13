@@ -6,6 +6,7 @@ import { AuthService } from '../../security/auth.service';
 import { ErrorHandlerService } from '../../core/error-handler.service';
 import { MessageService } from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-job-register',
@@ -50,7 +51,7 @@ export class JobRegisterComponent {
     { label: 'Fechada', value: 'FECHADA' }
   ];
 
-  jobArea = [
+  jobAreas = [
     { label: 'Backend', value: 'BACKEND' },
     { label: 'Frontend', value: 'FRONTEND' },
     { label: 'Fullstack', value: 'FULLSTACK' },
@@ -65,13 +66,15 @@ export class JobRegisterComponent {
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
     private route: ActivatedRoute,
-    private router: Router){}
+    private router: Router,
+    private title: Title){}
 
     ngOnInit(): void {
       const id = this.route.snapshot.params[`id`];
       if(id !== undefined){
         this.loadJob(id);
       }
+      this.title.setTitle('Cadastro de Vagas');
     }
 
     get editing(): boolean {
@@ -97,7 +100,7 @@ export class JobRegisterComponent {
     updateJob(jobForm: NgForm) {
       this.jobService.update(this.job)
         .then( job => {
-          this.messageService.add({ severity: 'success', detail: 'Atividade editada com sucesso!' });
+          this.messageService.add({ severity: 'success', detail: 'Vaga editada com sucesso!' });
           this.job = job;
         })
         .catch(error => this.errorHandler.handle(error));
@@ -106,7 +109,7 @@ export class JobRegisterComponent {
     addJob(jobForm: NgForm) {
       this.jobService.add(this.job)
         .then(addedJob => {
-          this.messageService.add({ severity: 'success', detail: 'Atividade adicionada com sucesso!' });
+          this.messageService.add({ severity: 'success', detail: 'Vaga adicionada com sucesso!' });
     this.loadJob(addedJob.id);
           this.router.navigate(['/jobs', addedJob.id]);
         })

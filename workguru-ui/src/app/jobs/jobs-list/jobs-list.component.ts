@@ -3,6 +3,7 @@ import { AuthService } from '../../security/auth.service';
 import { JobService } from '../job.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ErrorHandlerService } from '../../core/error-handler.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-jobs-list',
@@ -18,13 +19,15 @@ export class JobsListComponent implements OnInit{
     private auth: AuthService,
     private confirmation: ConfirmationService,
     private messageService: MessageService,
-    private errorHandler: ErrorHandlerService)
+    private errorHandler: ErrorHandlerService,
+    private title: Title)
   { }
 
   ngOnInit(): void {
     if (this.auth.isInvalidAccessToken()) {
       this.auth.login();
     }
+    this.title.setTitle('Minhas vagas');
     this.list();
   }
 

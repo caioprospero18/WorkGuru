@@ -10,12 +10,16 @@ import { ToastModule} from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found.component';
+import { NotAuthorizedComponent } from './not-authorized.component';
 
 registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    PageNotFoundComponent,
+    NotAuthorizedComponent
   ],
   imports: [
     CommonModule,
