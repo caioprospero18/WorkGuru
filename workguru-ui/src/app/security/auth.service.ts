@@ -26,7 +26,7 @@ export class AuthService {
     localStorage.setItem('codeVerifier', codeVerifier);
 
     const challengeMethod = 'S256'
-    const codeChallenge = 'hZSegNfnAKeSp4viKw9gAt_GYZkKUrvx_6KfxX_u0q4';
+    const codeChallenge = 'z0Q0t1xK4hFoWMbWbNXsXAnmceL8K5Bj3rcaesrO6oc';
 
     const redirectURI =
       encodeURIComponent('http://local-workguru.com/authorized');
