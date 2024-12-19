@@ -53,7 +53,7 @@ public class AuthorizationServerConfig {
 
     @Bean
     RegisteredClientRepository registeredClientRepository() {
-    	List<String> allowedRedirects = Arrays.asList("http://local-workguru.com/authorized", "https://oidcdebugger.com/debug");
+    	List<String> allowedRedirects = Arrays.asList("http://local-workguru.com:8000/authorized", "https://oidcdebugger.com/debug");
     	
         RegisteredClient angularClient = RegisteredClient
                 .withId(UUID.randomUUID().toString())
@@ -66,7 +66,7 @@ public class AuthorizationServerConfig {
                 .scope("read")
                 .scope("write")
                 .tokenSettings(TokenSettings.builder()
-                        .accessTokenTimeToLive(Duration.ofMinutes(30))
+                        .accessTokenTimeToLive(Duration.ofMinutes(1))
                         .refreshTokenTimeToLive(Duration.ofDays(30))
                         .build())
                 .clientSettings(ClientSettings.builder()

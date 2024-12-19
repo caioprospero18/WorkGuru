@@ -29,7 +29,7 @@ export class AuthService {
     const codeChallenge = 'z0Q0t1xK4hFoWMbWbNXsXAnmceL8K5Bj3rcaesrO6oc';
 
     const redirectURI =
-      encodeURIComponent('http://local-workguru.com/authorized');
+      encodeURIComponent('http://local-workguru.com:8000/authorized');
 
     const clientId = 'angular'
     const scope = 'read write'
@@ -60,7 +60,7 @@ export class AuthService {
     const payload = new HttpParams()
       .append('grant_type', 'authorization_code')
       .append('code', code)
-      .append('redirect_uri', 'http://local-workguru.com/authorized')
+      .append('redirect_uri', 'http://local-workguru.com:8000/authorized')
       .append('code_verifier', codeVerifier);
 
     const headers = new HttpHeaders()
