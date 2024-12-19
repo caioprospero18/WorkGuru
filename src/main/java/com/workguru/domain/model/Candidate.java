@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
@@ -31,6 +32,7 @@ public class Candidate extends User{
 	private CandidateStatus status;
 	@NotNull
 	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonProperty("date")
 	@Column(name = "birth_date")
 	private LocalDate birthDate;
 	@NotNull

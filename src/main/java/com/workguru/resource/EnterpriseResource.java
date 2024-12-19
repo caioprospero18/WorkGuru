@@ -26,7 +26,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/enterprise")
+@RequestMapping("/enterprises")
 public class EnterpriseResource {
 	
 	@Autowired
@@ -37,6 +37,8 @@ public class EnterpriseResource {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
 
 	@GetMapping
 	@PreAuthorize("hasAuthority('ROLE_SEARCH_USER') and hasAuthority('SCOPE_read')")
@@ -46,10 +48,10 @@ public class EnterpriseResource {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and hasAuthority('SCOPE_write')")
-	public Enterprise create(@Valid @RequestBody Enterprise enterprise, HttpServletResponse response) {
-		return enterpriseRepository.save(enterprise);
+		public Enterprise create(@Valid @RequestBody Enterprise enterprise, HttpServletResponse response) {
+		return enterpriseService.save(enterprise);
 	}
+	
 	
 	@GetMapping("/{id}")
 	@PreAuthorize("hasRole('ROLE_SEARCH_USER') and hasAuthority('SCOPE_read')")

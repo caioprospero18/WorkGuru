@@ -27,11 +27,20 @@ export class JobsListComponent implements OnInit{
     if (this.auth.isInvalidAccessToken()) {
       this.auth.login();
     }
-    this.title.setTitle('Minhas vagas');
+    this.title.setTitle('Vagas');
     this.list();
   }
 
   list(): void {
+    this.jobService.list()
+      .then(result => {
+        this.jobs = result;
+      })
+      .catch(error => this.errorHandler.handle(error));
+
+  }
+
+  listEnterpriseJobs(): void {
     this.jobService.listByEnterprise()
       .then(result => {
         this.jobs = result;

@@ -13,10 +13,14 @@ import { SecurityModule } from './security/security.module';
 import { AuthService } from './security/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
+import { HomeModule } from './home/home.module';
+import { EnterprisesModule } from './enterprises/enterprises.module';
+import { EnterpriseRegisterComponent } from './enterprise/enterprise-register/enterprise-register.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EnterpriseRegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,9 @@ import { CoreModule } from './core/core.module';
     TooltipModule,
     JobsModule,
     SecurityModule,
-    CoreModule
+    CoreModule,
+    HomeModule,
+    EnterprisesModule
   ],
   providers: [
     AuthService

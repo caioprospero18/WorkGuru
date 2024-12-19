@@ -25,7 +25,7 @@ import com.workguru.service.JobService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/job")
+@RequestMapping("/jobs")
 public class JobResource {
 
 	@Autowired
@@ -50,7 +50,7 @@ public class JobResource {
 		return ResponseEntity.notFound().build();
 	}
 	
-	@GetMapping("/job/{email}")
+	@GetMapping("/jobs/{email}")
 	@PreAuthorize("hasAuthority('ROLE_SEARCH_ACTIVITY') and hasAuthority('SCOPE_read')")
 	public ResponseEntity<List<Job>> findByEnterprise(@PathVariable Enterprise enterprise){
 		List<Job> jobs = jobService.findJobsByEnterprise(enterprise);

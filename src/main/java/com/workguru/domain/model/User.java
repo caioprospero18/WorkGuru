@@ -36,6 +36,7 @@ public class User {
 	@Size(min = 3, max = 45)
 	private String name;
 	@NotNull
+	@Size(min = 6, max = 150)
 	private String password;
 	@Column (insertable=false, updatable=false, name = "user_type")
 	private String userType;

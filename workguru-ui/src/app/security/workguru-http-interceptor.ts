@@ -12,7 +12,8 @@ export class WorkguruHttpInterceptor implements HttpInterceptor {
   constructor(private auth: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (!req.url.includes('/oauth2/token') && this.auth.isInvalidAccessToken()) {
+    if (!req.url.includes('/oauth2/token') && !req.url.includes('/enterprises')
+      && this.auth.isInvalidAccessToken()) {
       // from - transformar a Promise (retornada pelo método "obterNovoAccessToken")
       // em um Observable, que é o tipo de retorno esperado pelo intercept
       return from(this.auth.getNewAccessToken())
