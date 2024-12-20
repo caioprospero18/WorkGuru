@@ -19,8 +19,8 @@ export class User {
   }
 }
 
-export class Enterprise {
-  id!: number;
+export class Enterprise extends User{
+  override id!: number;
   cnpj!: string;
   phone!: string;
   description!: string;
@@ -28,7 +28,7 @@ export class Enterprise {
   linkSite!: string;
   //tem que adicionar o endereço "address"
 
-  static toJson(enterprise: Enterprise): any {
+  static override toJson(enterprise: Enterprise): any {
     return {
       id: enterprise.id,
       cnpj: enterprise.cnpj,
@@ -40,15 +40,15 @@ export class Enterprise {
   }
 }
 
-export class Candidate {
-  id!: number;
+export class Candidate extends User{
+  override id!: number;
   cpf!: string;
   status!: string;
   birthDate!: string;
   gender!: string;
   //tem que adicionar o endereço "address"
 
-  static toJson(candidate: Candidate): any {
+  static override toJson(candidate: Candidate): any {
     return {
       id: candidate.id,
       cpf: candidate.cpf,

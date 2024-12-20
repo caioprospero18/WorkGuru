@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../security/auth.service';
-import { JobService } from '../jobs/job.service';
+
+import { JobService } from '../../jobs/job.service';
+import { AuthService } from '../../security/auth.service';
+
 
 @Component({
   selector: 'app-home',

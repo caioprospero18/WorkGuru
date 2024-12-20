@@ -15,12 +15,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import { EnterprisesModule } from './enterprises/enterprises.module';
-import { EnterpriseRegisterComponent } from './enterprise/enterprise-register/enterprise-register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EnterpriseRegisterComponent
   ],
   imports: [
     BrowserModule,

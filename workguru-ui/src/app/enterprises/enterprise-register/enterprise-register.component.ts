@@ -17,7 +17,7 @@ import { ErrorHandlerService } from '../../core/error-handler.service';
 })
 export class EnterpriseRegisterComponent {
 
-  user = new Enterprise();
+  enterprise = new Enterprise();
 
   constructor(
     private enterpriseService: EnterpriseService,
@@ -31,8 +31,8 @@ export class EnterpriseRegisterComponent {
     this.title.setTitle('Cadastro de Empresa');
   }
 
-  save(userForm: NgForm) {
-    this.enterpriseService.add(this.user)
+  save(enterpriseForm: NgForm) {
+    this.enterpriseService.add(this.enterprise)
       .then(() => {
         this.messageService.add({ severity: 'success', detail: 'Empresa cadastrada com sucesso!' });
         this.router.navigate(['/home']);

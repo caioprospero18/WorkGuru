@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../security/auth.service';
+import { JobService } from '../../jobs/job.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,5 +10,11 @@ import { AuthService } from '../../security/auth.service';
 
 export class NavbarComponent {
   displayingMenu = false;
-  constructor(public auth: AuthService) { }
+  constructor(
+    public auth: AuthService,
+    private jobService: JobService) { }
+
+  login(){
+    this.auth.login();
+  }
 }

@@ -9,11 +9,16 @@
     </div>
   </div>
 
+  <div>
+    <button severity="info" (click)="login()">Login</button>
+    <a pButton routerLink="/jobs/new">Cadastre-se</a>
+  </div>
+
   <ul class="navbar-menu" [hidden]="!displayingMenu">
     <li class="navbar-user">{{ auth.jwtPayload?.name }}</li>
     <li class="navbar-menuitem" routerLinkActive="active"
-      *ngIf="auth.hasPermission('ROLE_SEARCH_ACTIVITY')">
-      <a routerLink="/activities">Atividades</a>
+      *ngIf="auth.hasPermission('ROLE_SEARCH_JOB')">
+      <a routerLink="/jobs">Vagas</a>
     </li>
     <li class="navbar-menuitem"><a href="#">Estatísticas</a></li>
     <li class="navbar-menuitem"><a href="#">Logout</a></li>
