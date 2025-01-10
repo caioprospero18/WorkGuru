@@ -1,17 +1,7 @@
 <nav class="navbar">
 
-  <div class="container">
-    <div class="p-grid">
-      <div class="p-col-12">
-        <a href="javascript:;" class="navbar-toggle" (click)="displayingMenu = !displayingMenu">
-	  <i class="pi pi-bars"></i></a>
-      </div>
-    </div>
-  </div>
-
   <div>
     <button severity="info" (click)="login()">Login</button>
-    <a pButton routerLink="/jobs/new">Cadastre-se</a>
   </div>
 
   <ul class="navbar-menu" [hidden]="!displayingMenu">
@@ -21,7 +11,7 @@
       <a routerLink="/jobs">Vagas</a>
     </li>
     <li class="navbar-menuitem"><a href="#">Estatísticas</a></li>
-    <li class="navbar-menuitem"><a href="#">Logout</a></li>
+    <li class="navbar-menuitem"><a href="javascript:;" (click)="logout()">Logout</a></li>
   </ul>
 
 </nav>

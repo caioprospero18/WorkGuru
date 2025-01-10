@@ -1,16 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-body {background: linear-gradient(217deg, #17021c, #310935, #4b104d, #641766 70%),
-              linear-gradient(127deg, #7e1e7e, #982697, #b22daf 70%),
-              linear-gradient(336deg, #cb34c8, #e53be0, #ff42f9 70%);
+body {background: linear-gradient(180deg, #551466,#000000);
               width: 100vw;
               height: 100vh;
 }
 
 button,a {
-  background-color: #28a745;
+  background-color: blue;
   color: #fff;
   border-radius: 5px;
   border: none;
   font-size: medium;
+  padding: 10px 20px;
+  margin: 0 10px;
 }
 

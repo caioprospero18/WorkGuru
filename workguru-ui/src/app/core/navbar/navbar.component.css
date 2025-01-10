@@ -1,14 +1,18 @@
 .navbar {
-  padding: 20px 0 10px;
-  background-color: #28a745;
-}
+  padding: 25px 0 ;
+  background: linear-gradient(217deg, #17021c, #310935, #4b104d, #641766 70%),
+              linear-gradient(127deg, #7e1e7e, #982697, #b22daf 70%),
+              linear-gradient(336deg, #cb34c8, #e53be0, #ff42f9 70%);
 
-.navbar-toggle {
-  color: #fff;
 }
 
 a{
   background-color: #3a3633;
+}
+
+button{
+  display: flex;
+  justify-self: flex-start;
 }
 
 .navbar-menu {

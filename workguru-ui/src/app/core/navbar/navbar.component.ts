@@ -11,10 +11,12 @@ import { JobService } from '../../jobs/job.service';
 export class NavbarComponent {
   displayingMenu = false;
   constructor(
-    public auth: AuthService,
-    private jobService: JobService) { }
+    public auth: AuthService){ }
 
   login(){
     this.auth.login();
+  }
+  logout() {
+    this.auth.logout();
   }
 }

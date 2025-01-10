@@ -53,7 +53,7 @@ public class AuthorizationServerConfig {
 
     @Bean
     RegisteredClientRepository registeredClientRepository() {
-    	List<String> allowedRedirects = Arrays.asList("http://local-workguru.com:8000/authorized", "https://oidcdebugger.com/debug");
+    	List<String> allowedRedirects = Arrays.asList("http://localhost:8080/swagger-ui/oauth2-redirect.html", "http://local-workguru.com:8000/authorized", "https://oidcdebugger.com/debug");
     	
         RegisteredClient angularClient = RegisteredClient
                 .withId(UUID.randomUUID().toString())
@@ -90,6 +90,18 @@ public class AuthorizationServerConfig {
                 .clientSettings(ClientSettings.builder()
                         .requireAuthorizationConsent(false)
                         .build())
+                .build();
+        
+        RegisteredClient swaggerClient = RegisteredClient.withId(UUID.randomUUID().toString())
+                .clientId("swagger-client")
+                .clientSecret("{noop}swagger-secret")
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+                .redirectUris(uris -> uris.addAll(allowedRedirects))
+                .scope("read")
+                .scope("write")
+                .clientSettings(ClientSettings.builder().requireProofKey(true).build())
+                .tokenSettings(TokenSettings.builder().accessTokenTimeToLive(Duration.ofHours(1)).build())
                 .build();
 
 

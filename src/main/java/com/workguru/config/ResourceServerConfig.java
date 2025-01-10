@@ -21,6 +21,7 @@ import org.springframework.security.oauth2.server.authorization.config.annotatio
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.util.StringUtils;
 
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
@@ -33,13 +34,23 @@ public class ResourceServerConfig {
 	@Bean
 	SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(auth -> {
-				auth.requestMatchers("/candidates").permitAll();
-				auth.requestMatchers("/enterprises").permitAll();
-				auth.anyRequest().authenticated();}
-				)
-				.csrf(AbstractHttpConfigurer::disable)
-				.oauth2ResourceServer(configurer -> configurer
-						.jwt(jwtConfigurer -> jwtConfigurer.jwtAuthenticationConverter(jwtAuthenticationConverter())));
+			auth.requestMatchers("/candidates", "/v3/api-docs/**", "/swagger-ui/**").permitAll();
+			auth.requestMatchers("/enterprises", "/v3/api-docs/**", "/swagger-ui/**").permitAll();
+			auth.anyRequest().authenticated();
+		}).csrf(AbstractHttpConfigurer::disable).oauth2ResourceServer(configurer -> configurer
+				.jwt(jwtConfigurer -> jwtConfigurer.jwtAuthenticationConverter(jwtAuthenticationConverter())));
+		http.logout(logoutConfig -> {
+			logoutConfig.logoutSuccessHandler((httpServletRequest, httpServletResponse, authentication) -> {
+				String returnTo = httpServletRequest.getParameter("returnTo");
+
+				if (!StringUtils.hasText(returnTo)) {
+					returnTo = "http://localhost:8080";
+				}
+
+				httpServletResponse.setStatus(302);
+				httpServletResponse.sendRedirect(returnTo);
+			});
+		});
 		return http.formLogin(Customizer.withDefaults()).build();
 	}
 
