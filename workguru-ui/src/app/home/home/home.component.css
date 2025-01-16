@@ -44,7 +44,7 @@ footer {
   background-color: #282c34;
   color: #fff;
   text-align: center;
-  padding: 20px;
+  padding: 15px;
 }
 
 h1, p{
@@ -58,4 +58,8 @@ h1{
 p
 {
   font-size: 35px;
+  margin: unset;
+}
+#footer{
+  font-size: 15px;
 }

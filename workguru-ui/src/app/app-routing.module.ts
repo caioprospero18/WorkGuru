@@ -17,19 +17,19 @@ const routes: Routes = [
     path: 'jobs/:id',
     component: JobRegisterComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_REGISTER_ACTIVITY']}
+    data: { roles: ['ROLE_REGISTER_JOB']}
   },
   {
     path: 'jobs',
     component: JobsListComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_SEARCH_ACTIVITY']}
+    data: { roles: ['ROLE_SEARCH_JOB']}
   },
   {
     path: 'jobs/new',
     component: JobRegisterComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_REGISTER_ACTIVITY'] }
+    data: { roles: ['ROLE_REGISTER_JOB'] }
   },
   { path: 'authorized', component: AuthorizedComponent },
   { path: 'page-not-found', component: PageNotFoundComponent },
