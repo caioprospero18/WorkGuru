@@ -3,7 +3,8 @@ package com.workguru.domain.model;
 public enum Gender {
 
 	MASCULINO("Masculino"),
-	FEMININO("Feminino");
+	FEMININO("Feminino"),
+	OUTRO("Outro");
 	
 	private String gender;
 	

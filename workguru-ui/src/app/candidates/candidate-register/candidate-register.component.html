@@ -7,67 +7,82 @@
       </div>
 
         <div class="p-col-12 p-md-6 p-fluid" id="name">
-          <label>Nome da Empresa*</label>
+          <label>Nome completo*</label>
           <input pInputText name="name" type="text"
-          [(ngModel)]="enterprise.name" #name="ngModel" required minlength="3" maxlength="50">
+          [(ngModel)]="candidate.name" #name="ngModel" required minlength="3" maxlength="50">
           <app-message [control]="name" error="required" text="Informe um nome"></app-message>
           <app-message [control]="name" error="minlength"
               text="Mínimo de {{ name.errors?.minlength?.requiredLength }} caracteres. Você digitou apenas {{ name.errors?.minlength?.actualLength }}"></app-message>
         </div>
 
-        <div id="inputs-email-password">
-          <div class="p-col-12 p-md-3 p-fluid">
+
+          <div class="p-col-12 p-md-3 p-fluid" id="email">
             <label>E-mail*</label>
             <input pInputText name="email" type="email"
-            [(ngModel)]="enterprise.email" #email="ngModel" required>
+            [(ngModel)]="candidate.email" #email="ngModel" required>
             <app-message [control]="email" error="required" text="Informe um e-mail"></app-message>
           </div>
 
 
+        <div id="inputs-password-cpf">
           <div class="p-col-12 p-md-3 p-fluid">
             <label>Senha*</label>
             <input pInputText name="password" type="password"
-            [(ngModel)]="enterprise.password" #password="ngModel" required minlength="6" maxlength="8">
+            [(ngModel)]="candidate.password" #password="ngModel" required minlength="6" maxlength="8">
             <app-message [control]="password" error="required" text="Informe uma senha de 6 a 8 caracteres."></app-message>
             <app-message [control]="password" error="minlength"
             text="Mínimo de {{ password.errors?.minlength?.requiredLength }} caracteres. Você digitou apenas {{ password.errors?.minlength?.actualLength }}"></app-message>
           </div>
-        </div>
 
-      <div id="inputs-cnpj-tel">
+
         <div class="p-col-12 p-md-6 p-fluid">
-          <label>CNPJ*</label>
-          <input pInputText name="cnpj" type="text"
-          [(ngModel)]="enterprise.cnpj" #cnpj="ngModel" pattern="[0-9]{2}.[0-9]{3}.[0-9]{3}/[0-9]{4}-[0-9]{2}"
-          placeholder="00.000.000/0000-00" required >
-          <app-message [control]="cnpj" error="required" text="Formato de CNPJ errado."></app-message>
+          <label>CPF*</label>
+          <input pInputText name="cpf" type="text"
+          [(ngModel)]="candidate.cpf" #cpf="ngModel" pattern="[0-9]{2}.[0-9]{3}.[0-9]{3}/[0-9]{4}-[0-9]{2}"
+          placeholder="000.000.000-00" required >
+          <app-message [control]="cpf" error="required" text="Formato de CPF errado."></app-message>
         </div>
+      </div>
 
+      <div id="inputs-tel-date">
         <div class="p-col-12 p-md-6 p-fluid">
           <label>Telefone*</label>
           <input pInputText name="phone"  placeholder="(XX)XXXXX-XXXX" pattern="\([0-9]{2}\)[0-9]{4,5}-[0-9]{4}"
-          [(ngModel)]="enterprise.phone" #phone="ngModel" required>
+          [(ngModel)]="candidate.phone" #phone="ngModel" required>
           <app-message [control]="phone" error="required" text="Formato de telefone errado."></app-message>
         </div>
-      </div>
 
-        <div class="p-col-12 p-md-6 p-fluid" id="link">
-          <label>Link do site da empresa</label>
-          <input pInputText name="linkSite"  placeholder="Link do site da empresa."
-          [(ngModel)]="enterprise.linkSite" #linkSite="ngModel" >
-        </div>
 
-        <div class="p-col-12 p-md-6 p-fluid" id="desc">
-          <label>Descrição</label>
-          <input pInputText name="description"  placeholder="Adicione a descrição da sua empresa."
-          [(ngModel)]="enterprise.description" #description="ngModel" >
+        <div class="p-col-12 p-md-6 p-fluid" >
+          <label>Data de nascimento*</label>
+          <p-calendar  name="birthDate" dateFormat="dd/mm/yy" [inline]="false"
+          [(ngModel)]="candidate.date" #birthDate="ngModel" required></p-calendar>
+          <app-message [control]="birthDate" error="required" text="Informe uma data"></app-message>
         </div>
       </div>
 
+      <div id="inputs-gen-status">
+        <div class="p-col-12 p-md-6 p-fluid" id="gender">
+          <label>Gênero*</label>
+          <p-dropdown name="gender"  [options]="genders" placeholder="Selecione"
+          [(ngModel)]="candidate.gender" #gender="ngModel" required=""></p-dropdown>
+        </div>
 
+
+        <div class="p-col-12 p-md-6 p-fluid" id="status">
+          <label>Status*</label>
+          <p-dropdown name="status"  [options]="statuses" placeholder="Selecione"
+          [(ngModel)]="candidate.status" #status="ngModel" required=""></p-dropdown>
+        </div>
+      </div>
+
+
+
+
+    </div>
     <div>
       <div class="button-container">
-        <button pButton type="submit" label="Cadastrar" [disabled]="f.invalid"></button>
+        <button pButton type="submit" label="Cadastrar" ></button>
       </div>
     </div>
 

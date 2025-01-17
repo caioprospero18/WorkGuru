@@ -12,6 +12,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { NotAuthorizedComponent } from './not-authorized.component';
+import { NavHomeComponent } from './nav-home/nav-home.component';
 
 registerLocaleData(localePt);
 
@@ -19,7 +20,8 @@ registerLocaleData(localePt);
   declarations: [
     NavbarComponent,
     PageNotFoundComponent,
-    NotAuthorizedComponent
+    NotAuthorizedComponent,
+    NavHomeComponent
   ],
   imports: [
     CommonModule,

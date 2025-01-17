@@ -34,8 +34,7 @@ public class ResourceServerConfig {
 	@Bean
 	SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(auth -> {
-			auth.requestMatchers("/candidates", "/v3/api-docs/**", "/swagger-ui/**").permitAll();
-			auth.requestMatchers("/enterprises", "/v3/api-docs/**", "/swagger-ui/**").permitAll();
+			auth.requestMatchers("/candidates", "/enterprises", "/v3/api-docs/**", "/swagger-ui/**").permitAll();
 			auth.anyRequest().authenticated();
 		}).csrf(AbstractHttpConfigurer::disable).oauth2ResourceServer(configurer -> configurer
 				.jwt(jwtConfigurer -> jwtConfigurer.jwtAuthenticationConverter(jwtAuthenticationConverter())));

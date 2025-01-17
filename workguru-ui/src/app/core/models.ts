@@ -1,26 +1,13 @@
 import moment from 'moment';
 import { AuthService } from '../security/auth.service';
 
-export class User {
+
+export class Enterprise {
   id!: number;
   email!: string;
   name!: string;
   password!: string;
   userType!: string;
-
-  static toJson(user: User): any {
-    return {
-      id: user.id,
-      email: user.email,
-      name: user.name,
-      password: user.password,
-      userType: user.userType
-    }
-  }
-}
-
-export class Enterprise extends User{
-  override id!: number;
   cnpj!: string;
   phone!: string;
   description!: string;
@@ -28,9 +15,13 @@ export class Enterprise extends User{
   linkSite!: string;
   //tem que adicionar o endereço "address"
 
-  static override toJson(enterprise: Enterprise): any {
+  static toJson(enterprise: Enterprise): any {
     return {
       id: enterprise.id,
+      email: enterprise.email,
+      name: enterprise.name,
+      password: enterprise.password,
+      userType: enterprise.userType,
       cnpj: enterprise.cnpj,
       phone: enterprise.phone,
       description: enterprise.description,
@@ -40,21 +31,31 @@ export class Enterprise extends User{
   }
 }
 
-export class Candidate extends User{
-  override id!: number;
+export class Candidate{
+  id!: number;
+  email!: string;
+  name!: string;
+  password!: string;
+  userType!: string;
   cpf!: string;
   status!: string;
-  birthDate!: string;
+  date!: string;
   gender!: string;
+  phone!: string;
   //tem que adicionar o endereço "address"
 
-  static override toJson(candidate: Candidate): any {
+  static toJson(candidate: Candidate): any {
     return {
       id: candidate.id,
+      email: candidate.email,
+      name: candidate.name,
+      password: candidate.password,
+      userType: candidate.userType,
       cpf: candidate.cpf,
       status: candidate.status,
-      birthDate: moment(candidate.birthDate).format('DD/MM/YYYY'),
-      gender: candidate.gender
+      date: moment(candidate.date).format('DD/MM/YYYY'),
+      gender: candidate.gender,
+      phone: candidate.phone
     }
   }
 

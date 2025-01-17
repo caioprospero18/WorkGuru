@@ -1,12 +1,6 @@
 <nav class="navbar">
 
   <a id ="workguru" href="/home">WorkGuru</a>
-  <div id="buttons">
-    <div>
-      <button severity="info" (click)="login()">Login</button>
-    </div>
-
-
 
     <ul class="navbar-menu" [hidden]="!displayingMenu">
       <li class="navbar-user">{{ auth.jwtPayload?.name }}</li>
@@ -17,14 +11,8 @@
       <li class="navbar-menuitem"><a href="#">Estatísticas</a></li>
       <li class="navbar-menuitem"><a href="javascript:;" (click)="logout()">Logout</a></li>
     </ul>
-    <div class="dropdown">
-      <button class="dropbtn">Registrar</button>
-      <div class="dropdown-content">
-        <a href="#">Sou candidato</a>
-        <a href="/enterprises/new">Sou empresa</a>
-      </div>
-    </div>
-  </div>
+
+
 
 
 </nav>

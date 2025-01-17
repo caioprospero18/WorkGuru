@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import { EnterprisesModule } from './enterprises/enterprises.module';
+import { CandidatesModule } from './candidates/candidates.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { EnterprisesModule } from './enterprises/enterprises.module';
     SecurityModule,
     CoreModule,
     HomeModule,
-    EnterprisesModule
+    EnterprisesModule,
+    CandidatesModule
   ],
   providers: [
     AuthService

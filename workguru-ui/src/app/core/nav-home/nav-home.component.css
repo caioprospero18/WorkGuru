@@ -1,0 +1,68 @@
+.navbar {
+  background: linear-gradient(217deg, #17021c, #310935, #4b104d, #641766 70%),
+              linear-gradient(127deg, #7e1e7e, #982697, #b22daf 70%),
+              linear-gradient(336deg, #cb34c8, #e53be0, #ff42f9 70%);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+#workguru{
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 40px;
+  padding: 16px;
+  text-decoration: none;
+}
+
+#buttons{
+  display: inline-flex;
+  justify-items: right;
+  justify-content: space-between;
+  margin-right: 20px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: grey}
+
+button, .dropbtn{
+  background-color: #4364D1;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  font-size: medium;
+  padding: 16px;
+  margin: 0 10px;
+  width: 90px;
+}

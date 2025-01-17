@@ -1,9 +1,10 @@
 
-input[pInputText] {
+input[pInputText], p-calendar, p-dropdown {
   width: 300px;
   margin: 5px;
+  border: 1px solid #636363;
   border-radius: 6px;
-  border-color: black;
+
 }
 
 
@@ -19,7 +20,7 @@ button{
   font-size: 20px;
 }
 
-#name, #desc, #link{
+#name, #email{
   margin-left: 23%;
 }
 
@@ -28,11 +29,11 @@ button{
   flex-direction: column;
 }
 
-#name input, #link input{
+#name input, #email input{
   width: 700px;
 }
 
-#inputs-email-password, #inputs-cnpj-tel{
+#inputs-password-cpf, #inputs-tel-date, #inputs-gen-status{
   display: flex;
   flex-direction: row;
   margin-left: 23%;
@@ -40,10 +41,7 @@ button{
 }
 
 
-#desc input{
-  width: 700px;
-  height: 100px;
-}
+
 
 
 

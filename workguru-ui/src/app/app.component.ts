@@ -18,10 +18,14 @@ export class AppComponent {
         body.classList.remove('pagina-home');
 
         if (this.router.url === '/home') {
-          body.classList.add('pagina-home'); 
+          body.classList.add('pagina-home');
         }
       }
     });
+  }
+
+  showingNavbar(): boolean {
+    return this.router.url == '/home';
   }
 }
 
