@@ -1,68 +1,73 @@
 <div class="container">
   <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
 
-    <div class="p-grid">
+    <div class="p-grid" >
       <div class="p-col-12">
-        <h1>Cadastre de Empresa</h1>
+        <h1>Realizar cadastro</h1>
       </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Nome da Empresa</label>
-        <input pInputText name="name" type="text"
-        [(ngModel)]="enterprise.name" #name="ngModel" required minlength="3" maxlength="50">
-        <app-message [control]="name" error="required" text="Informe um nome"></app-message>
-        <app-message [control]="name" error="minlength"
-            text="Mínimo de {{ name.errors?.minlength?.requiredLength }} caracteres. Você digitou apenas {{ name.errors?.minlength?.actualLength }}"></app-message>
+        <div class="p-col-12 p-md-6 p-fluid" id="name">
+          <label>Nome da Empresa*</label>
+          <input pInputText name="name" type="text"
+          [(ngModel)]="enterprise.name" #name="ngModel" required minlength="3" maxlength="50">
+          <app-message [control]="name" error="required" text="Informe um nome"></app-message>
+          <app-message [control]="name" error="minlength"
+              text="Mínimo de {{ name.errors?.minlength?.requiredLength }} caracteres. Você digitou apenas {{ name.errors?.minlength?.actualLength }}"></app-message>
+        </div>
+
+        <div id="inputs-email-password">
+          <div class="p-col-12 p-md-3 p-fluid">
+            <label>E-mail*</label>
+            <input pInputText name="email" type="email"
+            [(ngModel)]="enterprise.email" #email="ngModel" required>
+            <app-message [control]="email" error="required" text="Informe um e-mail"></app-message>
+          </div>
+
+
+          <div class="p-col-12 p-md-3 p-fluid">
+            <label>Senha*</label>
+            <input pInputText name="password" type="password"
+            [(ngModel)]="enterprise.password" #password="ngModel" required minlength="6" maxlength="8">
+            <app-message [control]="password" error="required" text="Informe uma senha de 6 a 8 caracteres."></app-message>
+            <app-message [control]="password" error="minlength"
+            text="Mínimo de {{ password.errors?.minlength?.requiredLength }} caracteres. Você digitou apenas {{ password.errors?.minlength?.actualLength }}"></app-message>
+          </div>
+        </div>
+
+      <div id="inputs-cnpj-tel">
+        <div class="p-col-12 p-md-6 p-fluid">
+          <label>CNPJ*</label>
+          <input pInputText name="cnpj" type="text"
+          [(ngModel)]="enterprise.cnpj" #cnpj="ngModel" pattern="[0-9]{2}.[0-9]{3}.[0-9]{3}/[0-9]{4}-[0-9]{2}"
+          placeholder="00.000.000/0000-00" required >
+          <app-message [control]="cnpj" error="required" text="Formato de CNPJ errado."></app-message>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-fluid">
+          <label>Telefone</label>
+          <input pInputText name="phone"  placeholder="(XX)XXXXX-XXXX" pattern="\([0-9]{2}\)[0-9]{4,5}-[0-9]{4}"
+          [(ngModel)]="enterprise.phone" #phone="ngModel" required>
+          <app-message [control]="phone" error="required" text="Formato de telefone errado."></app-message>
+        </div>
       </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>E-mail</label>
-        <input pInputText name="email" type="email"
-        [(ngModel)]="enterprise.email" #email="ngModel" required>
-        <app-message [control]="email" error="required" text="Informe um e-mail"></app-message>
+        <div class="p-col-12 p-md-6 p-fluid" id="link">
+          <label>Link do site da empresa</label>
+          <input pInputText name="linkSite"  placeholder="Link do site da empresa."
+          [(ngModel)]="enterprise.linkSite" #linkSite="ngModel" >
+        </div>
+
+        <div class="p-col-12 p-md-6 p-fluid" id="desc">
+          <label>Descrição</label>
+          <input pInputText name="description"  placeholder="Adicione a descrição da sua empresa."
+          [(ngModel)]="enterprise.description" #description="ngModel" >
+        </div>
       </div>
 
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Senha</label>
-        <input pInputText name="password" type="password"
-        [(ngModel)]="enterprise.password" #password="ngModel" required minlength="6" maxlength="8">
-        <app-message [control]="password" error="required" text="Informe uma senha de 6 a 8 caracteres."></app-message>
-        <app-message [control]="password" error="minlength"
-        text="Mínimo de {{ password.errors?.minlength?.requiredLength }} caracteres. Você digitou apenas {{ password.errors?.minlength?.actualLength }}"></app-message>
-      </div>
-
-      <div class="p-col-6 p-md-3 p-fluid">
-        <label>CNPJ</label>
-        <input pInputText name="cnpj" type="text"
-        [(ngModel)]="enterprise.cnpj" #cnpj="ngModel" pattern="[0-9]{2}.[0-9]{3}.[0-9]{3}/[0-9]{4}-[0-9]{2}"
-        placeholder="00.000.000/0000-00" required >
-        <app-message [control]="cnpj" error="required" text="Formato de CNPJ errado."></app-message>
-      </div>
-
-      <div class="p-col-12 p-md-6 p-fluid">
-        <label>Telefone</label>
-        <input pInputText name="phone"  placeholder="(XX)XXXXX-XXXX" pattern="\([0-9]{2}\)[0-9]{4,5}-[0-9]{4}"
-        [(ngModel)]="enterprise.phone" #phone="ngModel" required>
-        <app-message [control]="phone" error="required" text="Formato de telefone errado."></app-message>
-      </div>
-
-      <div class="p-col-12 p-md-6 p-fluid">
-        <label>Descrição</label>
-        <input pInputText name="description"  placeholder="Adicione a descrição da sua empresa."
-        [(ngModel)]="enterprise.description" #description="ngModel" >
-      </div>
-
-      <div class="p-col-12 p-md-6 p-fluid">
-        <label>Link do site da empresa</label>
-        <input pInputText name="linkSite"  placeholder="Link do site da empresa."
-        [(ngModel)]="enterprise.linkSite" #linkSite="ngModel" >
-      </div>
-
-      <div class="p-col-12">
-        <p>
-          <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
-        </p>
+    <div>
+      <div class="button-container">
+        <button pButton type="submit" label="Cadastrar" [disabled]="f.invalid"></button>
       </div>
     </div>
 

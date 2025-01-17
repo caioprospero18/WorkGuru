@@ -1,3 +1,50 @@
-.container{
-  background-color: grey;
+
+input[pInputText] {
+  width: 300px;
+  margin: 5px;
+  border-radius: 6px;
+  border-color: black;
 }
+
+
+h1{
+  display: flex;
+  justify-content: center;
+}
+
+button{
+  width: 200px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #551466,#000000);
+  font-size: 20px;
+}
+
+#name, #desc, #link{
+  margin-left: 300px;
+}
+
+.p-fluid{
+  display: flex;
+  flex-direction: column;
+}
+
+#name input, #link input{
+  width: 700px;
+}
+
+#inputs-email-password, #inputs-cnpj-tel{
+  display: flex;
+  flex-direction: row;
+  margin-left: 300px;
+  gap: 90px;
+}
+
+
+#desc input{
+  width: 700px;
+  height: 100px;
+}
+
+
+
+

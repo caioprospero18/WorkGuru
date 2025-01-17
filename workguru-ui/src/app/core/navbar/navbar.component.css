@@ -118,4 +118,15 @@
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: grey}
 
+button, .dropbtn{
+  background-color: #4364D1;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  font-size: medium;
+  padding: 16px;
+  margin: 0 10px;
+  width: 90px;
+}
+
 
