@@ -5,63 +5,39 @@
       <h1>Vagas Publicadas</h1>
     </div>
 
-    <div class="p-grid" >
-      <div class="p-col-12" >
+    <div class="custom-table">
         <p-table [value]="jobs" responsiveLayout="stack" [breakpoint]="'768px'" >
           <ng-template pTemplate="header" >
-            <tr >
-              <th>Título</th>
-              <th>Tecnologia</th>
-              <th>Área</th>
-              <th>Descrição</th>
-              <th>Nível</th>
-              <th>Modelo</th>
-              <th>Salário</th>
-              <th>Status</th>
-              <th class="col-actions-header"></th>
-            </tr>
           </ng-template>
           <ng-template pTemplate="body" let-job>
             <tr>
-              <td>
-                <span class="p-column-title">Título</span>
-                {{ job.title }}
-              </td>
-              <td>
-                <span class="p-column-title">Tecnologia</span>
-                {{ job.tecnology }}
-              </td>
-              <td>
-                <span class="p-column-title">Área</span>
-                {{ job.jobArea }}
-              </td>
-              <td>
-                <span class="p-column-title">Descrição</span>
-                {{ job.description }}
-              </td>
-              <td>
-                <span class="p-column-title">Nível</span>
-                {{ job.level }}
-              </td>
-              <td>
-                <span class="p-column-title">Modelo</span>
-                {{ job.model }}
-              </td>
-              <td>
-                <span class="p-column-title">Salário</span>
-                {{ job.salary }}
-              </td>
-              <td>
-                <span class="p-column-title">Status</span>
-                {{ job.status }}
-              </td>
-              <td class="col-actions">
-                <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                  [routerLink]="['/jobs', job.id]"></a>
-                  <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
-                    (click)="confirmRemoval(job)"
-                    [disabled]="!auth.hasPermission('ROLE_REMOVE_JOB')"></button>
-              </td>
+              <div id="img">
+                <img>
+                  <p id="title">
+                      <strong>{{ job.title }}</strong>
+                  </p>
+              </div>
+                <div id="tags">
+                  <strong><p>Tags</p></strong>
+                  <p id="tec">
+                    {{ job.tecnology }}
+                  </p>
+                </div>
+
+              <div id="level">
+                <img src="assets/level_icon.png">
+                <p>
+                  {{ job.level }}
+                </p>
+                <p>
+                  {{ job.model }}
+                </p>
+
+                <p class="col-actions">
+                  <a pButton
+                    [routerLink]="['/jobs', job.id]">Ver vaga </a>
+                </p>
+              </div>
             </tr>
           </ng-template>
           <ng-template pTemplate="emptymessage" let-columns>
@@ -77,5 +53,5 @@
         <p><a pButton label="Nova Vaga" routerLink="/jobs/new"></a></p>
       </div>
     </div>
-  </div>
+
 </body>

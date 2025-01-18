@@ -32,7 +32,8 @@ registerLocaleData(localePt);
   exports:[
     NavbarComponent,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    NavHomeComponent
   ],
   providers: [
     AuthService,

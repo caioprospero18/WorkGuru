@@ -17,6 +17,7 @@ import { HomeModule } from './home/home.module';
 import { EnterprisesModule } from './enterprises/enterprises.module';
 import { CandidatesModule } from './candidates/candidates.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,

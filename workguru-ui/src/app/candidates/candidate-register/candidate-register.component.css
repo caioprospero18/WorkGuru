@@ -13,12 +13,6 @@ h1{
   justify-content: center;
 }
 
-button{
-  width: 200px;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #551466,#000000);
-  font-size: 20px;
-}
 
 #name, #email{
   margin-left: 23%;
