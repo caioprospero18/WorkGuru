@@ -1,16 +1,23 @@
 <nav class="navbar">
 
-  <a id ="workguru" href="/home">WorkGuru</a>
+  <div class="logo">
+    <img src="assets/workguru-icon.png" alt="WorkGuru Logo">
+    <a id ="workguru" href="/home">WorkGuru</a>
+  </div>
 
-    <ul class="navbar-menu" [hidden]="!displayingMenu">
-      <li class="navbar-user">{{ auth.jwtPayload?.name }}</li>
-      <li class="navbar-menuitem" routerLinkActive="active"
-        *ngIf="auth.hasPermission('ROLE_SEARCH_JOB')">
-        <a routerLink="/jobs">Vagas</a>
-      </li>
-      <li class="navbar-menuitem"><a href="#">Estatísticas</a></li>
-      <li class="navbar-menuitem"><a href="javascript:;" (click)="logout()">Logout</a></li>
-    </ul>
+  <div class="dropdown">
+    <section class="dropdown-label">
+      <p id="user">{{ auth.jwtPayload?.name }}</p>
+      <img src="assets/arrow-down.svg" alt="Menu de Usuário">
+      <div class="dropdown-content">
+        <a href="">Meu Perfil</a>
+        <a href="">Minhas Vagas</a>
+        <a href="javascript:;" (click)="logout()">Sair</a>
+      </div>
+    </section>
+  </div>
+
+    
 
 
 
