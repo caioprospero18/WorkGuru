@@ -4,6 +4,7 @@ import { JobService } from '../job.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ErrorHandlerService } from '../../core/error-handler.service';
 import { Title } from '@angular/platform-browser';
+import { Job } from '../../core/models';
 
 @Component({
   selector: 'app-jobs-list',
@@ -64,6 +65,30 @@ export class JobsListComponent implements OnInit{
         this.messageService.add({ severity: 'success', detail: 'Atividade excluída com sucesso!' });
       })
       .catch(error => this.errorHandler.handle(error));
+  }
+
+  showModel(job:Job): string{
+    if(job.model == 'HIBRIDO'){
+      return 'Híbrido'
+    } else if (job.model == 'PRESENCIAL'){
+      return 'Presencial'
+    } else {
+      return 'Home Office'
+    }
+  }
+
+  showLevel(job:Job): string{
+    if(job.level == 'JUNIOR'){
+      return 'Júnior'
+    } else if (job.level == 'SENIOR'){
+      return 'Sênior'
+    } else if (job.level == 'PLENO'){
+      return 'Pleno'
+    } else if (job.level == 'ESTAGIO'){
+      return 'Estágio'
+    } else {
+      return 'Treinee'
+    }
   }
 
 }

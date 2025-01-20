@@ -31,5 +31,6 @@ export class AppComponent {
   showingNavhome(): boolean {
     return this.router.url == '/home';
   }
+
 }
 

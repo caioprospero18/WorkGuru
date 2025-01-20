@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { AuthService } from '../security/auth.service';
 import { Job } from '../core/models';
 import moment from 'moment';
@@ -68,6 +68,7 @@ export class JobService {
   private stringToDate(job: any): void {
     job.date = moment(job.date, 'DD/MM/YYYY').toDate();
   }
+
 
 }
 

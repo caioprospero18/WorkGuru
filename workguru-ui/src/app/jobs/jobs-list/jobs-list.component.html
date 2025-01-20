@@ -27,16 +27,17 @@
               <div id="level">
                 <img src="assets/level_icon.png">
                 <p>
-                  {{ job.level }}
+                  {{ showLevel(job) }}
                 </p>
+                <img src="assets/location_icon.png">
                 <p>
-                  {{ job.model }}
+                  {{ showModel(job) }}
                 </p>
 
-                <p class="col-actions">
+
                   <a pButton
-                    [routerLink]="['/jobs', job.id]">Ver vaga </a>
-                </p>
+                    [routerLink]="['/jobs', job.id]" label="Ver Vaga"></a>
+
               </div>
             </tr>
           </ng-template>
