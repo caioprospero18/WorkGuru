@@ -1,9 +1,12 @@
 <nav class="navbar">
 
-  <a id ="workguru" href="/home">WorkGuru</a>
+  <div class="logo">
+    <img src="assets/workguru-icon.png" alt="WorkGuru Logo">
+    <a id ="workguru" href="/home">WorkGuru</a>
+  </div>
 
   <div id="buttons">
-    <button severity="info" (click)="login()">Login</button>
+    <button class="dropbtn" severity="info" (click)="login()">Login</button>
     <div class="dropdown">
       <button class="dropbtn">Registrar</button>
       <div class="dropdown-content">

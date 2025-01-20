@@ -12,8 +12,17 @@
   color: white;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 40px;
-  padding: 16px;
   text-decoration: none;
+}
+
+.logo img{
+  width: 100px;
+  height: 100px;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
 }
 
 #buttons{
@@ -65,4 +74,9 @@ button, .dropbtn{
   padding: 16px;
   margin: 0 10px;
   width: 90px;
+}
+
+.dropbtn:hover {
+  background-color:#808080;
+  transition: 0.7s;
 }
