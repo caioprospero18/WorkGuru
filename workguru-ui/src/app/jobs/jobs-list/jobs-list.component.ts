@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../security/auth.service';
-import { JobService } from '../job.service';
+import { JobFilter, JobService } from '../job.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ErrorHandlerService } from '../../core/error-handler.service';
 import { Title } from '@angular/platform-browser';
-import { Job } from '../../core/models';
+import { Enterprise, Job } from '../../core/models';
+
 
 @Component({
   selector: 'app-jobs-list',
@@ -13,7 +14,33 @@ import { Job } from '../../core/models';
 })
 export class JobsListComponent implements OnInit{
 
+  level? :string;
+  model? :string;
+  salary? :string;
+
   jobs = [];
+
+  levels = [
+    { label: 'Júnior', value: 'JUNIOR' },
+    { label: 'Sênior', value: 'SENIOR' },
+    { label: 'Pleno', value: 'PLENO' },
+    { label: 'Estágio', value: 'ESTAGIO' },
+    { label: 'Treinee', value: 'TREINEE' }
+  ];
+
+  models = [
+    { label: 'Híbrido', value: 'HIBRIDO' },
+    { label: 'Presencial', value: 'PRESENCIAL' },
+    { label: 'Home Office', value: 'HOME_OFFICE' }
+  ];
+
+  salaries = [
+    { label: 'De 0 à R$2.000,00', value: 'DE_0_A_2000' },
+    { label: 'De R$2.000,00 à R$5.000,00', value: 'SENDE_2000_A_5000' },
+    { label: 'De R$5.000,00 à R$10.000,00', value: 'DE_5000_A_10000' },
+    { label: 'De R$10.000,00 à R$20.000,00', value: 'DE_10000_A_20000' },
+    { label: 'Maior que R$20.000,00', value: 'MAIOR_QUE_20000' }
+  ];
 
   constructor(
     private jobService: JobService,
@@ -25,13 +52,11 @@ export class JobsListComponent implements OnInit{
   { }
 
   ngOnInit(): void {
-    if (this.auth.isInvalidAccessToken()) {
-      this.auth.login();
-    }
     this.title.setTitle('Vagas');
-    this.list();
+    this.search();
   }
 
+  /*
   list(): void {
     this.jobService.list()
       .then(result => {
@@ -39,7 +64,22 @@ export class JobsListComponent implements OnInit{
       })
       .catch(error => this.errorHandler.handle(error));
 
-  }
+  }*/
+
+      search(): void {
+        const filter: JobFilter = {
+          level: this.level,
+          model: this.model,
+          salary: this.salary
+        }
+
+        this.jobService.search(filter)
+          .then(result => {
+            this.jobs = result;
+          })
+          .catch(error => this.errorHandler.handle(error));
+
+      }
 
   listEnterpriseJobs(): void {
     this.jobService.listByEnterprise()
@@ -61,7 +101,7 @@ export class JobsListComponent implements OnInit{
   remove(job: any): void {
     this.jobService.remove(job.id)
       .then(() => {
-        this.list();
+        this.search();
         this.messageService.add({ severity: 'success', detail: 'Atividade excluída com sucesso!' });
       })
       .catch(error => this.errorHandler.handle(error));

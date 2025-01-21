@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.workguru.domain.model.Enterprise;
 import com.workguru.domain.model.Job;
 import com.workguru.repository.JobRepository;
+import com.workguru.repository.filter.JobFilter;
 import com.workguru.service.JobService;
 
 import jakarta.validation.Valid;
@@ -36,8 +37,8 @@ public class JobResource {
 	
 	@GetMapping
 	@PreAuthorize("hasAuthority('ROLE_SEARCH_JOB') and hasAuthority('SCOPE_read')")
-	public List<Job> list(){
-		return jobRepository.findAll();
+	public List<Job> search(JobFilter jobFilter){
+		return jobService.search(jobFilter);
 	}
 	
 	@GetMapping("/{id}")

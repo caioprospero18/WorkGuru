@@ -36,7 +36,7 @@ h1 {
   background: linear-gradient(90deg, #9f28bd,#61085c);
   font-size: 20x;
   margin-left: 64%;
-  
+
 }
 
 
@@ -63,9 +63,13 @@ h1 {
 }
 
 img{
+  padding: 4px;
+}
+
+#img img{
   width: 110px;
   height: 125px;
-  padding: 4px;
+  margin-top: 4%;
 }
 
 tr div{
@@ -76,4 +80,39 @@ tr div{
   width: 30px;
   height: 30px;
 }
+
+form div{
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 1%;
+}
+
+form{
+  margin-right: 13%;
+}
+
+hr{
+  margin-right: 13%;
+  margin-left: 13%;
+}
+
+::ng-deep .p-dropdown {
+  background-color: #989896 !important;
+  border-radius: 10px;
+}
+
+::ng-deep .p-dropdown-label.p-placeholder {
+  color: black;
+}
+
+input{
+  border:grey;
+  border-radius: 15px;
+  padding: 5%;
+  font-size: 16px;
+  width: 400px;
+  max-height: 37px;
+}
+
 

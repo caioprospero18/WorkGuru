@@ -12,6 +12,7 @@ import com.workguru.domain.model.Enterprise;
 import com.workguru.domain.model.Job;
 import com.workguru.repository.EnterpriseRepository;
 import com.workguru.repository.JobRepository;
+import com.workguru.repository.filter.JobFilter;
 import com.workguru.service.exception.NonExistentUserException;
 
 
@@ -23,6 +24,7 @@ public class JobService {
 	
 	@Autowired
 	private EnterpriseRepository enterpriseRepository;
+	
 	
 	
 	public Job save(Job job) {
@@ -46,6 +48,10 @@ public class JobService {
 	
 	public List<Job> findJobsByEnterprise(Enterprise enterprise) {		
 		return  jobRepository.findJobByEnterprise(enterprise);
+	}
+
+	public List<Job> search(JobFilter jobFilter) {
+		return jobRepository.filter(jobFilter);
 	}
 	
 	
