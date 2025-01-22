@@ -35,9 +35,8 @@ public class CandidateService {
 		List<Permission> permissions = new ArrayList<>();
 		permissions.add(permissionRepository.findById(1L).get());
 		permissions.add(permissionRepository.findById(3L).get());
-		permissions.add(permissionRepository.findById(4L).get());
-		permissions.add(permissionRepository.findById(5L).get());
 		permissions.add(permissionRepository.findById(6L).get());
+		permissions.add(permissionRepository.findById(7L).get());
 		return permissions;
 	}
 	

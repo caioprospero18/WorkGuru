@@ -1,8 +1,63 @@
-form .p-button {
-  margin-right: .25em;
+
+input[pInputText], p-dropdown {
+  width: 300px;
+  margin: 5px;
+  border: 1px solid #636363;
+  border-radius: 6px;
 }
 
-a {
-  background-color: white;
-  color: black;
+#tecnology p-dropdown{
+  width: 700px;
 }
+.container{
+  display: flex;
+  justify-content: center;
+}
+
+h1{
+  display: flex;
+  justify-content: center;
+}
+
+button{
+  width: 200px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #551466,#000000);
+  font-size: 20px;
+
+}
+
+
+
+.p-fluid{
+  display: flex;
+  flex-direction: column;
+
+}
+
+#title input{
+  width: 700px;
+}
+
+#inputs-level-model, #inputs-salary-area{
+  display: flex;
+  flex-direction: row;
+  gap: 90px;
+}
+
+
+#desc input{
+  width: 700px;
+  height: 100px;
+}
+
+#btn{
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+
+

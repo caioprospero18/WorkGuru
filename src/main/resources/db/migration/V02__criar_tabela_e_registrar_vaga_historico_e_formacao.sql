@@ -3,7 +3,7 @@ CREATE TABLE job (
 	`title` VARCHAR(45) NOT NULL,
 	`job_area` VARCHAR(45) NOT NULL,
 	`tecnology` VARCHAR(45) NOT NULL,
-	`description` VARCHAR(45) NOT NULL,
+	`description` VARCHAR(2000) NOT NULL,
 	`level` VARCHAR(45) NOT NULL,
 	`model` VARCHAR(45) NOT NULL,
 	`salary` VARCHAR(45) NOT NULL,

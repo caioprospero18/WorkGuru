@@ -11,7 +11,10 @@ h1{
   display: flex;
   justify-content: center;
 }
-
+.container{
+  display: flex;
+  justify-content: center;
+}
 button{
   width: 200px;
   border-radius: 10px;
@@ -20,9 +23,6 @@ button{
 
 }
 
-#name, #desc, #link{
-  margin-left: 23%;
-}
 
 .p-fluid{
   display: flex;
@@ -36,7 +36,6 @@ button{
 #inputs-email-password, #inputs-cnpj-tel{
   display: flex;
   flex-direction: row;
-  margin-left: 23%;
   gap: 90px;
 }
 

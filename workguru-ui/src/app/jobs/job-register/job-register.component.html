@@ -1,75 +1,66 @@
 <div class="container">
   <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
 
-    <div class="p-grid">
+    <div class="p-grid" >
       <div class="p-col-12">
-        <h1>{{ editing ? 'Edição de' : 'Nova' }} Vaga</h1>
+        <h1>Cadastrar vaga</h1>
       </div>
 
-      <div class="p-col-12 p-md-6 p-fluid">
-        <label>Título</label>
-        <input name="title" type="text"
-        [(ngModel)]="job.title" #title="ngModel" required>
+        <div class="p-col-12 p-md-6 p-fluid" id="title">
+          <label>Título*</label>
+          <input pInputText name="title" type="text"
+          [(ngModel)]="job.title" #title="ngModel" required>
+        </div>
+
+        <div id="inputs-level-model">
+          <div class="p-col-12 p-md-6 p-fluid" id="level">
+            <label>Nível*</label>
+            <p-dropdown name="level"  [options]="levels" placeholder="Selecione"
+            [(ngModel)]="job.level" #level="ngModel" required=""></p-dropdown>
+          </div>
+
+
+          <div class="p-col-12 p-md-6 p-fluid" id="model">
+            <label>Modelo*</label>
+            <p-dropdown name="model"  [options]="models" placeholder="Selecione"
+            [(ngModel)]="job.model" #model="ngModel" required=""></p-dropdown>
+          </div>
+        </div>
+
+      <div id="inputs-salary-area">
+        <div class="p-col-12 p-md-6 p-fluid" id="salary">
+          <label>Salário*</label>
+          <p-dropdown name="salary"  [options]="salaries" placeholder="Selecione"
+          [(ngModel)]="job.salary" #salary="ngModel" required=""></p-dropdown>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-fluid" id="jobArea">
+          <label>Área*</label>
+          <p-dropdown name="jobArea"  [options]="jobAreas" placeholder="Selecione"
+          [(ngModel)]="job.jobArea" #jobArea="ngModel" required=""></p-dropdown>
+        </div>
       </div>
 
-      <div class="p-col-12 p-md-6 p-fluid">
-        <label>Tecnologia</label>
-        <p-dropdown name="tecnology" [options]="tecnologies" placeholder="Selecione"
-        [(ngModel)]="job.tecnology" #tecnology="ngModel" required></p-dropdown>
-      </div>
-
-      <div class="p-col-12 p-md-6 p-fluid">
-        <label>Área de Atuação</label>
-        <p-dropdown name="jobArea" [options]="jobAreas" placeholder="Selecione"
-        [(ngModel)]="job.jobArea" #jobArea="ngModel" required></p-dropdown>
-      </div>
-
-      <div class="p-col-12 p-md-6 p-fluid">
-        <label>Descrição</label>
-        <input name="description" type="text"
-        [(ngModel)]="job.tecnology" #description="ngModel" required>
-      </div>
-
-      <div class="p-col-12 p-md-6 p-fluid">
-        <label>Nível</label>
-        <p-dropdown name="level" [options]="levels" placeholder="Selecione"
-        [(ngModel)]="job.level" #level="ngModel" required></p-dropdown>
-      </div>
-
-      <div class="p-col-12 p-md-6 p-fluid">
-        <label>Modelo</label>
-        <p-dropdown name="model" [options]="models" placeholder="Selecione"
-        [(ngModel)]="job.model" #model="ngModel" required></p-dropdown>
-      </div>
-
-      <div class="p-col-12 p-md-6 p-fluid">
-        <label>Salário</label>
-        <p-dropdown name="salary" [options]="salaries" placeholder="Selecione"
-        [(ngModel)]="job.salary" #salary="ngModel" required></p-dropdown>
-      </div>
-
-      <div class="p-col-12 p-md-6 p-fluid">
-        <label>Salário</label>
-        <p-dropdown name="status" [options]="status" placeholder="Selecione"
-        [(ngModel)]="job.status" #status="ngModel" required></p-dropdown>
-      </div>
-
-      <div class="p-col-6 p-md-3 p-fluid">
-        <label>Data de Publicação</label>
-        <p-calendar name="date" dateFormat="dd/mm/yy" [inline]="false"
-        [(ngModel)]="job.publishDate" #date="ngModel" required></p-calendar>
-        <app-message [control]="date" error="required" text="Informe uma data"></app-message>
-      </div>
-
-      <div class="p-col-12">
-        <p>
-          <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
-          <button pButton type="button" label="Nova" class="p-button-info"
-            (click)="new(f)"></button>
-          <a routerLink="/jobs">Voltar para a pesquisa</a>
-        </p>
+      <div class="p-col-12 p-md-6 p-fluid" id="tecnology">
+        <label>Tecnologias*</label>
+        <p-dropdown name="tecnology"  [options]="tecnologies" placeholder="Selecione"
+        [(ngModel)]="job.tecnology" #tecnology="ngModel" required=""></p-dropdown>
       </div>
     </div>
+
+        <div class="p-col-12 p-md-6 p-fluid" id="desc">
+          <label>Descrição da vaga*</label>
+          <input pInputText name="description"
+          [(ngModel)]="job.description" #description="ngModel" required>
+        </div>
+
+
+      <div id="btn">
+        <div class="button-container">
+          <button pButton type="submit" label="Cadastrar"></button>
+        </div>
+      </div>
+
 
   </form>
 </div>

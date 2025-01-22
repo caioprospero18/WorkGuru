@@ -13,10 +13,11 @@ h1{
   justify-content: center;
 }
 
-
-#name, #email{
-  margin-left: 23%;
+.container{
+  display: flex;
+  justify-content: center;
 }
+
 
 .p-fluid{
   display: flex;
@@ -30,7 +31,6 @@ h1{
 #inputs-password-cpf, #inputs-tel-date, #inputs-gen-status{
   display: flex;
   flex-direction: row;
-  margin-left: 23%;
   gap: 90px;
 }
 
