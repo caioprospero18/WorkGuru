@@ -17,6 +17,7 @@ export class JobsListComponent implements OnInit{
   level? :string;
   model? :string;
   salary? :string;
+  jobArea? :string
 
   jobs = [];
 
@@ -40,6 +41,13 @@ export class JobsListComponent implements OnInit{
     { label: 'De R$5.000,00 à R$10.000,00', value: 'DE_5000_A_10000' },
     { label: 'De R$10.000,00 à R$20.000,00', value: 'DE_10000_A_20000' },
     { label: 'Maior que R$20.000,00', value: 'MAIOR_QUE_20000' }
+  ];
+
+  jobAreas = [
+    { label: 'Backend', value: 'BACKEND'},
+    { label: 'Frontend', value: 'FRONTEND'},
+    { label: 'Fullstack', value: 'FRONTEND'},
+    { label: 'Suporte Técnico', value: 'SUPORTE_TECNICO'}
   ];
 
   constructor(
@@ -70,7 +78,8 @@ export class JobsListComponent implements OnInit{
         const filter: JobFilter = {
           level: this.level,
           model: this.model,
-          salary: this.salary
+          salary: this.salary,
+          jobArea: this.jobArea
         }
 
         this.jobService.search(filter)

@@ -1,65 +1,75 @@
 <br>
 <div class="container" >
     <form autocomplete="off" (ngSubmit)="search()">
-    <div class="p-grid">
-      <div class="p-col-12 p-md-6 p-fluid">
-        <input name="search" icon="pi pi-search" type="text" placeholder="Pesquisar">
+      <div class="p-col-12 p-md-6 p-fluid" id="abc">
+        <input name="search"  type="text" placeholder="Pesquisar">
+        <button pButton type="submit" icon="pi pi-search"></button>
       </div>
-      <div class="p-col-12 p-md-6 p-fluid">
-        <p-dropdown name="level" [options]="levels" placeholder="Nível"
-        [(ngModel)]="level"></p-dropdown>
+      <br>
+      <div class="p-grid">
+
+        <div class="p-col-12 p-md-6 p-fluid">
+          <p-dropdown name="level" [options]="levels" placeholder="Nível"
+          [(ngModel)]="level"></p-dropdown>
+        </div>
+        <div class="p-col-12 p-md-6 p-fluid">
+          <p-dropdown name="model" [options]="models" placeholder="Modelo de trabalho"
+          [(ngModel)]="model"></p-dropdown>
+        </div>
+        <div class="p-col-12 p-md-6 p-fluid">
+          <p-dropdown name="salary" [options]="salaries" placeholder="Salário"
+          [(ngModel)]="salary"></p-dropdown>
+        </div>
+        <div class="p-col-12 p-md-6 p-fluid">
+          <p-dropdown name="level" [options]="levels" placeholder="Localização"
+          [(ngModel)]="level"></p-dropdown>
+        </div>
+        <div class="p-col-12 p-md-6 p-fluid">
+          <p-dropdown name="jobArea" [options]="jobAreas" placeholder="Área de atuação"
+          [(ngModel)]="jobArea"></p-dropdown>
+        </div>
       </div>
-      <div class="p-col-12 p-md-6 p-fluid">
-        <p-dropdown name="model" [options]="models" placeholder="Modelo de trabalho"
-        [(ngModel)]="model"></p-dropdown>
-      </div>
-      <div class="p-col-12 p-md-6 p-fluid">
-        <p-dropdown name="salary" [options]="salaries" placeholder="Salário"
-        [(ngModel)]="salary"></p-dropdown>
-      </div>
-      <div class="p-col-12 p-md-6 p-fluid">
-        <p-dropdown name="level" [options]="levels" placeholder="Localização"
-        [(ngModel)]="level"></p-dropdown>
-      </div>
-    </div>
   </form>
   <hr>
 
-      <div class="custom-table">
-          <p-table [value]="jobs" responsiveLayout="stack" [breakpoint]="'768px'" >
-            <ng-template pTemplate="header" >
-            </ng-template>
-            <ng-template pTemplate="body" let-job>
-              <tr>
-                <div id="img">
-                  <img src="assets/level_icon.png">
-                    <p id="title">
-                        <strong>{{ job.title }}</strong>
-                    </p>
-                </div>
-                  <div id="tags">
-                    <strong><p>Tags</p></strong>
-                    <p id="tec">
-                      {{ job.tecnology }}
-                    </p>
+
+          <p-table [value]="jobs" responsiveLayout="stack" [breakpoint]="'768px'">
+            <ng-template pTemplate="body" let-job >
+              <div class="custom-table">
+                <tr>
+                  <div id="img">
+                    <img src="assets/level_icon.png">
+                      <p id="title">
+                          <strong>{{ job.title }}</strong>
+                      </p>
                   </div>
+                    <div id="tags">
+                      <strong><p>Tags</p></strong>
+                      <p id="tec">
+                        {{ job.tecnology }}
+                      </p>
+                    </div>
 
-                <div id="level">
-                  <img src="assets/level_icon.png">
-                  <p>
-                    {{ showLevel(job) }}
-                  </p>
-                  <img src="assets/location_icon.png">
-                  <p>
-                    {{ showModel(job) }}
-                  </p>
+                  <div id="level">
+                    <img src="assets/level_icon.png">
+                    <p>
+                      {{ showLevel(job) }}
+                    </p>
+                    <img src="assets/location_icon.png">
+                    <p>
+                      {{ showModel(job) }}
+                    </p>
 
 
-                    <a pButton
-                      [routerLink]="['/jobs', job.id]" label="Ver Vaga"></a>
+                      <a pButton
+                        [routerLink]="['/jobs', job.id]" label="Ver Vaga"></a>
 
-                </div>
-              </tr>
+                  </div>
+                </tr>
+            </div>
+            <br>
+
+
             </ng-template>
             <ng-template pTemplate="emptymessage" let-columns>
               <tr>
@@ -69,7 +79,7 @@
               </tr>
             </ng-template>
           </p-table>
-        </div>
+
         <div class="p-col-12">
           <p><a pButton label="Nova Vaga" routerLink="/jobs/new"></a></p>
         </div>

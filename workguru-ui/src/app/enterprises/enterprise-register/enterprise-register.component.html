@@ -62,14 +62,15 @@
           <input pInputText name="description"  placeholder="Adicione a descrição da sua empresa."
           [(ngModel)]="enterprise.description" #description="ngModel" >
         </div>
-      </div>
-
-
-    <div>
-      <div class="button-container">
-        <button pButton type="submit" label="Cadastrar" [disabled]="f.invalid"></button>
-      </div>
     </div>
+
+
+      <div id="btn">
+        <div class="button-container">
+          <button pButton type="submit" label="Cadastrar" [disabled]="f.invalid"></button>
+        </div>
+      </div>
+
 
   </form>
 </div>

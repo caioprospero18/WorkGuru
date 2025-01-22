@@ -15,6 +15,12 @@ CREATE TABLE job (
 
 INSERT INTO job (id, title, job_area, tecnology, description, level, model, salary, status, publish_date, enterprise_id ) 
 	values (1, 'Dev Backend', 'BACKEND' , 'JAVA', 'Atuar como dev', 'JUNIOR', 'PRESENCIAL', 'DE_0_A_2000', 'ABERTA', '2024/11/06', 2);
+INSERT INTO job (id, title, job_area, tecnology, description, level, model, salary, status, publish_date, enterprise_id ) 
+	values (2, 'Estagiário Full-stack', 'FULLSTACK' , 'JAVASCRIPT', 'Atuar como dev', 'ESTAGIO', 'HOME_OFFICE', 'DE_2000_A_5000', 'ABERTA', '2024/11/06', 2);
+INSERT INTO job (id, title, job_area, tecnology, description, level, model, salary, status, publish_date, enterprise_id ) 
+	values (3, 'Dev Frontend', 'FRONTEND' , 'HTML5', 'Atuar como dev', 'PLENO', 'PRESENCIAL', 'DE_5000_A_10000', 'ABERTA', '2024/11/06', 2);
+INSERT INTO job (id, title, job_area, tecnology, description, level, model, salary, status, publish_date, enterprise_id ) 
+	values (4, 'SENIOR PYTHON', 'BACKEND' , 'PYTHON', 'Atuar como dev', 'SENIOR', 'HIBRIDO', 'MAIOR_QUE_20000', 'ABERTA', '2024/11/06', 2);
 	
 CREATE TABLE graduation (
 	`id`BIGINT(20) PRIMARY KEY AUTO_INCREMENT,

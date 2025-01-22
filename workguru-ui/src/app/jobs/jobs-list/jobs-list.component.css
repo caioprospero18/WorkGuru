@@ -15,7 +15,6 @@ h1 {
   overflow: hidden;
   margin-left: 13%;
   margin-right: 13%;
-
 }
 
 .custom-table tr{
@@ -39,7 +38,9 @@ h1 {
 
 }
 
-
+#level p{
+  width: 60px;
+}
 
 #level, #img{
   display: flex;
@@ -74,6 +75,7 @@ img{
 
 tr div{
   height: 60px;
+  width: 980px;
 }
 
 #level img{
@@ -84,12 +86,13 @@ tr div{
 form div{
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: space-between;
   gap: 1%;
 }
 
 form{
   margin-right: 13%;
+  margin-left: 13%;
 }
 
 hr{
@@ -108,11 +111,20 @@ hr{
 
 input{
   border:grey;
-  border-radius: 15px;
-  padding: 5%;
+  border-radius: 12px;
   font-size: 16px;
-  width: 400px;
-  max-height: 37px;
+  width: 900px;
+  height: 37px;
 }
+
+#abc button{
+  width: 5%;
+  height: 37px;
+}
+
+
+
+
+
 
 

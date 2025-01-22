@@ -1,7 +1,7 @@
 CREATE TABLE `user` (
   `id` bigint(20) PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL UNIQUE,
   `password` varchar(150) NOT NULL,
   `user_type` varchar(1) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -22,7 +22,7 @@ INSERT INTO user (id, name, email, password, user_type)
 	
 CREATE TABLE `enterprise` (
     `id` bigint(20) PRIMARY KEY AUTO_INCREMENT,
-	`cnpj` varchar(18) NOT NULL,
+	`cnpj` varchar(18) NOT NULL UNIQUE,
 	`phone` varchar(20) NOT NULL,
 	`description` text NULL,
 	`link_site` varchar(50) NULL,
@@ -45,7 +45,7 @@ INSERT INTO enterprise (cnpj, phone, user_id)
 
 CREATE TABLE `candidate` (
     `id` bigint(20) PRIMARY KEY AUTO_INCREMENT,
-	`cpf` varchar(14) NOT NULL,
+	`cpf` varchar(14) NOT NULL UNIQUE,
 	`status` varchar(45) NOT NULL,
     `phone` varchar(20),
 	`birth_date` date NOT NULL,

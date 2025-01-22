@@ -9,6 +9,7 @@ export interface JobFilter {
   model?: string,
   level?: string,
   salary?: string;
+  jobArea?: string;
 }
 
 @Injectable({
@@ -37,6 +38,10 @@ export class JobService {
         .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
       let params = new HttpParams();
+
+      if(filter.jobArea){
+        params = params.set('jobArea', filter.jobArea);
+      }
 
       if(filter.level){
         params = params.set('level', filter.level);
