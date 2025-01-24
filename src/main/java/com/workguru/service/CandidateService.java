@@ -2,6 +2,7 @@ package com.workguru.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +11,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.workguru.domain.model.Candidate;
-import com.workguru.domain.model.Enterprise;
+import com.workguru.domain.model.Job;
 import com.workguru.domain.model.Permission;
 import com.workguru.repository.CandidateRepository;
 import com.workguru.repository.PermissionRepository;
-import com.workguru.repository.UserRepository;
 
 @Service
 public class CandidateService {
@@ -23,13 +23,19 @@ public class CandidateService {
 	private CandidateRepository candidateRepository;
 
 	
-	@Autowired PermissionRepository permissionRepository;
+	@Autowired 
+	PermissionRepository permissionRepository;
 
 	public Candidate save(Candidate candidate) {
 		candidate.setPassword(new BCryptPasswordEncoder().encode(candidate.getPassword()));
 		candidate.setPermission(addCommonUserPermissions());
 		return candidateRepository.save(candidate);
 	}
+	
+	public void  applyJob(){
+	
+	}
+		
 	
 	public List<Permission> addCommonUserPermissions(){
 		List<Permission> permissions = new ArrayList<>();

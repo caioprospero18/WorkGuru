@@ -9,23 +9,23 @@
       <div class="p-grid">
 
         <div class="p-col-12 p-md-6 p-fluid">
-          <p-dropdown name="level" [options]="levels" placeholder="Nível"
+          <p-dropdown id="level-drop" name="level" [options]="levels" placeholder="Nível"
           [(ngModel)]="level"></p-dropdown>
         </div>
         <div class="p-col-12 p-md-6 p-fluid">
-          <p-dropdown name="model" [options]="models" placeholder="Modelo de trabalho"
+          <p-dropdown id="model-drop" name="model" [options]="models" placeholder="Modelo de trabalho"
           [(ngModel)]="model"></p-dropdown>
         </div>
         <div class="p-col-12 p-md-6 p-fluid">
-          <p-dropdown name="salary" [options]="salaries" placeholder="Salário"
+          <p-dropdown id="salary-drop" name="salary" [options]="salaries" placeholder="Salário"
           [(ngModel)]="salary"></p-dropdown>
         </div>
         <div class="p-col-12 p-md-6 p-fluid">
-          <p-dropdown name="level" [options]="levels" placeholder="Localização"
+          <p-dropdown id="loc-drop" name="loc" [options]="levels" placeholder="Localização"
           [(ngModel)]="level"></p-dropdown>
         </div>
         <div class="p-col-12 p-md-6 p-fluid">
-          <p-dropdown name="jobArea" [options]="jobAreas" placeholder="Área de atuação"
+          <p-dropdown id="jobArea-drop" name="jobArea" [options]="jobAreas" placeholder="Área de atuação"
           [(ngModel)]="jobArea"></p-dropdown>
         </div>
       </div>
@@ -53,7 +53,7 @@
           <p>{{ showLevel(job) }}</p>
           <img src="assets/location_icon.png" />
           <p>{{ showModel(job) }}</p>
-          <a pButton [routerLink]="['/jobs', job.id]" label="Ver Vaga"></a>
+          <a pButton [routerLink]="['/jobs/view', job.id]" label="Ver Vaga"></a>
         </div>
       </div>
       <br>

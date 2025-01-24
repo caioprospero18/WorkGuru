@@ -71,7 +71,7 @@ export class JobRegisterComponent {
 
     ngOnInit(): void {
       const id = this.route.snapshot.params[`id`];
-      if(id !== undefined){
+      if(id !== undefined && id !== "new"){
         this.loadJob(id);
       }
       this.title.setTitle('Cadastro de Vagas');

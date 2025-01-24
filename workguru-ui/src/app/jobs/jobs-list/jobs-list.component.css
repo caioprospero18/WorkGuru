@@ -102,6 +102,7 @@ hr{
 ::ng-deep .p-dropdown {
   background-color: #989896 !important;
   border-radius: 10px;
+
 }
 
 ::ng-deep .p-dropdown-label.p-placeholder {
@@ -121,6 +122,25 @@ input{
   height: 37px;
 }
 
+#level-drop{
+  width: 107px;
+}
+
+#model-drop{
+  width: 196px;
+}
+
+#salary-drop{
+  width: 150px;
+}
+
+#loc-drop{
+  width: 137px;
+}
+
+#jobArea-drop{
+  width: 171px;
+}
 
 
 

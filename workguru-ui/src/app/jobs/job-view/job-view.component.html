@@ -1,0 +1,30 @@
+<div class="header">
+  <div id="img">
+    <img src='assets/level_icon.png'>
+    <div>
+      <strong><h1>{{job.title}}</h1></strong>
+      <p>{{job.enterprise.name}}</p>
+    </div>
+  </div>
+  <div id="level">
+    <div>
+      <img src="assets/level_icon.png" />
+      <p>{{ showLevel(job) }}</p>
+    </div>
+    <div>
+      <img src="assets/location_icon.png" />
+      <p>{{ showModel(job) }}</p>
+    </div>
+    <p>{{ showSalary(job) }}</p>
+    <p>{{ showJobArea(job) }}</p>
+    <a pButton [routerLink]="['/jobs', job.id]" label="Candidatar-se"></a>
+  </div>
+</div>
+
+<br>
+
+<div class="container">
+  <strong><p>Sobre a Vaga:</p></strong>
+  <br>
+  <p>{{job.description}}</p>
+</div>

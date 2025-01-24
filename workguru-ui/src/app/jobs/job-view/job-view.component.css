@@ -1,0 +1,86 @@
+.header
+{
+  background:
+      linear-gradient(
+        to right,
+        #4b035e, #7f098a, #7a077e, #a508aa 70%
+      ) 0 0 / 100% 35%,
+      #ffffff60 0 40% / 100% 60%;
+    background-repeat: no-repeat;
+
+  height: 300px;
+  margin: 0 13%;
+  border:solid 1px black;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+#img img{
+  background-color: white;
+  height: 220px;
+  margin: 10px 20px;
+  border-radius: 10px;
+}
+
+.container{
+  border: solid 1px black;
+  margin: 0 13%;
+  background-color: #ffffff60;
+  border-radius: 10px;
+  height: 1000px;
+}
+
+.container p{
+  margin-left: 2%;
+}
+
+#img, #img div, #level{
+  display: flex;
+  flex-direction: row;
+}
+
+#img h1{
+  font-size: 32px;
+}
+
+#img p{
+  font-size: 150%;
+  margin-top: 8%;
+}
+
+#img div{
+  margin-top: 10%;
+  gap: 70px;
+}
+
+#level img{
+  width: 30px;
+  height: 30px;
+}
+
+#level a{
+  width: 150px;
+  background-color: #400872;
+  font-size: 20x;
+  margin-right: 2%;
+  margin-bottom: 1%;
+  border-radius: 15px;
+}
+
+#level{
+  margin-left: 27%;
+  justify-content: space-between;
+}
+
+#level div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.container p{
+  font-size: 20px;
+}
+
+
+

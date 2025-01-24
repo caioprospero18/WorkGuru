@@ -9,6 +9,7 @@ import { AuthGuard } from './security/auth.guard';
 import { HomeComponent } from './home/home/home.component';
 import { EnterpriseRegisterComponent } from './enterprises/enterprise-register/enterprise-register.component';
 import { CandidateRegisterComponent } from './candidates/candidate-register/candidate-register.component';
+import { JobViewComponent } from './jobs/job-view/job-view.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,6 +19,12 @@ const routes: Routes = [
   {
     path: 'jobs/:id',
     component: JobRegisterComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_REGISTER_JOB']}
+  },
+  {
+    path: 'jobs/view/:id',
+    component: JobViewComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_REGISTER_JOB']}
   },

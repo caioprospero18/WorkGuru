@@ -14,10 +14,13 @@ import { JobsListComponent } from './jobs-list/jobs-list.component';
 import { JobRegisterComponent } from './job-register/job-register.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { JobViewComponent } from './job-view/job-view.component';
+
 @NgModule({
   declarations: [
     JobsListComponent,
-    JobRegisterComponent
+    JobRegisterComponent,
+    JobViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     JobsListComponent,
-    JobRegisterComponent
+    JobRegisterComponent,
+    JobViewComponent
   ]
 })
 export class JobsModule { }
