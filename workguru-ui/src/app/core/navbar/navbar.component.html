@@ -6,7 +6,7 @@
   </div>
 
   <div class="dropdown">
-    <section class="dropdown-label">
+    <section *ngIf="auth.hasPermission('ROLE_REGISTER_JOB')" class="dropdown-label">
       <p id="user">{{ auth.jwtPayload?.name }}</p>
       <img src="assets/arrow-down.svg" alt="Menu de Usuário">
       <div class="dropdown-content">
