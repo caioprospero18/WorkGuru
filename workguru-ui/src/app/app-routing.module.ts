@@ -26,7 +26,7 @@ const routes: Routes = [
     path: 'jobs/view/:id',
     component: JobViewComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_REGISTER_JOB']}
+    data: { roles: ['ROLE_SEARCH_JOB']}
   },
   {
     path: 'jobs',

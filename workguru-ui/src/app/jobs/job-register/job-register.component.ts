@@ -102,6 +102,7 @@ export class JobRegisterComponent {
         .then( job => {
           this.messageService.add({ severity: 'success', detail: 'Vaga editada com sucesso!' });
           this.job = job;
+          this.router.navigate(['/jobs/view', job.id]);
         })
         .catch(error => this.errorHandler.handle(error));
     }
@@ -110,6 +111,7 @@ export class JobRegisterComponent {
       this.jobService.add(this.job)
         .then(addedJob => {
           this.messageService.add({ severity: 'success', detail: 'Vaga adicionada com sucesso!' });
+          this.router.navigate(['/jobs']);
     this.loadJob(addedJob.id);
           this.router.navigate(['/jobs', addedJob.id]);
         })

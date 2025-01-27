@@ -77,6 +77,7 @@ export class Job {
   constructor(enterprise_id: number){
     this.enterprise = new Enterprise();
     this.enterprise.id = enterprise_id;
+    this.status = 'ABERTA';
   }
 
   static toJson(job: Job): any {
