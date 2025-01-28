@@ -78,6 +78,7 @@ export class Job {
     this.enterprise = new Enterprise();
     this.enterprise.id = enterprise_id;
     this.status = 'ABERTA';
+    this.publishDate = new Date();
   }
 
   static toJson(job: Job): any {
