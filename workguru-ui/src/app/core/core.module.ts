@@ -14,6 +14,7 @@ import { PageNotFoundComponent } from './page-not-found.component';
 import { NotAuthorizedComponent } from './not-authorized.component';
 import { NavHomeComponent } from './nav-home/nav-home.component';
 
+
 registerLocaleData(localePt);
 
 @NgModule({
@@ -27,7 +28,7 @@ registerLocaleData(localePt);
     CommonModule,
     ToastModule,
     ConfirmDialogModule,
-    RouterModule
+    RouterModule,
   ],
   exports:[
     NavbarComponent,

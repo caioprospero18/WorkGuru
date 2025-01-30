@@ -26,23 +26,24 @@ INSERT INTO permission (id, description) values (6, 'ROLE_SEARCH_JOB');
 INSERT INTO permission (id, description) values (7, 'ROLE_APPLY_JOB');
 
 -- admin
-INSERT INTO user_permission (user_id, permission_id) values (3, 1);
-INSERT INTO user_permission (user_id, permission_id) values (3, 2);
-INSERT INTO user_permission (user_id, permission_id) values (3, 3);
-INSERT INTO user_permission (user_id, permission_id) values (3, 4);
-INSERT INTO user_permission (user_id, permission_id) values (3, 5);
-INSERT INTO user_permission (user_id, permission_id) values (3, 6);
-
--- marlabs
 INSERT INTO user_permission (user_id, permission_id) values (1, 1);
+INSERT INTO user_permission (user_id, permission_id) values (1, 2);
 INSERT INTO user_permission (user_id, permission_id) values (1, 3);
 INSERT INTO user_permission (user_id, permission_id) values (1, 4);
 INSERT INTO user_permission (user_id, permission_id) values (1, 5);
 INSERT INTO user_permission (user_id, permission_id) values (1, 6);
+INSERT INTO user_permission (user_id, permission_id) values (1, 7);
 
--- gislaine
+-- marlabs
 INSERT INTO user_permission (user_id, permission_id) values (2, 1);
 INSERT INTO user_permission (user_id, permission_id) values (2, 3);
 INSERT INTO user_permission (user_id, permission_id) values (2, 4);
+INSERT INTO user_permission (user_id, permission_id) values (2, 5);
 INSERT INTO user_permission (user_id, permission_id) values (2, 6);
-INSERT INTO user_permission (user_id, permission_id) values (2, 7);
+
+-- gislaine
+INSERT INTO user_permission (user_id, permission_id) values (3, 1);
+INSERT INTO user_permission (user_id, permission_id) values (3, 3);
+INSERT INTO user_permission (user_id, permission_id) values (3, 4);
+INSERT INTO user_permission (user_id, permission_id) values (3, 6);
+INSERT INTO user_permission (user_id, permission_id) values (3, 7);

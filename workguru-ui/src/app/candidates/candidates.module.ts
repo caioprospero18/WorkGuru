@@ -11,12 +11,18 @@ import { CalendarModule } from 'primeng/calendar';
 
 import { CandidateRegisterComponent } from './candidate-register/candidate-register.component';
 import { SharedModule } from '../shared/shared.module';
+import { CandidateViewProfileComponent } from './candidate-view-profile/candidate-view-profile.component';
+import { TableModule } from 'primeng/table';
+import { TooltipModule } from 'primeng/tooltip';
+
 
 
 
 @NgModule({
   declarations: [
-    CandidateRegisterComponent
+    CandidateRegisterComponent,
+    CandidateViewProfileComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -28,9 +34,12 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     RouterModule,
     CalendarModule,
+    TableModule,
+    TooltipModule
 ],
     exports: [
-        CandidateRegisterComponent
+        CandidateRegisterComponent,
+        CandidateViewProfileComponent
       ]
 })
 export class CandidatesModule { }

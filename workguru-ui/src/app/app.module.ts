@@ -18,6 +18,7 @@ import { EnterprisesModule } from './enterprises/enterprises.module';
 import { CandidatesModule } from './candidates/candidates.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,7 @@ import { CandidatesModule } from './candidates/candidates.module';
     CoreModule,
     HomeModule,
     EnterprisesModule,
-    CandidatesModule
+    CandidatesModule,
   ],
   providers: [
     AuthService

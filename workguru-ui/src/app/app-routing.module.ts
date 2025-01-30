@@ -10,12 +10,16 @@ import { HomeComponent } from './home/home/home.component';
 import { EnterpriseRegisterComponent } from './enterprises/enterprise-register/enterprise-register.component';
 import { CandidateRegisterComponent } from './candidates/candidate-register/candidate-register.component';
 import { JobViewComponent } from './jobs/job-view/job-view.component';
+import { CandidateViewProfileComponent } from './candidates/candidate-view-profile/candidate-view-profile.component';
+import { EnterpriseViewProfileComponent } from './enterprises/enterprise-view-profile/enterprise-view-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
   { path: 'enterprises/new', component: EnterpriseRegisterComponent },
+  { path: 'enterprises/view/:id', component: EnterpriseViewProfileComponent},
   { path: 'candidates/new', component: CandidateRegisterComponent },
+  { path: 'candidates/view/:id', component: CandidateViewProfileComponent},
   {
     path: 'jobs/:id',
     component: JobRegisterComponent,

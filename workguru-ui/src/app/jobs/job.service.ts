@@ -3,7 +3,7 @@ import { Injectable, NgModule } from '@angular/core';
 import { AuthService } from '../security/auth.service';
 import { Job } from '../core/models';
 import moment from 'moment';
-import { DatePipe } from '@angular/common';
+
 
 export interface JobFilter {
   model?: string,
@@ -23,7 +23,6 @@ export class JobService {
   constructor(
     private http: HttpClient,
     private auth: AuthService,
-    private datePipe: DatePipe
   ) { }
 
   /*

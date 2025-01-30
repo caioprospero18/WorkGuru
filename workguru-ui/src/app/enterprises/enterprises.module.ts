@@ -11,10 +11,12 @@ import { CalendarModule } from 'primeng/calendar';
 
 import { EnterpriseRegisterComponent } from './enterprise-register/enterprise-register.component';
 import { SharedModule } from '../shared/shared.module';
+import { EnterpriseViewProfileComponent } from './enterprise-view-profile/enterprise-view-profile.component';
 
 @NgModule({
   declarations: [
-    EnterpriseRegisterComponent
+    EnterpriseRegisterComponent,
+    EnterpriseViewProfileComponent
   ],
   imports: [
     BrowserModule,

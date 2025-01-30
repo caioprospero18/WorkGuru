@@ -10,7 +10,12 @@
       <p id="user">{{ auth.jwtPayload?.name }}</p>
       <img src="assets/arrow-down.svg" alt="Menu de Usuário">
       <div class="dropdown-content">
-        <a href="">Meu Perfil</a>
+        <div *ngIf="auth.hasPermission('ROLE_APPLY_JOB')">
+          <a *ngIf="candidate?.id" [routerLink]="['/candidates/view', candidate.id]">Meu Perfil</a>
+        </div>
+        <div *ngIf="auth.hasPermission('ROLE_REGISTER_JOB')">
+          <a href="enterprises/view/:id">Meu Perfil</a>
+        </div>
         <a href="">Minhas Vagas</a>
         <div *ngIf="auth.hasPermission('ROLE_REGISTER_JOB')">
           <a routerLink="/jobs/new">Nova Vaga</a>

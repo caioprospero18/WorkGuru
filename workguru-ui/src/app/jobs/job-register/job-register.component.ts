@@ -58,7 +58,7 @@ export class JobRegisterComponent {
     { label: 'Suporte Técnico', value: 'SUPORTE_TECNICO'}
   ];
 
-  job = new Job(this.auth.jwtPayload?.enterprise_id);
+  job = new Job(this.auth.jwtPayload?.user_id);
 
   constructor(
     private jobService: JobService,
@@ -94,6 +94,7 @@ export class JobRegisterComponent {
         this.updateJob(jobForm);
       }else{
         this.addJob(jobForm);
+        this.router.navigate(['/jobs']);
       }
     }
 
