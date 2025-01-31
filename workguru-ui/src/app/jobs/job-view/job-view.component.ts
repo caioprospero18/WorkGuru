@@ -1,4 +1,4 @@
-import { Job } from './../../core/models';
+import { Candidate, Job } from './../../core/models';
 import { Component, OnInit } from '@angular/core';
 import { JobService } from '../job.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -6,6 +6,7 @@ import { AuthService } from '../../security/auth.service';
 import { ErrorHandlerService } from '../../core/error-handler.service';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { CandidateService } from '../../candidates/candidate.service';
 
 @Component({
   selector: 'app-job-view',
@@ -15,8 +16,10 @@ import { ActivatedRoute } from '@angular/router';
 export class JobViewComponent implements OnInit{
 
   job!: Job
+  candidate!: Candidate
   constructor(
       private jobService: JobService,
+      private candidateService: CandidateService,
       private auth: AuthService,
       private errorHandler: ErrorHandlerService,
       private messageService: MessageService,
@@ -29,6 +32,14 @@ export class JobViewComponent implements OnInit{
       this.loadJob(jobId);
     }
 
+    loadCandidate(id: number){
+      this.candidateService.findById(id)
+        .then(candidate => {
+          this.candidate = candidate;
+        })
+        .catch(error => this.errorHandler.handle(error));
+    }
+
     loadJob(id: number) {
       this.jobService.findById(id)
         .then(job => {
@@ -37,6 +48,7 @@ export class JobViewComponent implements OnInit{
         .catch(error => this.errorHandler.handle(error));
     }
 
+    
     showModel(job:Job): string{
       if(job.model == 'HIBRIDO'){
         return 'Híbrido'

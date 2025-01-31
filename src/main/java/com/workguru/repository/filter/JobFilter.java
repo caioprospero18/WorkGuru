@@ -1,5 +1,7 @@
 package com.workguru.repository.filter;
 
+import com.workguru.domain.model.Enterprise;
+import com.workguru.domain.model.JobArea;
 import com.workguru.domain.model.Level;
 import com.workguru.domain.model.Model;
 import com.workguru.domain.model.Salary;
@@ -7,12 +9,17 @@ import com.workguru.domain.model.Salary;
 import jakarta.persistence.Enumerated;
 
 public class JobFilter {
+	private String title;
 	@Enumerated
 	private Level level;
 	@Enumerated
 	private Model model;
 	@Enumerated
 	private Salary salary;
+	@Enumerated
+	private JobArea jobArea;
+	private Enterprise enterprise;
+	
 	public Level getLevel() {
 		return level;
 	}
@@ -31,5 +38,25 @@ public class JobFilter {
 	public void setSalary(Salary salary) {
 		this.salary = salary;
 	}
+	public JobArea getJobArea() {
+		return jobArea;
+	}
+	public void setJobArea(JobArea jobArea) {
+		this.jobArea = jobArea;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public Enterprise getEnterprise() {
+		return enterprise;
+	}
+	public void setEnterprise(Enterprise enterprise) {
+		this.enterprise = enterprise;
+	}
+	
+	
 
 }

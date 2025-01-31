@@ -2,7 +2,6 @@ package com.workguru.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import com.workguru.domain.model.Candidate;
 import com.workguru.domain.model.Job;
 import com.workguru.domain.model.Permission;
 import com.workguru.repository.CandidateRepository;
+import com.workguru.repository.JobRepository;
 import com.workguru.repository.PermissionRepository;
 
 @Service
@@ -25,6 +25,9 @@ public class CandidateService {
 	
 	@Autowired 
 	PermissionRepository permissionRepository;
+	
+	@Autowired 
+	JobRepository jobRepository;
 
 	public Candidate save(Candidate candidate) {
 		candidate.setPassword(new BCryptPasswordEncoder().encode(candidate.getPassword()));
@@ -32,8 +35,11 @@ public class CandidateService {
 		return candidateRepository.save(candidate);
 	}
 	
-	public void  applyJob(){
-	
+	public Candidate  applyJob(Candidate candidate, Long jobId){
+		List<Job> jobs = candidate.getJob();
+		jobs.add(jobRepository.findJobById(jobId).get());
+		
+		return candidateRepository.save(candidate);
 	}
 		
 	

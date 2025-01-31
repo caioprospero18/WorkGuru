@@ -19,7 +19,8 @@ const routes: Routes = [
   { path: 'enterprises/new', component: EnterpriseRegisterComponent },
   { path: 'enterprises/view/:id', component: EnterpriseViewProfileComponent},
   { path: 'candidates/new', component: CandidateRegisterComponent },
-  { path: 'candidates/view/:id', component: CandidateViewProfileComponent},
+  { path: 'candidates/view/:id', component: CandidateViewProfileComponent, canActivate: [AuthGuard],
+    data: { roles: ['ROLE_APPLY_JOB']}},
   {
     path: 'jobs/:id',
     component: JobRegisterComponent,

@@ -25,9 +25,10 @@ export class CandidateViewProfileComponent implements OnInit{
       { }
 
   ngOnInit(): void {
-    const candidateId= Number(this.route.snapshot.paramMap.get('id'));
+    const candidateId= this.route.snapshot.params[`id`];
+    console.log(candidateId);
     this.loadCandidate(candidateId);
-    console.log(this.candidate);
+
   }
 
   loadCandidate(id: number) {
@@ -37,5 +38,6 @@ export class CandidateViewProfileComponent implements OnInit{
       })
       .catch(error => this.errorHandler.handle(error));
   }
+
 
 }

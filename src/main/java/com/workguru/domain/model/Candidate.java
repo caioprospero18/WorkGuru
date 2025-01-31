@@ -46,7 +46,7 @@ public class Candidate extends User{
 	@Embedded
 	private Address address;
 	@ManyToMany(fetch = FetchType.LAZY) // fetch = buscar - eager = ancioso
-	@JoinTable(name = "job_candidate", joinColumns = @JoinColumn(name = "user_id"), 
+	@JoinTable(name = "job_candidate", joinColumns = @JoinColumn(name = "candidate_id"), 
 	inverseJoinColumns = @JoinColumn(name = "job_id"))
 	private List<Job> job;
 

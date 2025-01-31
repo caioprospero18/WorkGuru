@@ -11,7 +11,7 @@
       <img src="assets/arrow-down.svg" alt="Menu de Usuário">
       <div class="dropdown-content">
         <div *ngIf="auth.hasPermission('ROLE_APPLY_JOB')">
-          <a *ngIf="candidate?.id" [routerLink]="['/candidates/view', candidate.id]">Meu Perfil</a>
+          <a *ngIf="auth.jwtPayload?.user_type === 'P'" [routerLink]="['/candidates/view',auth.jwtPayload?.user_id]">Meu Perfil</a>
         </div>
         <div *ngIf="auth.hasPermission('ROLE_REGISTER_JOB')">
           <a href="enterprises/view/:id">Meu Perfil</a>

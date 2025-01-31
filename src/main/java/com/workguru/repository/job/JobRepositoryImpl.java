@@ -35,19 +35,31 @@ public class JobRepositoryImpl implements JobRepositoryQuery{
 	private Predicate[] createConstraints(JobFilter jobFilter, CriteriaBuilder builder, Root<Job> root) {
 		List<Predicate> predicates = new ArrayList<>();
 		
+		if(jobFilter.getTitle() != null) {
+			predicates.add(builder.equal(
+					root.get("title"), jobFilter.getTitle()));
+		}
 		if(jobFilter.getLevel() != null) {
 			predicates.add(builder.equal(
-					root.get("user"), jobFilter.getLevel()));
+					root.get("level"), jobFilter.getLevel()));
 		}
 		
 		if(jobFilter.getModel() != null) {
 			predicates.add(builder.equal(
-					root.get("type"), jobFilter.getModel()));
+					root.get("model"), jobFilter.getModel()));
 		}
 		
-		if (jobFilter.getSalary() != null) {
-			predicates.add(
-					builder.greaterThanOrEqualTo(root.get("date"), jobFilter.getSalary()));
+		if(jobFilter.getSalary() != null) {
+			predicates.add(builder.equal(
+					root.get("salary"), jobFilter.getSalary()));
+		}
+		if(jobFilter.getJobArea() != null) {
+			predicates.add(builder.equal(
+					root.get("jobArea"), jobFilter.getJobArea()));
+		}
+		if(jobFilter.getEnterprise().getName() != null) {
+			predicates.add(builder.equal(
+					root.get("enterprise"), jobFilter.getEnterprise().getName()));
 		}
 		/* Trocar por endereço
 		if (jobFilter.getFinalDate() != null) {
