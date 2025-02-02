@@ -57,10 +57,10 @@ public class JobRepositoryImpl implements JobRepositoryQuery{
 			predicates.add(builder.equal(
 					root.get("jobArea"), jobFilter.getJobArea()));
 		}
-		if(jobFilter.getEnterprise().getName() != null) {
+		/*if(jobFilter.getEnterprise().getName() != null) {
 			predicates.add(builder.equal(
 					root.get("enterprise"), jobFilter.getEnterprise().getName()));
-		}
+		}*/
 		/* Trocar por endereço
 		if (jobFilter.getFinalDate() != null) {
 			predicates.add(

@@ -1,6 +1,28 @@
 import moment from 'moment';
 import { AuthService } from '../security/auth.service';
 
+export class Address{
+  address!: string;
+  number!: string;
+  complement!: string;
+  city!: string;
+  state!: string;
+  cep!: string;
+
+  static toJson(address: Address): any {
+    return{
+      address: address.address,
+      number: address.number,
+      complement: address.complement,
+      city: address.city,
+      state: address.state,
+      cep: address.cep
+    }
+
+  }
+
+}
+
 
 export class Enterprise {
   id!: number;
@@ -13,7 +35,7 @@ export class Enterprise {
   description!: string;
   jobArea!: string;
   linkSite!: string;
-  //tem que adicionar o endereço "address"
+  address!: Address;
 
   static toJson(enterprise: Enterprise): any {
     return {
@@ -26,7 +48,8 @@ export class Enterprise {
       phone: enterprise.phone,
       description: enterprise.description,
       jobArea: enterprise.jobArea,
-      linkSite: enterprise.linkSite
+      linkSite: enterprise.linkSite,
+      address: enterprise.address
     }
   }
 }
@@ -42,7 +65,8 @@ export class Candidate{
   date!: string;
   gender!: string;
   phone!: string;
-  //tem que adicionar o endereço "address"
+  address!: Address;
+
 
   static toJson(candidate: Candidate): any {
     return {
@@ -55,7 +79,8 @@ export class Candidate{
       status: candidate.status,
       date: moment(candidate.date).format('DD/MM/YYYY'),
       gender: candidate.gender,
-      phone: candidate.phone
+      phone: candidate.phone,
+      address: candidate.address
     }
   }
 
@@ -97,3 +122,5 @@ export class Job {
     }
   }
 }
+
+

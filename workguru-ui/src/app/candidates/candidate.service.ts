@@ -31,4 +31,14 @@ export class CandidateService {
       private stringToDate(candidate: any): void {
         candidate.birthDate = moment(candidate.birthDate, 'DD/MM/YYYY').toDate();
         }
+
+      async update(candidate: Candidate): Promise<any> {
+              const headers = new HttpHeaders()
+                .append('Content-Type', 'application/json');
+
+              const response = await this.http.put<Candidate>(`${this.usersUrl}/${candidate.id}`, Candidate.toJson(candidate), { headers })
+                .toPromise();
+              const updated = response;
+              return updated;
+            }
 }

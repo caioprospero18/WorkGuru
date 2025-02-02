@@ -12,6 +12,8 @@ import { CandidateRegisterComponent } from './candidates/candidate-register/cand
 import { JobViewComponent } from './jobs/job-view/job-view.component';
 import { CandidateViewProfileComponent } from './candidates/candidate-view-profile/candidate-view-profile.component';
 import { EnterpriseViewProfileComponent } from './enterprises/enterprise-view-profile/enterprise-view-profile.component';
+import { EnterpriseUpdateProfileComponent } from './enterprises/enterprise-update-profile/enterprise-update-profile.component';
+import { CandidateUpdateProfileComponent } from './candidates/candidate-update-profile/candidate-update-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,8 +21,7 @@ const routes: Routes = [
   { path: 'enterprises/new', component: EnterpriseRegisterComponent },
   { path: 'enterprises/view/:id', component: EnterpriseViewProfileComponent},
   { path: 'candidates/new', component: CandidateRegisterComponent },
-  { path: 'candidates/view/:id', component: CandidateViewProfileComponent, canActivate: [AuthGuard],
-    data: { roles: ['ROLE_APPLY_JOB']}},
+  { path: 'candidates/view/:id', component: CandidateViewProfileComponent},
   {
     path: 'jobs/:id',
     component: JobRegisterComponent,
@@ -44,6 +45,18 @@ const routes: Routes = [
     component: JobRegisterComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_REGISTER_JOB'] }
+  },
+  {
+    path: 'enterprises/update/:id',
+    component: EnterpriseUpdateProfileComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_REGISTER_USER']}
+  },
+  {
+    path: 'candidates/update/:id',
+    component: CandidateUpdateProfileComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_REGISTER_USER']}
   },
   { path: 'authorized', component: AuthorizedComponent },
   { path: 'page-not-found', component: PageNotFoundComponent },

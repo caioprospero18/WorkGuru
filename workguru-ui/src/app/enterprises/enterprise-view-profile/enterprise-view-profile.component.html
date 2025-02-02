@@ -1,25 +1,19 @@
 <div class="header">
   <div id="img">
     <img src='assets/level_icon.png'>
-    <strong><h1>a</h1></strong>
+    <strong><h1>{{enterprise.name}}</h1></strong>
+    <a [routerLink]="['/enterprises/update', enterprise.id]" class="p-button p-button-icon-only">
+      <i class="pi pi-pen-to-square"></i>
+    </a>
   </div>
-    <a pButton  icon="pi pi-pen-to-square"></a>
+  <div>
+    <p>{{enterprise.linkSite}}</p>
+  </div>
 </div>
 
 <br>
 
 <div class="container">
-  <div>
-    <strong><p>Formação Acadêmica:</p></strong>
-    <p>Abublé</p>
-  </div>
-  <div>
-    <strong><p>Histórico Profissional:</p></strong>
-    <p>Lucasond</p>
-  </div>
-  <div>
     <strong><p>Sobre:</p></strong>
-    <p>Xurulamps</p>
-  </div>
-
+    <p>{{enterprise.description}}</p>
 </div>

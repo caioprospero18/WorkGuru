@@ -1,9 +1,9 @@
 <div class="container">
-  <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="updateEnterprise(f)">
 
     <div class="p-grid" >
       <div class="p-col-12">
-        <h1>Realizar cadastro</h1>
+        <h1>Atualizar cadastro</h1>
       </div>
 
         <div class="p-col-12 p-md-6 p-fluid" id="name">
@@ -51,6 +51,49 @@
         </div>
       </div>
 
+      <div class="inputs">
+        <div class="p-col-12 p-md-6 p-fluid">
+          <label>Endereço</label>
+          <input pInputText name="address" type="text"
+          [(ngModel)]="enterprise.address.address" #address="ngModel">
+        </div>
+
+        <div class="p-col-12 p-md-6 p-fluid">
+          <label>Número</label>
+          <input pInputText name="number" pattern="\[0-9]{1-5}"
+          [(ngModel)]="enterprise.address.number" #number="ngModel">
+          <app-message [control]="number" error="required" text="Insira um número."></app-message>
+        </div>
+      </div>
+
+      <div class="inputs">
+        <div class="p-col-12 p-md-6 p-fluid">
+          <label>Complemento</label>
+          <input pInputText name="complement" type="text"
+          [(ngModel)]="enterprise.address.complement" #complement="ngModel">
+        </div>
+
+        <div class="p-col-12 p-md-6 p-fluid">
+          <label>Cidade</label>
+          <input pInputText name="city" [(ngModel)]="enterprise.address.city" #city="ngModel">
+        </div>
+      </div>
+
+      <div class="inputs">
+        <div class="p-col-12 p-md-6 p-fluid">
+          <label>Estado</label>
+          <input pInputText name="state" type="text"
+          [(ngModel)]="enterprise.address.state" #state="ngModel">
+        </div>
+
+        <div class="p-col-12 p-md-6 p-fluid">
+          <label>CEP</label>
+          <input pInputText name="cep" pattern="\[0-9]{5}-[0-9]{3}"
+          [(ngModel)]="enterprise.address.cep" #cep="ngModel">
+          <app-message [control]="cep" error="required" text="Formato de CEP errado."></app-message>
+        </div>
+      </div>
+
         <div class="p-col-12 p-md-6 p-fluid" id="link">
           <label>Link do site da empresa</label>
           <input pInputText name="linkSite"  placeholder="Link do site da empresa."
@@ -67,7 +110,7 @@
 
       <div id="btn">
         <div class="button-container">
-          <button pButton type="submit" label="Cadastrar" ></button>
+          <button pButton type="submit" label="Atualizar" ></button>
         </div>
       </div>
 

@@ -1,9 +1,9 @@
 <div class="container">
-  <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="updateCandidate(f)">
 
     <div class="p-grid" >
       <div class="p-col-12">
-        <h1>Realizar cadastro</h1>
+        <h1>Atualizar cadastro</h1>
       </div>
 
         <div class="p-col-12 p-md-6 p-fluid" id="name">
@@ -73,6 +73,49 @@
           <label>Status*</label>
           <p-dropdown name="status"  [options]="statuses" placeholder="Selecione"
           [(ngModel)]="candidate.status" #status="ngModel" required=""></p-dropdown>
+        </div>
+      </div>
+
+      <div class="inputs">
+        <div class="p-col-12 p-md-6 p-fluid">
+          <label>Endereço</label>
+          <input pInputText name="address" type="text"
+          [(ngModel)]="candidate.address.address" #address="ngModel">
+        </div>
+
+        <div class="p-col-12 p-md-6 p-fluid">
+          <label>Número</label>
+          <input pInputText name="number" pattern="\[0-9]{1-5}"
+          [(ngModel)]="candidate.address.number" #number="ngModel">
+          <app-message [control]="number" error="required" text="Insira um número."></app-message>
+        </div>
+      </div>
+
+      <div class="inputs">
+        <div class="p-col-12 p-md-6 p-fluid">
+          <label>Complemento</label>
+          <input pInputText name="complement" type="text"
+          [(ngModel)]="candidate.address.complement" #complement="ngModel">
+        </div>
+
+        <div class="p-col-12 p-md-6 p-fluid">
+          <label>Cidade</label>
+          <input pInputText name="city" [(ngModel)]="candidate.address.city" #city="ngModel">
+        </div>
+      </div>
+
+      <div class="inputs">
+        <div class="p-col-12 p-md-6 p-fluid">
+          <label>Estado</label>
+          <input pInputText name="state" type="text"
+          [(ngModel)]="candidate.address.state" #state="ngModel">
+        </div>
+
+        <div class="p-col-12 p-md-6 p-fluid">
+          <label>CEP</label>
+          <input pInputText name="cep" pattern="\[0-9]{5}-[0-9]{3}"
+          [(ngModel)]="candidate.address.cep" #cep="ngModel">
+          <app-message [control]="cep" error="required" text="Formato de CEP errado."></app-message>
         </div>
       </div>
 

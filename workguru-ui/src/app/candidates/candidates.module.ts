@@ -14,6 +14,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CandidateViewProfileComponent } from './candidate-view-profile/candidate-view-profile.component';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
+import { CandidateUpdateProfileComponent } from './candidate-update-profile/candidate-update-profile.component';
 
 
 
@@ -22,6 +23,7 @@ import { TooltipModule } from 'primeng/tooltip';
   declarations: [
     CandidateRegisterComponent,
     CandidateViewProfileComponent,
+    CandidateUpdateProfileComponent,
 
   ],
   imports: [
