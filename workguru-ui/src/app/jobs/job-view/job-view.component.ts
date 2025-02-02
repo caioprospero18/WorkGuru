@@ -20,7 +20,7 @@ export class JobViewComponent implements OnInit{
   constructor(
       private jobService: JobService,
       private candidateService: CandidateService,
-      private auth: AuthService,
+      public auth: AuthService,
       private errorHandler: ErrorHandlerService,
       private messageService: MessageService,
       private route: ActivatedRoute,

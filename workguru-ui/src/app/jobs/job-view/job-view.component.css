@@ -83,6 +83,10 @@
   justify-content: space-between;
 }
 
+#level{
+  max-width: 70%;
+}
+
 
 
 

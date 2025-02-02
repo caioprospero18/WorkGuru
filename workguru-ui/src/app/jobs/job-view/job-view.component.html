@@ -17,8 +17,11 @@
     </div>
     <p>{{ showSalary(job) }}</p>
     <p>{{ showJobArea(job) }}</p>
-    <a pButton [routerLink]="['/jobs', job.id]" label="Candidatar-se"></a>
+    <div>
+      <a *ngIf="auth.jwtPayload?.user_type === 'P'" pButton [routerLink]="['/jobs', job.id]" label="Candidatar-se"></a>
+    </div>
   </div>
+  
 </div>
 
 <br>
