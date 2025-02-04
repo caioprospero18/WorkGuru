@@ -1,0 +1,54 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
+
+      <div class="p-grid" >
+
+          <div class="p-col-12 p-md-6 p-fluid" id="name">
+            <label>Nome da Instituição*</label>
+            <input pInputText name="institutionName" type="text"
+            [(ngModel)]="graduation.institutionName" #institutionName="ngModel" required minlength="3" maxlength="50">
+            <app-message [control]="institutionName" error="required" text="Informe um nome"></app-message>
+            <app-message [control]="institutionName" error="minlength"
+                text="Mínimo de {{ institutionName.errors?.minlength?.requiredLength }} caracteres. Você digitou apenas {{ institutionName.errors?.minlength?.actualLength }}"></app-message>
+          </div>
+
+          <div class="inputs">
+            <div class="p-col-12 p-md-3 p-fluid">
+              <label>Nome do curso</label>
+              <input pInputText name="major" type="text"
+              [(ngModel)]="graduation.major" #major="ngModel" >
+            </div>
+
+
+            <div class="p-col-12 p-md-6 p-fluid" id="degree">
+              <label>Grau*</label>
+              <p-dropdown name="degree"  [options]="degrees" placeholder="Selecione"
+              [(ngModel)]="graduation.degree" #degree="ngModel" required=""></p-dropdown>
+            </div>
+          </div>
+
+        <div class="inputs">
+          <div class="p-col-12 p-md-6 p-fluid" >
+            <label>Data de nascimento*</label>
+            <p-calendar  icon="pi pi-calendar" name="start" dateFormat="dd/mm/yy" [inline]="false"
+            [(ngModel)]="graduation.start" #start="ngModel" required></p-calendar>
+            <app-message [control]="start" error="required" text="Informe uma data"></app-message>
+          </div>
+
+          <div class="p-col-12 p-md-6 p-fluid" >
+            <label>Data de nascimento*</label>
+            <p-calendar  icon="pi pi-calendar" name="finish" dateFormat="dd/mm/yy" [inline]="false"
+            [(ngModel)]="graduation.finish" #finish="ngModel" required></p-calendar>
+            <app-message [control]="finish" error="required" text="Informe uma data"></app-message>
+          </div>
+        </div>
+
+        <div id="btn">
+          <div class="button-container">
+            <button pButton type="submit" label="Salvar" ></button>
+          </div>
+        </div>
+
+      </div>
+    </form>
+</div>

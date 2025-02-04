@@ -37,7 +37,7 @@ public class Candidate extends User{
 	private CandidateStatus status;
 	@NotNull
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	@JsonProperty("date")
+	@JsonProperty("birthDate")
 	@Column(name = "birth_date")
 	private LocalDate birthDate;
 	@NotNull

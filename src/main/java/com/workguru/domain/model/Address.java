@@ -5,17 +5,17 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public class Address {
 
-	private String address;
+	private String street;
 	private String number;
 	private String complement;
 	private String city;
 	private String state;
 	private String cep;
-	public String getAddress() {
-		return address;
+	public String getStreet() {
+		return street;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setStreet(String street) {
+		this.street = street;
 	}
 	public String getNumber() {
 		return number;

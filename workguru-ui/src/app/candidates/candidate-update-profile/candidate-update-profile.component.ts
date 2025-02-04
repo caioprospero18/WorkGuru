@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Address, Candidate } from '../../core/models';
 import { CandidateService } from '../candidate.service';
 import { ErrorHandlerService } from '../../core/error-handler.service';
@@ -12,7 +12,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './candidate-update-profile.component.html',
   styleUrl: './candidate-update-profile.component.css'
 })
-export class CandidateUpdateProfileComponent {
+export class CandidateUpdateProfileComponent implements OnInit{
 
   candidate!: Candidate;
   address! : Address;
@@ -40,6 +40,7 @@ export class CandidateUpdateProfileComponent {
 
       ngOnInit(): void {
         const id = this.route.snapshot.params[`id`];
+        this.candidate = this.candidate || { address: '' };
       if(id !== undefined && id !== 'new'){
         this.loadCandidate(id);
       }
@@ -50,6 +51,9 @@ export class CandidateUpdateProfileComponent {
       loadCandidate(id: number) {
         this.candidateService.findById(id)
           .then(candidate => {
+            if (!candidate.address) {
+              candidate.address = { street: '', number:'', complement:'', city: '', state: '', cep: '' };
+            }
             this.candidate = candidate;
           })
           .catch(error => this.errorHandler.handle(error));
@@ -60,6 +64,7 @@ export class CandidateUpdateProfileComponent {
           .then( candidate => {
             this.messageService.add({ severity: 'success', detail: 'Cadastro atualizado!' });
             this.candidate = candidate;
+            this.router.navigate(['/jobs']);
           })
           .catch(error => this.errorHandler.handle(error));
       }

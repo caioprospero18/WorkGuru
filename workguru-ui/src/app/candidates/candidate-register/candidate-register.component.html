@@ -56,7 +56,7 @@
         <div class="p-col-12 p-md-6 p-fluid" >
           <label>Data de nascimento*</label>
           <p-calendar  icon="pi pi-calendar" name="birthDate" dateFormat="dd/mm/yy" [inline]="false"
-          [(ngModel)]="candidate.date" #birthDate="ngModel" required></p-calendar>
+          [(ngModel)]="candidate.birthDate" #birthDate="ngModel" required></p-calendar>
           <app-message [control]="birthDate" error="required" text="Informe uma data"></app-message>
         </div>
       </div>

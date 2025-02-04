@@ -56,7 +56,7 @@
         <div class="p-col-12 p-md-6 p-fluid" >
           <label>Data de nascimento*</label>
           <p-calendar  icon="pi pi-calendar" name="birthDate" dateFormat="dd/mm/yy" [inline]="false"
-          [(ngModel)]="candidate.date" #birthDate="ngModel" required></p-calendar>
+          [(ngModel)]="candidate.birthDate" #birthDate="ngModel" required></p-calendar>
           <app-message [control]="birthDate" error="required" text="Informe uma data"></app-message>
         </div>
       </div>
@@ -79,14 +79,14 @@
       <div class="inputs">
         <div class="p-col-12 p-md-6 p-fluid">
           <label>Endereço</label>
-          <input pInputText name="address" type="text"
-          [(ngModel)]="candidate.address.address" #address="ngModel">
+          <input pInputText name="street" type="text"
+          [(ngModel)]="candidate?.address.street" #street="ngModel">
         </div>
 
         <div class="p-col-12 p-md-6 p-fluid">
           <label>Número</label>
           <input pInputText name="number" pattern="\[0-9]{1-5}"
-          [(ngModel)]="candidate.address.number" #number="ngModel">
+          [(ngModel)]="candidate?.address.number" #number="ngModel">
           <app-message [control]="number" error="required" text="Insira um número."></app-message>
         </div>
       </div>
@@ -95,12 +95,12 @@
         <div class="p-col-12 p-md-6 p-fluid">
           <label>Complemento</label>
           <input pInputText name="complement" type="text"
-          [(ngModel)]="candidate.address.complement" #complement="ngModel">
+          [(ngModel)]="candidate?.address.complement" #complement="ngModel">
         </div>
 
         <div class="p-col-12 p-md-6 p-fluid">
           <label>Cidade</label>
-          <input pInputText name="city" [(ngModel)]="candidate.address.city" #city="ngModel">
+          <input pInputText name="city" [(ngModel)]="candidate?.address.city" #city="ngModel">
         </div>
       </div>
 
@@ -108,13 +108,13 @@
         <div class="p-col-12 p-md-6 p-fluid">
           <label>Estado</label>
           <input pInputText name="state" type="text"
-          [(ngModel)]="candidate.address.state" #state="ngModel">
+          [(ngModel)]="candidate?.address.state" #state="ngModel">
         </div>
 
         <div class="p-col-12 p-md-6 p-fluid">
           <label>CEP</label>
           <input pInputText name="cep" pattern="\[0-9]{5}-[0-9]{3}"
-          [(ngModel)]="candidate.address.cep" #cep="ngModel">
+          [(ngModel)]="candidate?.address.cep" #cep="ngModel">
           <app-message [control]="cep" error="required" text="Formato de CEP errado."></app-message>
         </div>
       </div>
@@ -125,7 +125,7 @@
     </div>
     <div id="btn">
       <div class="button-container">
-        <button pButton type="submit" label="Cadastrar" ></button>
+        <button pButton type="submit" label="Atualizar" ></button>
       </div>
     </div>
 

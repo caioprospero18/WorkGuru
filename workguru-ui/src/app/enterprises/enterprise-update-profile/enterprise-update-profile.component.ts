@@ -47,6 +47,7 @@ export class EnterpriseUpdateProfileComponent {
         .then( enterprise => {
           this.messageService.add({ severity: 'success', detail: 'Cadastro atualizado!' });
           this.enterprise = enterprise;
+          this.router.navigate(['/jobs']);
         })
         .catch(error => this.errorHandler.handle(error));
     }

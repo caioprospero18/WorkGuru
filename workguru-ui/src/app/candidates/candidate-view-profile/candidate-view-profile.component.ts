@@ -2,7 +2,7 @@ import { MessageService } from 'primeng/api';
 import { ErrorHandlerService } from '../../core/error-handler.service';
 import { AuthService } from '../../security/auth.service';
 import { CandidateService } from '../candidate.service';
-import { Candidate } from './../../core/models';
+import { Candidate, Graduation } from './../../core/models';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -14,7 +14,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class CandidateViewProfileComponent implements OnInit{
 
-  candidate!: Candidate
+  candidate: Candidate = new Candidate();
     constructor(
         private candidateService: CandidateService,
         private auth: AuthService,

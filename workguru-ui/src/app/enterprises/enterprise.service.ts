@@ -29,7 +29,12 @@ export class EnterpriseService {
 
       async update(enterprise: Enterprise): Promise<any> {
         const headers = new HttpHeaders()
-          .append('Content-Type', 'application/json');
+          .append('Content-Type', 'application/json')
+          .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+          if (!enterprise.address) {
+            enterprise.address = { street: '', number: '', complement:'', city: '', state: '', cep: '' }; 
+          }
 
         const response = await this.http.put<Enterprise>(`${this.usersUrl}/${enterprise.id}`, Enterprise.toJson(enterprise), { headers })
           .toPromise();

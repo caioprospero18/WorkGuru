@@ -2,7 +2,7 @@ import moment from 'moment';
 import { AuthService } from '../security/auth.service';
 
 export class Address{
-  address!: string;
+  street!: string;
   number!: string;
   complement!: string;
   city!: string;
@@ -11,7 +11,7 @@ export class Address{
 
   static toJson(address: Address): any {
     return{
-      address: address.address,
+      address: address.street,
       number: address.number,
       complement: address.complement,
       city: address.city,
@@ -62,7 +62,7 @@ export class Candidate{
   userType!: string;
   cpf!: string;
   status!: string;
-  date!: string;
+  birthDate!: string;
   gender!: string;
   phone!: string;
   address!: Address;
@@ -77,7 +77,7 @@ export class Candidate{
       userType: candidate.userType,
       cpf: candidate.cpf,
       status: candidate.status,
-      date: moment(candidate.date).format('DD/MM/YYYY'),
+      birthDate: moment(candidate.birthDate).format('DD/MM/YYYY'),
       gender: candidate.gender,
       phone: candidate.phone,
       address: candidate.address
@@ -122,5 +122,33 @@ export class Job {
     }
   }
 }
+
+export class Graduation {
+  id!: number;
+  institutionName!: string;
+  major!: string;
+  degree!: string;
+  start!: string;
+  finish!: string;
+  candidate = new Candidate();
+
+  static toJson(graduation: Graduation): any {
+    return {
+      id: graduation.id,
+      institutionName: graduation.institutionName,
+      major: graduation.major,
+      degree: graduation.degree,
+      start: graduation.start,
+      finish: graduation.finish,
+      candidate: graduation.candidate
+    }
+  }
+
+  constructor(candidate_id: number){
+    this.candidate = new Candidate();
+    this.candidate.id = candidate_id;
+  }
+}
+
 
 

@@ -39,7 +39,7 @@ export class JobRegisterComponent {
 
   salaries = [
     { label: 'De 0 à R$2.000,00', value: 'DE_0_A_2000' },
-    { label: 'De R$2.000,00 à R$5.000,00', value: 'SENDE_2000_A_5000' },
+    { label: 'De R$2.000,00 à R$5.000,00', value: 'DE_2000_A_5000' },
     { label: 'De R$5.000,00 à R$10.000,00', value: 'DE_5000_A_10000' },
     { label: 'De R$10.000,00 à R$20.000,00', value: 'DE_10000_A_20000' },
     { label: 'Maior que R$20.000,00', value: 'MAIOR_QUE_20000' }
@@ -94,7 +94,6 @@ export class JobRegisterComponent {
         this.updateJob(jobForm);
       }else{
         this.addJob(jobForm);
-        this.router.navigate(['/jobs']);
       }
     }
 
@@ -114,7 +113,7 @@ export class JobRegisterComponent {
           this.messageService.add({ severity: 'success', detail: 'Vaga adicionada com sucesso!' });
           this.router.navigate(['/jobs']);
     this.loadJob(addedJob.id);
-          this.router.navigate(['/jobs', addedJob.id]);
+          this.router.navigate(['/jobs']);
         })
         .catch(error => this.errorHandler.handle(error));
     }

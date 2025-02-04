@@ -37,7 +37,7 @@ export class JobsListComponent implements OnInit{
 
   salaries = [
     { label: 'De 0 à R$2.000,00', value: 'DE_0_A_2000' },
-    { label: 'De R$2.000,00 à R$5.000,00', value: 'SENDE_2000_A_5000' },
+    { label: 'De R$2.000,00 à R$5.000,00', value: 'DE_2000_A_5000' },
     { label: 'De R$5.000,00 à R$10.000,00', value: 'DE_5000_A_10000' },
     { label: 'De R$10.000,00 à R$20.000,00', value: 'DE_10000_A_20000' },
     { label: 'Maior que R$20.000,00', value: 'MAIOR_QUE_20000' }

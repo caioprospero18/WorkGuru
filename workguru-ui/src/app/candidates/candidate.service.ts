@@ -28,13 +28,33 @@ export class CandidateService {
       return candidate;
     }
 
-      private stringToDate(candidate: any): void {
-        candidate.birthDate = moment(candidate.birthDate, 'DD/MM/YYYY').toDate();
-        }
+    private stringToDate(candidate: any): void {
+      if (!candidate.birthDate) {
+        candidate.birthDate = null;
+        return;
+      }
+
+      const parsedDate = moment(candidate.birthDate, ['YYYY-MM-DD', 'DD/MM/YYYY'], true);
+
+      if (parsedDate.isValid()) {
+        candidate.birthDate = parsedDate.format('DD/MM/YYYY');
+      } else {
+        candidate.birthDate = null;
+      }
+    }
 
       async update(candidate: Candidate): Promise<any> {
               const headers = new HttpHeaders()
-                .append('Content-Type', 'application/json');
+                .append('Content-Type', 'application/json')
+                .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+                if (candidate.birthDate) {
+                  candidate.birthDate = moment(candidate.birthDate, 'DD/MM/YYYY').format('YYYY-MM-DD');
+                }
+
+                if (!candidate.address) {
+                  candidate.address = { street: '', number: '', complement:'', city: '', state: '', cep: '' };
+                }
 
               const response = await this.http.put<Candidate>(`${this.usersUrl}/${candidate.id}`, Candidate.toJson(candidate), { headers })
                 .toPromise();
