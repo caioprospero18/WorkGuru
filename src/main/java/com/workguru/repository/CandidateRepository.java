@@ -11,7 +11,7 @@ import com.workguru.domain.model.Candidate;
 
 public interface CandidateRepository extends JpaRepository<Candidate, Long>{
 	
-	Optional<Candidate> findById(Long id);
+	Optional<Candidate> findById(Long userId);
 
 	
 	

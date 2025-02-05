@@ -10,7 +10,7 @@ CREATE TABLE job (
 	`status` VARCHAR(45) NOT NULL,
 	`publish_date` DATE NOT NULL,
 	`enterprise_id` BIGINT(20) NOT NULL,
-	FOREIGN KEY (enterprise_id) REFERENCES enterprise(id)
+	FOREIGN KEY (enterprise_id) REFERENCES enterprise(user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO job (id, title, job_area, tecnology, description, level, model, salary, status, publish_date, enterprise_id ) 
@@ -72,7 +72,7 @@ CREATE TABLE graduation (
 	`start` DATE NOT NULL,
 	`finish` DATE NULL,
 	`candidate_id` BIGINT(20) NOT NULL,
-	FOREIGN KEY (candidate_id) REFERENCES candidate(id)
+	FOREIGN KEY (candidate_id) REFERENCES candidate(user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE professional_history (
@@ -83,7 +83,7 @@ CREATE TABLE professional_history (
 	`position` VARCHAR(45) NOT NULL,
 	`description` TEXT,
 	`candidate_id` BIGINT(20) NOT NULL,
-	FOREIGN KEY (candidate_id) REFERENCES candidate(id)
+	FOREIGN KEY (candidate_id) REFERENCES candidate(user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE job_candidate (
@@ -91,7 +91,7 @@ CREATE TABLE job_candidate (
 	candidate_id BIGINT(20),
 	PRIMARY KEY (job_id, candidate_id),
 	FOREIGN KEY (job_id) REFERENCES job(id),
-	FOREIGN KEY (candidate_id) REFERENCES candidate(id)
+	FOREIGN KEY (candidate_id) REFERENCES candidate(user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE user_history(

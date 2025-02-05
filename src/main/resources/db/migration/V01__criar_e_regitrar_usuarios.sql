@@ -21,7 +21,7 @@ INSERT INTO user (id, name, email, password, user_type)
 	
 	
 CREATE TABLE `enterprise` (
-    `id` bigint(20) PRIMARY KEY AUTO_INCREMENT,
+    `user_id` bigint(20) PRIMARY KEY,  
 	`cnpj` varchar(18) NOT NULL UNIQUE,
 	`phone` varchar(20) NOT NULL,
 	`description` text NULL,
@@ -32,37 +32,35 @@ CREATE TABLE `enterprise` (
 	`city` varchar (45) NULL,
 	`state` varchar (45) NULL,
 	`cep` varchar (9) NULL,
-	`user_id` bigint(20) NOT NULL,
 	FOREIGN KEY (user_id) REFERENCES user(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO enterprise (cnpj, phone, user_id)
-	values ('99.999.999/9999-99', '10000-0000', 2);
-INSERT INTO enterprise (cnpj, phone, user_id)
-	values ('89.999.999/9999-99', '10000-0001', 6);
-INSERT INTO enterprise (cnpj, phone, user_id)
-	values ('79.999.999/9999-99', '10000-0002', 7);
+INSERT INTO enterprise (user_id, cnpj, phone)
+	values (2, '99.999.999/9999-99', '10000-0000');
+INSERT INTO enterprise (user_id, cnpj, phone)
+	values (6, '89.999.999/9999-99', '10000-0001');
+INSERT INTO enterprise (user_id, cnpj, phone)
+	values (7, '79.999.999/9999-99', '10000-0002');
 
 CREATE TABLE `candidate` (
-    `id` bigint(20) PRIMARY KEY AUTO_INCREMENT,
-	`cpf` varchar(14) NOT NULL UNIQUE,
-	`status` varchar(45) NOT NULL,
+    `user_id` bigint(20) PRIMARY KEY,  
+    `cpf` varchar(14) NOT NULL UNIQUE,
+    `status` varchar(45) NOT NULL,
     `phone` varchar(20),
-	`birth_date` date NOT NULL,
-	`gender` varchar(10) NOT NULL,
-	`street` varchar(45) NULL,
-	`number` varchar(5) NULL,
-	`complement` varchar (45) NULL,
-	`city` varchar (45) NULL,
-	`state` varchar (45) NULL,
-	`cep` varchar (9) NULL,
-	`user_id` bigint(20) NOT NULL,
-	FOREIGN KEY (user_id) REFERENCES user(id)
+    `birth_date` date NOT NULL,
+    `gender` varchar(10) NOT NULL,
+    `street` varchar(45) NULL,
+    `number` varchar(5) NULL,
+    `complement` varchar (45) NULL,
+    `city` varchar (45) NULL,
+    `state` varchar (45) NULL,
+    `cep` varchar (9) NULL,
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO candidate (cpf, status, phone, birth_date, gender, user_id)
-	values ('000.000.000-00', 'TRABALHANDO', '20000-0000', '1984/08/08' ,'FEMININO', 3);
-INSERT INTO candidate (cpf, status, phone, birth_date, gender, user_id)
-	values ('100.000.000-00', 'TRABALHANDO', '30000-0000', '1993/08/08' ,'FEMININO', 4);
-INSERT INTO candidate (cpf, status, phone, birth_date, gender, user_id)
-	values ('200.000.000-00', 'TRABALHANDO', '40000-0000', '1989/08/08' ,'FEMININO', 5);
+INSERT INTO candidate (user_id, cpf, status, phone, birth_date, gender)
+	values (3, '000.000.000-00', 'TRABALHANDO', '20000-0000', '1984/08/08' ,'FEMININO');
+INSERT INTO candidate (user_id, cpf, status, phone, birth_date, gender)
+	values (4, '100.000.000-00', 'TRABALHANDO', '30000-0000', '1993/08/08' ,'FEMININO');
+INSERT INTO candidate (user_id, cpf, status, phone, birth_date, gender)
+	values (5, '200.000.000-00', 'TRABALHANDO', '40000-0000', '1989/08/08' ,'FEMININO');

@@ -5,7 +5,7 @@ import { CandidateService } from '../candidate.service';
 import { Candidate, Graduation } from './../../core/models';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-candidate-view-profile',
@@ -14,6 +14,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class CandidateViewProfileComponent implements OnInit{
   showIframe = false;
+  iframeUrl: SafeResourceUrl;
 
   candidate: Candidate = new Candidate();
     constructor(
@@ -22,14 +23,26 @@ export class CandidateViewProfileComponent implements OnInit{
         private errorHandler: ErrorHandlerService,
         private messageService: MessageService,
         private route: ActivatedRoute,
-        private title: Title)
-      { }
+        private title: Title,
+        private sanitizer: DomSanitizer)
+      { this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('/graduations/new');}
 
   ngOnInit(): void {
     const candidateId= this.route.snapshot.params[`id`];
     console.log(candidateId);
     this.loadCandidate(candidateId);
+    window.addEventListener('message', this.handleMessage.bind(this), false);
 
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('message', this.handleMessage.bind(this));
+  }
+
+  handleMessage(event: MessageEvent) {
+    if (event.data === 'hideIframe') {
+      this.showIframe = false;
+    }
   }
 
   loadCandidate(id: number) {

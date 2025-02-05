@@ -71,7 +71,7 @@ export class GraduationRegisterComponent {
         addGraduation(graduationForm: NgForm) {
           this.graduationService.add(this.graduation)
             .then(addedGraduation => {
-              this.messageService.add({ severity: 'success', detail: 'Vaga adicionada com sucesso!' });
+              this.messageService.add({ severity: 'success', detail: 'Formação adicionada com sucesso!' });
 
         this.loadGraduation(addedGraduation.id);
 
@@ -85,6 +85,10 @@ export class GraduationRegisterComponent {
               this.graduation = graduation;
             })
             .catch(error => this.errorHandler.handle(error));
+        }
+
+        hideIframe(){
+          window.parent.postMessage('hideIframe', '*');
         }
 
 
