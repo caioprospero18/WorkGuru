@@ -16,7 +16,8 @@
 <div class="container">
   <div>
     <strong><p>Formação Acadêmica:</p></strong>
-    <a href="">Adicionar nova formação</a>
+    <iframe *ngIf="showIframe" src="/graduations/new" width="100%" height="294px" frameborder="0"></iframe>
+    <a href="#" (click)="toggleIframe(); $event.preventDefault();">Adicionar nova formação</a>
   </div>
   <div>
     <strong><p>Histórico Profissional:</p></strong>

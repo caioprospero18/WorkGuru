@@ -128,13 +128,18 @@ export class Graduation {
   institutionName!: string;
   major!: string;
   degree!: string;
-  start!: string;
-  finish!: string;
+  start!: Date;
+  finish!: Date;
   candidate = new Candidate();
+
+  constructor(candidate_id: number){
+    this.candidate = new Candidate();
+    this.candidate.id = candidate_id;
+  }
 
   static toJson(graduation: Graduation): any {
     return {
-      id: graduation.id,
+      id: graduation.id ? graduation.id : undefined,
       institutionName: graduation.institutionName,
       major: graduation.major,
       degree: graduation.degree,
@@ -144,10 +149,6 @@ export class Graduation {
     }
   }
 
-  constructor(candidate_id: number){
-    this.candidate = new Candidate();
-    this.candidate.id = candidate_id;
-  }
 }
 
 

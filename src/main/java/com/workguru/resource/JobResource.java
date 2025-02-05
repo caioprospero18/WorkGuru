@@ -78,7 +78,7 @@ public class JobResource {
 	@PutMapping("/{id}")
 	@PreAuthorize("hasAuthority('ROLE_REGISTER_JOB') and hasAuthority('SCOPE_write')")
 	public ResponseEntity<Job> update(@PathVariable Long id, @Valid @RequestBody Job job) {
-		Job activitySaved = jobService.update(id, job);
-		return ResponseEntity.ok(activitySaved);
+		Job jobSaved = jobService.update(id, job);
+		return ResponseEntity.ok(jobSaved);
 	}
 }

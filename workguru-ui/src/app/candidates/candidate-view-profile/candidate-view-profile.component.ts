@@ -13,6 +13,7 @@ import { Title } from '@angular/platform-browser';
   styleUrl: './candidate-view-profile.component.css'
 })
 export class CandidateViewProfileComponent implements OnInit{
+  showIframe = false;
 
   candidate: Candidate = new Candidate();
     constructor(
@@ -39,5 +40,7 @@ export class CandidateViewProfileComponent implements OnInit{
       .catch(error => this.errorHandler.handle(error));
   }
 
-
+  toggleIframe() {
+    this.showIframe = !this.showIframe;
+  }
 }

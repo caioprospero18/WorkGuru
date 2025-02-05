@@ -15,6 +15,7 @@ import { CandidateViewProfileComponent } from './candidate-view-profile/candidat
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { CandidateUpdateProfileComponent } from './candidate-update-profile/candidate-update-profile.component';
+import { GraduationsModule } from '../graduations/graduations.module';
 
 
 
@@ -37,7 +38,8 @@ import { CandidateUpdateProfileComponent } from './candidate-update-profile/cand
     RouterModule,
     CalendarModule,
     TableModule,
-    TooltipModule
+    TooltipModule,
+    GraduationsModule
 ],
     exports: [
         CandidateRegisterComponent,

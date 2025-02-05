@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { GraduationRegisterComponent } from './graduation-register/graduation-register.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
@@ -25,7 +25,8 @@ import { CalendarModule } from 'primeng/calendar';
     DropdownModule,
     SharedModule,
     RouterModule,
-    CalendarModule
+    CalendarModule,
+    ReactiveFormsModule
   ],
   exports: [
     GraduationRegisterComponent

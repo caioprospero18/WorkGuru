@@ -14,6 +14,7 @@ import { CandidateViewProfileComponent } from './candidates/candidate-view-profi
 import { EnterpriseViewProfileComponent } from './enterprises/enterprise-view-profile/enterprise-view-profile.component';
 import { EnterpriseUpdateProfileComponent } from './enterprises/enterprise-update-profile/enterprise-update-profile.component';
 import { CandidateUpdateProfileComponent } from './candidates/candidate-update-profile/candidate-update-profile.component';
+import { GraduationRegisterComponent } from './graduations/graduation-register/graduation-register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -58,6 +59,13 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_REGISTER_USER']}
   },
+  {
+    path: 'graduations/new',
+    component: GraduationRegisterComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_APPLY_JOB'] }
+  },
+
   { path: 'authorized', component: AuthorizedComponent },
   { path: 'page-not-found', component: PageNotFoundComponent },
   { path: 'not-authorized', component: NotAuthorizedComponent },

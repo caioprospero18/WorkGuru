@@ -3,7 +3,7 @@ import { ErrorHandlerService } from '../../core/error-handler.service';
 import { GraduationService } from '../graduation.service';
 import { Graduation } from './../../core/models';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../security/auth.service';
 
@@ -31,22 +31,26 @@ export class GraduationRegisterComponent {
       private graduationService: GraduationService,
       private errorHandler: ErrorHandlerService,
       private messageService: MessageService,
-      private auth: AuthService
+      private auth: AuthService,
+      private route: ActivatedRoute,
     ){}
 
     ngOnInit(): void {
-
+      const id = this.route.snapshot.params[`id`];
+      if(id !== undefined && id !== "new"){
+        this.loadGraduation(id);
+      }
     }
 
     get editing(): boolean {
       return Boolean(this.graduation.id);
     }
 
-    save(jobForm: NgForm){
+    save(graduationForm: NgForm){
       if(this.editing){
-        this.updateGraduation(jobForm);
+        this.updateGraduation(graduationForm);
       }else{
-        this.addGraduation(jobForm);
+        this.addGraduation(graduationForm);
       }
     }
 
@@ -82,6 +86,10 @@ export class GraduationRegisterComponent {
             })
             .catch(error => this.errorHandler.handle(error));
         }
+
+
+
+
 
 }
 
