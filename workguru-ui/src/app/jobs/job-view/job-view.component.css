@@ -43,11 +43,10 @@
 
 #img p{
   font-size: 150%;
-  margin-top: 8%;
 }
 
 #img div{
-  margin-top: 10%;
+  align-items: center;
   gap: 70px;
 }
 

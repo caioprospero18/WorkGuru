@@ -1,3 +1,4 @@
+import { GraduationService } from './../../graduations/graduation.service';
 import { MessageService } from 'primeng/api';
 import { ErrorHandlerService } from '../../core/error-handler.service';
 import { AuthService } from '../../security/auth.service';
@@ -17,19 +18,19 @@ export class CandidateViewProfileComponent implements OnInit{
   iframeUrl: SafeResourceUrl;
 
   candidate: Candidate = new Candidate();
+  graduation!: Graduation;
     constructor(
         private candidateService: CandidateService,
+        private graduationService: GraduationService,
         private auth: AuthService,
         private errorHandler: ErrorHandlerService,
         private messageService: MessageService,
         private route: ActivatedRoute,
-        private title: Title,
         private sanitizer: DomSanitizer)
       { this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('/graduations/new');}
 
   ngOnInit(): void {
     const candidateId= this.route.snapshot.params[`id`];
-    console.log(candidateId);
     this.loadCandidate(candidateId);
     window.addEventListener('message', this.handleMessage.bind(this), false);
 
@@ -55,5 +56,13 @@ export class CandidateViewProfileComponent implements OnInit{
 
   toggleIframe() {
     this.showIframe = !this.showIframe;
+  }
+
+  loadGraduation(id: number) {
+    this.graduationService.findById(id)
+      .then(graduation => {
+        this.graduation = graduation;
+      })
+      .catch(error => this.errorHandler.handle(error));
   }
 }

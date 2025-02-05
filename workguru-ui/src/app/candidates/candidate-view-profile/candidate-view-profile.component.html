@@ -6,8 +6,9 @@
       <i class="pi pi-pen-to-square"></i>
     </a>
   </div>
-  <div>
+  <div id="footer">
     <p></p>
+    <p>{{candidate.address.city}}, {{candidate.address.state}}</p>
   </div>
 </div>
 
@@ -16,6 +17,10 @@
 <div class="container">
   <div>
     <strong><p>Formação Acadêmica:</p></strong>
+    <p>Nome da Instituição:</p>
+    <p>Nome do Curso:</p>
+    <p>Nível:</p>
+    <p>Concluído em: {{graduation?.finish}}</p>
     <iframe *ngIf="showIframe" src="/graduations/new" width="100%" height="294px" frameborder="0"></iframe>
     <a href="#" (click)="toggleIframe(); $event.preventDefault();">Adicionar nova formação</a>
   </div>
@@ -25,7 +30,7 @@
   </div>
   <div>
     <strong><p>Sobre:</p></strong>
-    <p>Xurulamps</p>
+    <p></p>
   </div>
 
 </div>

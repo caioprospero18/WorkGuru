@@ -31,7 +31,6 @@ export class GraduationService {
       return this.http.get<Graduation>(`${this.graduationsUrl}/${id}`)
           .toPromise()
           .then((response: any) => {
-              console.log('Resposta da API:', response);
               const graduation = response;
 
               this.stringToDate(graduation);

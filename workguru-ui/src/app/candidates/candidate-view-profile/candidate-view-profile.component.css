@@ -51,6 +51,7 @@
   background-color: transparent;
   border: none;
   margin-left: auto;
+  padding: 0 7%;
 }
 
 .pi-pen-to-square{
@@ -62,6 +63,14 @@
 .container a{
   text-decoration: underline;
   font-size: medium;
+}
+
+#footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 5%;
+  font-size: 18px;
 }
 
 
