@@ -1,13 +1,17 @@
 <div class="header">
   <div id="img">
-    <img src='assets/level_icon.png'>
-    <strong><h1>{{enterprise.name}}</h1></strong>
-    <a [routerLink]="['/enterprises/update', enterprise.id]" class="p-button p-button-icon-only">
+    <img src='assets/enterprise_icon.png'>
+    <div>
+      <strong><h1>{{enterprise.name}}</h1></strong>
+      <a pButton label="Ver vagas"></a>
+    </div>
+    <a [routerLink]="['/enterprises/update', enterprise.id]" class=" p-button-icon-only">
       <i class="pi pi-pen-to-square"></i>
     </a>
   </div>
-  <div>
-    <p>{{enterprise.linkSite}}</p>
+  <div id="under">
+    <a href="{{enterprise.linkSite}}"><p>{{enterprise.linkSite}}</p></a>
+    <p>{{enterprise.address?.city}}, {{enterprise.address?.state}}</p>
   </div>
 </div>
 

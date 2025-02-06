@@ -9,11 +9,12 @@ CREATE TABLE job (
 	`salary` VARCHAR(45) NOT NULL,
 	`status` VARCHAR(45) NOT NULL,
 	`publish_date` DATE NOT NULL,
+	`location` VARCHAR(2) NOT NULL,
 	`enterprise_id` BIGINT(20) NOT NULL,
 	FOREIGN KEY (enterprise_id) REFERENCES enterprise(user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO job (id, title, job_area, tecnology, description, level, model, salary, status, publish_date, enterprise_id ) 
+INSERT INTO job (id, title, job_area, tecnology, description, level, model, salary, status, publish_date, location, enterprise_id ) 
 	values (1, 'Dev Backend', 'BACKEND' , 'JAVA', 'A Aiko é uma empresa de tecnologia que se destaca por sua abordagem prática na criação de soluções voltadas para a eficiência, segurança e sustentabilidade em grandes operações.
 
 Especializados no desenvolvimento de sistemas de monitoramento para gestão de frotas, gerenciamento de abastecimento e funcionalidades de segurança, como câmera de fadiga, buscamos constantemente impulsionar a transformação digital de maneira sólida e eficaz.
@@ -56,13 +57,13 @@ Temos várias confraternizações ao longo dos meses :)
 Plano de desenvolvimento individual para alavancar sua carreira!!
 Curso de Espanhol semanalmente :)
 Uma equipe colaborativa e disponível para qualquer troca que você precisar.
-Plataformas de cursos online dos mais variados temas, disponíveis para usar e abusar!!', 'JUNIOR', 'PRESENCIAL', 'DE_0_A_2000', 'ABERTA', '2024/11/06', 2);
-INSERT INTO job (id, title, job_area, tecnology, description, level, model, salary, status, publish_date, enterprise_id ) 
-	values (2, 'Estagiário Full-stack', 'FULLSTACK' , 'JAVASCRIPT', 'Atuar como dev', 'ESTAGIO', 'HOME_OFFICE', 'DE_2000_A_5000', 'ABERTA', '2024/11/06', 2);
-INSERT INTO job (id, title, job_area, tecnology, description, level, model, salary, status, publish_date, enterprise_id ) 
-	values (3, 'Dev Frontend', 'FRONTEND' , 'HTML5', 'Atuar como dev', 'PLENO', 'PRESENCIAL', 'DE_5000_A_10000', 'ABERTA', '2024/11/06', 2);
-INSERT INTO job (id, title, job_area, tecnology, description, level, model, salary, status, publish_date, enterprise_id ) 
-	values (4, 'SENIOR PYTHON', 'BACKEND' , 'PYTHON', 'Atuar como dev', 'SENIOR', 'HIBRIDO', 'MAIOR_QUE_20000', 'ABERTA', '2024/11/06', 2);
+Plataformas de cursos online dos mais variados temas, disponíveis para usar e abusar!!', 'JUNIOR', 'PRESENCIAL', 'DE_0_A_2000', 'ABERTA', '2024/11/06', 'SP', 2);
+INSERT INTO job (id, title, job_area, tecnology, description, level, model, salary, status, publish_date, location, enterprise_id ) 
+	values (2, 'Estagiário Full-stack', 'FULLSTACK' , 'JAVASCRIPT', 'Atuar como dev', 'ESTAGIO', 'HOME_OFFICE', 'DE_2000_A_5000', 'ABERTA', '2024/11/06', 'MG', 2);
+INSERT INTO job (id, title, job_area, tecnology, description, level, model, salary, status, publish_date, location, enterprise_id ) 
+	values (3, 'Dev Frontend', 'FRONTEND' , 'HTML5', 'Atuar como dev', 'PLENO', 'PRESENCIAL', 'DE_5000_A_10000', 'ABERTA', '2024/11/06', 'PR', 2);
+INSERT INTO job (id, title, job_area, tecnology, description, level, model, salary, status, publish_date, location, enterprise_id ) 
+	values (4, 'SENIOR PYTHON', 'BACKEND' , 'PYTHON', 'Atuar como dev', 'SENIOR', 'HIBRIDO', 'MAIOR_QUE_20000', 'ABERTA', '2024/11/06', 'BA', 2);
 	
 CREATE TABLE graduation (
 	`id`BIGINT(20) PRIMARY KEY AUTO_INCREMENT,

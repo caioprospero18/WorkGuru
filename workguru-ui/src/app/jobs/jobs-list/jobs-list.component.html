@@ -21,8 +21,8 @@
           [(ngModel)]="salary"></p-dropdown>
         </div>
         <div class="p-col-12 p-md-6 p-fluid">
-          <p-dropdown id="loc-drop" name="loc" [options]="levels" placeholder="Localização"
-          [(ngModel)]="level"></p-dropdown>
+          <p-dropdown id="loc-drop" name="location" [options]="locations" placeholder="Localização"
+          [(ngModel)]="location"></p-dropdown>
         </div>
         <div class="p-col-12 p-md-6 p-fluid">
           <p-dropdown id="jobArea-drop" name="jobArea" [options]="jobAreas" placeholder="Área de atuação"
@@ -37,7 +37,7 @@
     <ng-template pTemplate="body" let-job>
       <div class="custom-table-row">
         <div id="img">
-          <img src="assets/level_icon.png" />
+          <img src="assets/enterprise_icon.png" />
           <p id="title">
             <strong>{{ job.title }}</strong>
           </p>

@@ -6,9 +6,7 @@ input[pInputText], p-dropdown {
   border-radius: 6px;
 }
 
-#tecnology p-dropdown{
-  width: 700px;
-}
+
 .container{
   display: flex;
   justify-content: center;
@@ -39,7 +37,7 @@ button{
   width: 700px;
 }
 
-#inputs-level-model, #inputs-salary-area{
+.inputs{
   display: flex;
   flex-direction: row;
   gap: 90px;

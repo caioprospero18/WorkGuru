@@ -10,6 +10,7 @@ export interface JobFilter {
   level?: string,
   salary?: string;
   jobArea?: string;
+  location?: string;
 }
 
 @Injectable({
@@ -52,6 +53,10 @@ export class JobService {
 
       if (filter.salary) {
         params = params.set('salary', filter.salary);
+      }
+
+      if (filter.location) {
+        params = params.set('location', filter.location);
       }
 
 

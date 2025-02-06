@@ -18,6 +18,7 @@ public class JobFilter {
 	private Salary salary;
 	@Enumerated
 	private JobArea jobArea;
+	private String location;
 	private Enterprise enterprise;
 	
 	public Level getLevel() {
@@ -49,6 +50,12 @@ public class JobFilter {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	public Enterprise getEnterprise() {
 		return enterprise;

@@ -12,7 +12,7 @@
           [(ngModel)]="job.title" #title="ngModel" required>
         </div>
 
-        <div id="inputs-level-model">
+        <div class="inputs">
           <div class="p-col-12 p-md-6 p-fluid" id="level">
             <label>Nível*</label>
             <p-dropdown name="level"  [options]="levels" placeholder="Selecione"
@@ -27,7 +27,7 @@
           </div>
         </div>
 
-      <div id="inputs-salary-area">
+      <div class="inputs">
         <div class="p-col-12 p-md-6 p-fluid" id="salary">
           <label>Salário*</label>
           <p-dropdown name="salary"  [options]="salaries" placeholder="Selecione"
@@ -41,10 +41,18 @@
         </div>
       </div>
 
-      <div class="p-col-12 p-md-6 p-fluid" id="tecnology">
-        <label>Tecnologias*</label>
-        <p-dropdown name="tecnology"  [options]="tecnologies" placeholder="Selecione"
-        [(ngModel)]="job.tecnology" #tecnology="ngModel" required=""></p-dropdown>
+      <div class="inputs">
+        <div class="p-col-12 p-md-6 p-fluid" id="tecnology">
+          <label>Tecnologias*</label>
+          <p-dropdown name="tecnology"  [options]="tecnologies" placeholder="Selecione"
+          [(ngModel)]="job.tecnology" #tecnology="ngModel" required=""></p-dropdown>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-fluid">
+          <label>Localização*</label>
+          <p-dropdown name="location"  [options]="locations" placeholder="Selecione"
+          [(ngModel)]="job.location" #location="ngModel" required=""></p-dropdown>
+        </div>
       </div>
     </div>
 

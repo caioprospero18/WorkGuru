@@ -56,6 +56,8 @@ public class Job {
 	@Column(name = "publish_date")
 	private LocalDate publishDate;
 	@NotNull
+	private String location;
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "enterprise_id")
 	private Enterprise enterprise;
@@ -117,6 +119,12 @@ public class Job {
 	}
 	public void setPublishDate(LocalDate publishDate) {
 		this.publishDate = publishDate;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	public Enterprise getEnterprise() {
 		return enterprise;

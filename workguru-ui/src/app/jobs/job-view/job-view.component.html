@@ -1,12 +1,13 @@
 <div class="header">
   <div id="img">
-    <img src='assets/level_icon.png'>
+    <img src='assets/enterprise_icon.png'>
     <div>
       <strong><h1>{{job.title}}</h1></strong>
-      <p>{{job.enterprise.name}}</p>
+      <a [routerLink]="['/enterprises/view', job.enterprise.id]"><p>{{job.enterprise.name}}</p></a>
     </div>
   </div>
   <div id="level">
+    <p>{{job.location}}</p>
     <div>
       <img src="assets/level_icon.png" />
       <p>{{ showLevel(job) }}</p>
@@ -21,7 +22,7 @@
       <a *ngIf="auth.jwtPayload?.user_type === 'P'" pButton [routerLink]="['/jobs', job.id]" label="Candidatar-se"></a>
     </div>
   </div>
-  
+
 </div>
 
 <br>

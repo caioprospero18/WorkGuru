@@ -99,6 +99,7 @@ export class Job {
   salary!: string;
   status!: string;
   publishDate!: Date;
+  location!: string;
   enterprise = new Enterprise();
 
   constructor(enterprise_id: number){
@@ -120,6 +121,7 @@ export class Job {
       salary: job.salary,
       status: job.status,
       publishDate: moment(job.publishDate).format('DD/MM/YYYY'),
+      location: job.location,
       enterprise: job.enterprise
     }
   }

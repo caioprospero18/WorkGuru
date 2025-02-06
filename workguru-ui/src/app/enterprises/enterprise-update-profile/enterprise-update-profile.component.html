@@ -55,13 +55,13 @@
         <div class="p-col-12 p-md-6 p-fluid">
           <label>Endereço</label>
           <input pInputText name="street" type="text"
-          [(ngModel)]="enterprise.address.street" #street="ngModel">
+          [(ngModel)]="enterprise?.address.street" #street="ngModel">
         </div>
 
         <div class="p-col-12 p-md-6 p-fluid">
           <label>Número</label>
           <input pInputText name="number" pattern="\[0-9]{1-5}"
-          [(ngModel)]="enterprise.address.number" #number="ngModel">
+          [(ngModel)]="enterprise?.address.number" #number="ngModel">
           <app-message [control]="number" error="required" text="Insira um número."></app-message>
         </div>
       </div>
@@ -70,12 +70,12 @@
         <div class="p-col-12 p-md-6 p-fluid">
           <label>Complemento</label>
           <input pInputText name="complement" type="text"
-          [(ngModel)]="enterprise.address.complement" #complement="ngModel">
+          [(ngModel)]="enterprise?.address.complement" #complement="ngModel">
         </div>
 
         <div class="p-col-12 p-md-6 p-fluid">
           <label>Cidade</label>
-          <input pInputText name="city" [(ngModel)]="enterprise.address.city" #city="ngModel">
+          <input pInputText name="city" [(ngModel)]="enterprise?.address.city" #city="ngModel">
         </div>
       </div>
 
@@ -83,13 +83,13 @@
         <div class="p-col-12 p-md-6 p-fluid">
           <label>Estado</label>
           <input pInputText name="state" type="text"
-          [(ngModel)]="enterprise.address.state" #state="ngModel">
+          [(ngModel)]="enterprise?.address.state" #state="ngModel">
         </div>
 
         <div class="p-col-12 p-md-6 p-fluid">
           <label>CEP</label>
           <input pInputText name="cep" pattern="\[0-9]{5}-[0-9]{3}"
-          [(ngModel)]="enterprise.address.cep" #cep="ngModel">
+          [(ngModel)]="enterprise?.address.cep" #cep="ngModel">
           <app-message [control]="cep" error="required" text="Formato de CEP errado."></app-message>
         </div>
       </div>
