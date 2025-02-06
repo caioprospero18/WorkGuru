@@ -66,6 +66,8 @@ export class Candidate{
   gender!: string;
   phone!: string;
   address!: Address;
+  graduations?: Graduation[];
+  professionalHistories?: ProfessionalHistory[];
 
 
   static toJson(candidate: Candidate): any {
@@ -80,7 +82,7 @@ export class Candidate{
       birthDate: moment(candidate.birthDate).format('DD/MM/YYYY'),
       gender: candidate.gender,
       phone: candidate.phone,
-      address: candidate.address
+      address: candidate.address,
     }
   }
 
@@ -146,6 +148,34 @@ export class Graduation {
       start: graduation.start,
       finish: graduation.finish,
       candidate: graduation.candidate
+    }
+  }
+
+}
+
+export class ProfessionalHistory {
+  id!: number;
+  enterpriseName!: string;
+  start!: Date;
+  finish!: Date;
+  position!: string;
+  description!: string;
+  candidate = new Candidate();
+
+  constructor(candidate_id: number){
+    this.candidate = new Candidate();
+    this.candidate.id = candidate_id;
+  }
+
+  static toJson(professionalHistory: ProfessionalHistory): any {
+    return {
+      id: professionalHistory.id ? professionalHistory.id : undefined,
+      enterpriseName: professionalHistory.enterpriseName,
+      start: professionalHistory.start,
+      finish: professionalHistory.finish,
+      position: professionalHistory.position,
+      description: professionalHistory.description,
+      candidate: professionalHistory.candidate
     }
   }
 

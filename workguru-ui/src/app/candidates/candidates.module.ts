@@ -1,3 +1,4 @@
+import { ProfessionalHistoriesModule } from './../professional-histories/professional-histories.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -39,7 +40,8 @@ import { GraduationsModule } from '../graduations/graduations.module';
     CalendarModule,
     TableModule,
     TooltipModule,
-    GraduationsModule
+    GraduationsModule,
+    ProfessionalHistoriesModule
 ],
     exports: [
         CandidateRegisterComponent,

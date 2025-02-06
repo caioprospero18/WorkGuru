@@ -17,7 +17,6 @@ export class GraduationService {
   ) { }
 
   add(graduation: Graduation): Promise<Graduation> {
-    console.log('Dados enviados para o backend:', graduation);
       const headers = new HttpHeaders()
           .append('Content-Type', 'application/json');
 
@@ -35,6 +34,7 @@ export class GraduationService {
 
               this.stringToDate(graduation);
 
+              console.log('Graduation API response:', graduation);
               return graduation;
           });
   }

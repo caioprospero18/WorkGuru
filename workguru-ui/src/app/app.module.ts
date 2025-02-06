@@ -19,6 +19,7 @@ import { CandidatesModule } from './candidates/candidates.module';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

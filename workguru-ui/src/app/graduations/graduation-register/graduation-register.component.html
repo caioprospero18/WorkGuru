@@ -36,7 +36,7 @@
           </div>
 
           <div class="p-col-12 p-md-6 p-fluid" >
-            <label>Data de término</label>
+            <label>Data de término (Ou previsão)*</label>
             <p-calendar  icon="pi pi-calendar" name="finish" dateFormat="dd/mm/yy" [inline]="false"
             [(ngModel)]="graduation.finish" #finish="ngModel" required></p-calendar>
             <app-message [control]="finish" error="required" text="Informe uma data"></app-message>
@@ -45,7 +45,7 @@
 
         <div id="btn">
           <div class="button-container">
-            <button (click)="hideIframe()" pButton type="submit" label="Salvar" ></button>
+            <button pButton type="submit" label="Salvar" ></button>
           </div>
         </div>
 

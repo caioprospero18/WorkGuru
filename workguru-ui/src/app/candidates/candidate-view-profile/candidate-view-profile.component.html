@@ -8,7 +8,7 @@
   </div>
   <div id="footer">
     <p></p>
-    <p>{{candidate.address.city}}, {{candidate.address.state}}</p>
+    <p>{{candidate.address?.city || ''}}, {{candidate.address?.state || ''}}</p>
   </div>
 </div>
 
@@ -17,16 +17,37 @@
 <div class="container">
   <div>
     <strong><p>Formação Acadêmica:</p></strong>
-    <p>Nome da Instituição:</p>
-    <p>Nome do Curso:</p>
-    <p>Nível:</p>
-    <p>Concluído em: {{graduation?.finish}}</p>
-    <iframe *ngIf="showIframe" src="/graduations/new" width="100%" height="294px" frameborder="0"></iframe>
-    <a href="#" (click)="toggleIframe(); $event.preventDefault();">Adicionar nova formação</a>
+    <div *ngIf="candidate.graduations?.length > 0; else noGraduations">
+      <div *ngFor="let grad of candidate.graduations">
+        <p>Nome da Instituição: {{grad?.institutionName || ''}}</p>
+        <p>Nome do Curso: {{grad?.major || ''}}</p>
+        <p>Nível: {{showDegree(grad)}}</p>
+        <p>Conclusão em: {{grad?.finish || ''}}</p>
+      </div>
+    </div>
+    <ng-template #noGraduations>
+      <p>O candidato ainda não possui formações acadêmicas.</p>
+    </ng-template>
+    <iframe *ngIf="showIframeGraduation" src="/graduations/new" width="100%" height="294px" frameborder="0"></iframe>
+    <a href="#" (click)="toggleIframeGraduation(); $event.preventDefault();">Adicionar nova formação</a>
   </div>
   <div>
     <strong><p>Histórico Profissional:</p></strong>
-    <a href="">Adicionar novo histórico profissional</a>
+    <div *ngIf="candidate.professionalHistories?.length > 0; else noProfessionalHistories">
+      <div *ngFor="let hist of candidate.professionalHistories">
+        <p>Nome da Empresa: {{hist?.enterpriseName || ''}}</p>
+        <p>Cargo: {{hist?.position || ''}}</p>
+        <p>Data de Entrada: {{hist?.start || ''}}</p>
+        <p>Data de Saída: {{hist?.finish || ''}}</p>
+        <p>Atividades realizadas:</p>
+        <p>{{hist?.description || ''}}</p>
+      </div>
+    </div>
+    <ng-template #noProfessionalHistories>
+      <p>O candidato ainda não possui históricos profissionais.</p>
+    </ng-template>
+    <iframe *ngIf="showIframeHistory" src="/professional_histories/new" width="100%" height="455px" frameborder="0"></iframe>
+    <a href="#" (click)="toggleIframeHistory(); $event.preventDefault();">Adicionar novo histórico profissional</a>
   </div>
   <div>
     <strong><p>Sobre:</p></strong>

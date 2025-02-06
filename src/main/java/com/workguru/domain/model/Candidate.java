@@ -6,6 +6,8 @@ import java.util.List;
 import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
@@ -18,6 +20,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -49,7 +52,12 @@ public class Candidate extends User{
 	@JoinTable(name = "job_candidate", joinColumns = @JoinColumn(name = "candidate_id"), 
 	inverseJoinColumns = @JoinColumn(name = "job_id"))
 	private List<Job> job;
-
+	@OneToMany(mappedBy = "candidate")
+	@JsonManagedReference
+	private List<Graduation> graduations;
+	@OneToMany(mappedBy = "candidate")
+	@JsonManagedReference
+	private List<ProfessionalHistory> professionalHistories;
 	public String getCpf() {
 		return cpf;
 	}
@@ -92,6 +100,19 @@ public class Candidate extends User{
 	public void setJob(List<Job> job) {
 		this.job = job;
 	}
+	public List<Graduation> getGraduations() {
+		return graduations;
+	}
+	public void setGraduations(List<Graduation> graduation) {
+		this.graduations = graduation;
+	}
+	public List<ProfessionalHistory> getProfessionalHistories() {
+		return professionalHistories;
+	}
+	public void setProfessionalHistories(List<ProfessionalHistory> professionalHistories) {
+		this.professionalHistories = professionalHistories;
+	}
+	
 	
 
 	

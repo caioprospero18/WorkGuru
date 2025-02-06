@@ -3,6 +3,7 @@ package com.workguru.domain.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
@@ -14,6 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "professional_history")
@@ -22,6 +24,10 @@ public class ProfessionalHistory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@NotNull
+	@Column(name = "enterprise_name")
+	@Size(min = 3, max = 45)
+	private String enterpriseName;
 	@NotNull
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate start;
@@ -33,6 +39,7 @@ public class ProfessionalHistory {
 	@NotNull
 	@JoinColumn(name = "candidate_id")
 	@ManyToOne
+	@JsonBackReference
 	private Candidate candidate;
 	
 	public Long getId() {
@@ -40,6 +47,12 @@ public class ProfessionalHistory {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public String getEnterpriseName() {
+		return enterpriseName;
+	}
+	public void setEnterpriseName(String enterpriseName) {
+		this.enterpriseName = enterpriseName;
 	}
 	public LocalDate getStart() {
 		return start;

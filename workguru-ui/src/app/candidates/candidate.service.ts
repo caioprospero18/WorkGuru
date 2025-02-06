@@ -25,6 +25,7 @@ export class CandidateService {
         .toPromise();
       const candidate = response;
       this.stringToDate(candidate);
+      console.log('Resposta da API:', candidate);
       return candidate;
     }
 

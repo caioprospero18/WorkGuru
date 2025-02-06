@@ -3,6 +3,7 @@ package com.workguru.domain.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
@@ -41,6 +42,7 @@ public class Graduation {
 	@NotNull
 	@JoinColumn(name = "candidate_id")
 	@ManyToOne
+	@JsonBackReference
 	private Candidate candidate;
 
 	

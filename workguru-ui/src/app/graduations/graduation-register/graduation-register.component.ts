@@ -71,6 +71,7 @@ export class GraduationRegisterComponent {
         addGraduation(graduationForm: NgForm) {
           this.graduationService.add(this.graduation)
             .then(addedGraduation => {
+              this.hideIframe();
               this.messageService.add({ severity: 'success', detail: 'Formação adicionada com sucesso!' });
 
         this.loadGraduation(addedGraduation.id);
@@ -88,7 +89,7 @@ export class GraduationRegisterComponent {
         }
 
         hideIframe(){
-          window.parent.postMessage('hideIframe', '*');
+          window.parent.postMessage('hideIframeGraduation', '*');
         }
 
 

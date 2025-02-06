@@ -1,0 +1,23 @@
+.container{
+  background-color: #ffffff60;
+}
+
+.inputs{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.p-col-12{
+  display: flex;
+  flex-direction: column;
+  padding: 1% 0;
+}
+
+.inputs .p-fluid{
+  width: 49.4%;
+}
+
+#desc input{
+  height: 200px;
+}

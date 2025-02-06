@@ -15,6 +15,7 @@ import { EnterpriseViewProfileComponent } from './enterprises/enterprise-view-pr
 import { EnterpriseUpdateProfileComponent } from './enterprises/enterprise-update-profile/enterprise-update-profile.component';
 import { CandidateUpdateProfileComponent } from './candidates/candidate-update-profile/candidate-update-profile.component';
 import { GraduationRegisterComponent } from './graduations/graduation-register/graduation-register.component';
+import { ProfessionalHistoryRegisterComponent } from './professional-histories/professional-history-register/professional-history-register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -62,6 +63,12 @@ const routes: Routes = [
   {
     path: 'graduations/new',
     component: GraduationRegisterComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_APPLY_JOB'] }
+  },
+  {
+    path: 'professional_histories/new',
+    component: ProfessionalHistoryRegisterComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_APPLY_JOB'] }
   },
