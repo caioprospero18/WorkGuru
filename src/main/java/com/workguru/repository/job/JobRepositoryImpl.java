@@ -3,6 +3,8 @@ package com.workguru.repository.job;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
+
 import com.workguru.domain.model.Job;
 import com.workguru.repository.filter.JobFilter;
 
@@ -11,6 +13,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Order;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 
@@ -20,13 +23,22 @@ public class JobRepositoryImpl implements JobRepositoryQuery{
 	private EntityManager manager;
 	
 	@Override
-	public List<Job> filter(JobFilter jobFilter) {
+	public List<Job> filter(JobFilter jobFilter, Sort sort) {
 		CriteriaBuilder builder = manager.getCriteriaBuilder();
 		CriteriaQuery<Job> criteria = builder.createQuery(Job.class);
 		Root<Job> root = criteria.from(Job.class);
 		
 		Predicate[] predicates = createConstraints(jobFilter, builder, root);
 		criteria.where(predicates);
+		
+		//ordenar pela data mais atual
+		if (sort != null) {
+            List<Order> orderList = sort.stream()
+                .map(order -> order.isAscending() ? builder.asc(root.get(order.getProperty()))
+                                                  : builder.desc(root.get(order.getProperty())))
+                .toList();
+            criteria.orderBy(orderList);
+        }
 		
 		TypedQuery<Job> query = manager.createQuery(criteria);
 		return query.getResultList();

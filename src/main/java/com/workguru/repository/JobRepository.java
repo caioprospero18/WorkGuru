@@ -14,6 +14,8 @@ public interface JobRepository extends JpaRepository<Job, Long>, JobRepositoryQu
 	List<Job> findJobByEnterprise(Enterprise enterprise);
 	
 	Optional<Job> findJobById(Long id);
+	
+	List<Job> findAllByOrderByPublishDateDesc();
 
 
 }

@@ -3,6 +3,7 @@ package com.workguru.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -38,7 +39,7 @@ public class JobService {
 	public Job update(Long id, Job job) {
 		Job jobSaved = findJobById(id);
 		BeanUtils.copyProperties(job, jobSaved, "id");
-		return jobRepository.save(jobSaved);
+		return jobRepository.save(jobSaved);	
 	}
 	
 	public Job findJobById(Long id) {
@@ -51,7 +52,7 @@ public class JobService {
 	}
 
 	public List<Job> search(JobFilter jobFilter) {
-		return jobRepository.filter(jobFilter);
+		return jobRepository.filter(jobFilter, Sort.by("publishDate").descending());
 	}
 	
 	
