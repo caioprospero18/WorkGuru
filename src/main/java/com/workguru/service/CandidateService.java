@@ -35,12 +35,16 @@ public class CandidateService {
 		return candidateRepository.save(candidate);
 	}
 	
-	public Candidate  applyJob(Candidate candidate, Long jobId){
-		List<Job> jobs = candidate.getJob();
-		jobs.add(jobRepository.findJobById(jobId).get());
-		
-		return candidateRepository.save(candidate);
-	}
+	public Candidate  applyJob(Long candidateId, Long jobId){
+		// encontra o candidato com base no id logado
+        Candidate candidate = findCandidateById(candidateId);
+        // pega a lista de vagas que o usuário se candidatou
+        List<Job> jobs = candidate.getJob();
+        // adicionar a vaga selecionada à lista de candidaturas
+        jobs.add(jobRepository.findJobById(jobId).get());
+        // salva as mudanças
+        return candidateRepository.save(candidate);
+    }
 		
 	
 	public List<Permission> addCommonUserPermissions(){
