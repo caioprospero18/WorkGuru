@@ -49,6 +49,12 @@ const routes: Routes = [
     data: { roles: ['ROLE_REGISTER_JOB'] }
   },
   {
+    path: 'apply/:id',
+    component: JobViewComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['ROLE_APPLY_JOB'] }
+  },
+  {
     path: 'enterprises/update/:id',
     component: EnterpriseUpdateProfileComponent,
     canActivate: [AuthGuard],
