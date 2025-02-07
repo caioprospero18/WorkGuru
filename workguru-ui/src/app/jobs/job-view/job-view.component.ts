@@ -48,6 +48,10 @@ export class JobViewComponent implements OnInit{
         .catch(error => this.errorHandler.handle(error));
     }
 
+    applyJob(){
+      this.candidateService.applyJob(this.job.id, this.auth.jwtPayload?.user_id);
+    }
+
     
     showModel(job:Job): string{
       if(job.model == 'HIBRIDO'){
