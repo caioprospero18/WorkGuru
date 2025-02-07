@@ -5,7 +5,7 @@
     <a id ="workguru" href="/home">WorkGuru</a>
   </div>
 
-  <div *ngIf="!auth.hasPermission('ROLE_REGISTER_USER')" id="buttons" >
+  <div id="buttons" >
     <button class="dropbtn" severity="info" (click)="login()">Login</button>
     <div class="dropdown">
       <button class="dropbtn">Registrar</button>
@@ -14,10 +14,6 @@
         <a href="/enterprises/new">Sou empresa</a>
       </div>
     </div>
-  </div>
-
-  <div *ngIf="auth.hasPermission('ROLE_REGISTER_USER')" id="buttons" >
-    <a pButton [routerLink]="['/jobs']" label="Ver Vagas"></a>
   </div>
 
 </nav>
