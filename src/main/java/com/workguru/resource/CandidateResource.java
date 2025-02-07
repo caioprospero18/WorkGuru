@@ -62,10 +62,11 @@ public class CandidateResource {
 		return ResponseEntity.notFound().build();
 	}
 	
-	@GetMapping("/apply/{id}")
-	public void applyJob(@PathVariable Long jobId, @RequestBody Candidate candidate) {
-		candidateService.applyJob(candidate, jobId);
-	}
+	@PostMapping("/apply/{jobId}")
+    public void applyJob(@PathVariable Long jobId, @RequestBody Long candidateId) {
+        System.out.println("Job: " + jobId + " Candidato: " + candidateId);
+        candidateService.applyJob(candidateId, jobId);
+    }
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
