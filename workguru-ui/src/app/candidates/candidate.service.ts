@@ -62,4 +62,16 @@ export class CandidateService {
               const updated = response;
               return updated;
             }
+
+            async applyJob(jobId: number, candidateId: number) {
+
+              console.log("ID da vaga: ", jobId, " ID do candidato: " , candidateId);
+              
+              const headers = new HttpHeaders()
+                .append('Content-Type', 'application/json');
+
+                return this.http.post<any>(`${this.usersUrl}/apply/${jobId}`, candidateId, { headers })
+                .toPromise();
+
+            }
 }
