@@ -12,10 +12,11 @@
       <div class="dropdown-content">
         <a *ngIf="auth.jwtPayload?.user_type === 'P'" [routerLink]="['/candidates/view',auth.jwtPayload?.user_id]">Meu Perfil</a>
         <a *ngIf="auth.jwtPayload?.user_type === 'E'" [routerLink]="['enterprises/view/',auth.jwtPayload?.user_id]">Meu Perfil</a>
-        <a href="">Minhas Vagas</a>
+        <a href="">Minhas Vagas(Coming Soon)</a>
         <div *ngIf="auth.hasPermission('ROLE_REGISTER_JOB')">
           <a routerLink="/jobs/new">Nova Vaga</a>
         </div>
+        <a [routerLink]="['/jobs']">Todas as vagas</a>
         <a href="javascript:;" (click)="logout()">Sair</a>
       </div>
     </section>
