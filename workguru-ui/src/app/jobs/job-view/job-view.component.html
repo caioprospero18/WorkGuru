@@ -4,7 +4,7 @@
     <div>
       <strong><h1>{{job.title}}</h1></strong>
       <a [routerLink]="['/enterprises/view', job.enterprise.id]"><p>{{job.enterprise.name}}</p></a>
-      <a *ngIf="!applied && auth.jwtPayload?.user_type === 'E'" [routerLink]="['/jobs/update', job.id]" class=" p-button-icon-only">
+      <a *ngIf="auth.jwtPayload?.user_id === job.enterprise.id && auth.jwtPayload?.user_type === 'E'" [routerLink]="['/jobs/update', job.id]" class=" p-button-icon-only">
         <i class="pi pi-pen-to-square"></i>
       </a>
     </div>
