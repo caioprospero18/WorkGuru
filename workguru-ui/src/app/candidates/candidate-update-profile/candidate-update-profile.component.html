@@ -119,10 +119,20 @@
         </div>
       </div>
 
+      <div class="p-col-12 p-md-6 p-fluid" id="title">
+        <label>Cargo atual ou desejado:</label>
+        <input pInputText name="title" type="text"
+        [(ngModel)]="candidate.title" #title="ngModel">
+      </div>
 
-
+      <div class="p-col-12 p-md-6 p-fluid" id="description">
+        <label>Sobre você:</label>
+        <input pInputText name="description"
+        [(ngModel)]="candidate.description" #description="ngModel">
+      </div>
 
     </div>
+
     <div id="btn">
       <div class="button-container">
         <button pButton type="submit" label="Atualizar" ></button>

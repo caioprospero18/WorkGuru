@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-authorized',
@@ -12,7 +13,8 @@ export class AuthorizedComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private auth: AuthService,
-    private route: Router
+    private route: Router,
+    
   ) { }
 
   ngOnInit(): void {

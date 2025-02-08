@@ -3,6 +3,7 @@ import { Injectable, NgModule } from '@angular/core';
 import { AuthService } from '../security/auth.service';
 import { Job } from '../core/models';
 import moment from 'moment';
+import { Observable } from 'rxjs';
 
 
 export interface JobFilter {
@@ -118,6 +119,18 @@ export class JobService {
         return job;
       });
   }
+
+  isApplied(jobId: number, candidateId: number) : Observable<boolean> {
+    console.log("ID da vaga: ", jobId, " ID do candidato: " , candidateId);
+
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json');
+
+    return this.http.post<boolean>(`${this.jobsUrl}/isApplied/${jobId}`, candidateId, { headers });
+
+
+
+}
 
   private stringToDate(job: any): void {
     job.date = moment(job.date, 'DD/MM/YYYY').toDate();

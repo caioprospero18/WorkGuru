@@ -65,6 +65,8 @@ export class Candidate{
   birthDate!: string;
   gender!: string;
   phone!: string;
+  title!: string;
+  description!: string;
   address!: Address;
   graduations?: Graduation[];
   professionalHistories?: ProfessionalHistory[];
@@ -83,6 +85,8 @@ export class Candidate{
       gender: candidate.gender,
       phone: candidate.phone,
       address: candidate.address,
+      title: candidate.title,
+      description: candidate.description
     }
   }
 

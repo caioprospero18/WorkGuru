@@ -16,6 +16,7 @@ import { EnterpriseUpdateProfileComponent } from './enterprises/enterprise-updat
 import { CandidateUpdateProfileComponent } from './candidates/candidate-update-profile/candidate-update-profile.component';
 import { GraduationRegisterComponent } from './graduations/graduation-register/graduation-register.component';
 import { ProfessionalHistoryRegisterComponent } from './professional-histories/professional-history-register/professional-history-register.component';
+import { JobUpdateComponent } from './jobs/job-update/job-update.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -55,6 +56,12 @@ const routes: Routes = [
     data: { role: ['ROLE_APPLY_JOB'] }
   },
   {
+    path: 'isApplied/:id',
+    component: JobViewComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['ROLE_APPLY_JOB'] }
+  },
+  {
     path: 'enterprises/update/:id',
     component: EnterpriseUpdateProfileComponent,
     canActivate: [AuthGuard],
@@ -65,6 +72,12 @@ const routes: Routes = [
     component: CandidateUpdateProfileComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_REGISTER_USER']}
+  },
+  {
+    path: 'jobs/update/:id',
+    component: JobUpdateComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_REGISTER_JOB']}
   },
   {
     path: 'graduations/new',

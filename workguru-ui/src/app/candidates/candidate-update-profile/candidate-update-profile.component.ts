@@ -64,7 +64,7 @@ export class CandidateUpdateProfileComponent implements OnInit{
           .then( candidate => {
             this.messageService.add({ severity: 'success', detail: 'Cadastro atualizado!' });
             this.candidate = candidate;
-            this.router.navigate(['/jobs']);
+            this.router.navigate(['/candidates/view', candidate.id]);
           })
           .catch(error => this.errorHandler.handle(error));
       }

@@ -1,0 +1,149 @@
+a {
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25x;
+  margin-top: 5px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.custom-table-row {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-left: 13%;
+  margin-right: 13%;
+  background-color: #e8e9e2;
+}
+
+.custom-table-row div{
+  max-height: 190px;
+  height: 40px;
+  width: 980px;
+}
+
+#title{
+  font-size: 25px;
+  color: black;
+  margin-left: 1%;
+  text-align: start;
+}
+
+.custom-table-row a{
+  width: 150px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #9f28bd,#61085c);
+  font-size: 20x;
+  margin-left: 64%;
+  margin-bottom: 1%;
+}
+
+#level p{
+  width: 60px;
+}
+
+#level, #img{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#tags{
+  display: flex;
+  flex-direction: row;
+  margin-left: 60%;
+  gap:10px
+
+}
+
+#tec{
+  border: solid 1px #cdcec9;
+  border-radius: 6px;
+  padding: 1px;
+  background-color: #cdcec9;
+  height: 65%;
+}
+
+img{
+  padding: 4px;
+}
+
+#img img{
+  width: 100px;
+  height: 90px;
+  margin-top: 4%;
+}
+
+
+#level img{
+  width: 30px;
+  height: 30px;
+}
+
+form div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1%;
+}
+
+form{
+  margin-right: 13%;
+  margin-left: 13%;
+}
+
+hr{
+  margin-right: 13%;
+  margin-left: 13%;
+}
+
+::ng-deep .p-dropdown {
+  background-color: #989896 !important;
+  border-radius: 10px;
+
+}
+
+::ng-deep .p-dropdown-label.p-placeholder {
+  color: black;
+}
+
+input{
+  border:grey;
+  border-radius: 12px;
+  font-size: 16px;
+  width: 900px;
+  height: 37px;
+}
+
+#abc button{
+  width: 5%;
+  height: 37px;
+}
+
+#level-drop{
+  width: 107px;
+}
+
+#model-drop{
+  width: 196px;
+}
+
+#salary-drop{
+  width: 150px;
+}
+
+#loc-drop{
+  width: 137px;
+}
+
+#jobArea-drop{
+  width: 171px;
+}
+
+
+
+
+
+

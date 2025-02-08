@@ -14,11 +14,12 @@ import { SharedModule } from '../shared/shared.module';
 import { EnterpriseViewProfileComponent } from './enterprise-view-profile/enterprise-view-profile.component';
 import { EnterpriseUpdateProfileComponent } from './enterprise-update-profile/enterprise-update-profile.component';
 
+
 @NgModule({
   declarations: [
     EnterpriseRegisterComponent,
     EnterpriseViewProfileComponent,
-    EnterpriseUpdateProfileComponent
+    EnterpriseUpdateProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -93,6 +93,7 @@ export class JobsListComponent implements OnInit{
   ngOnInit(): void {
     this.title.setTitle('Vagas');
     this.search();
+    this.messageService.add({ severity: 'success', detail: 'Complete seu perfil se esse é seu primeiro acesso na aba "Meu Perfil"' });
   }
 
   /*

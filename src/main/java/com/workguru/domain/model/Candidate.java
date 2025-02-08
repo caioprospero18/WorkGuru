@@ -46,6 +46,8 @@ public class Candidate extends User{
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
+	private String title;
+	private String description;
 	@Embedded
 	private Address address;
 	@ManyToMany(fetch = FetchType.LAZY) // fetch = buscar - eager = ancioso
@@ -111,6 +113,18 @@ public class Candidate extends User{
 	}
 	public void setProfessionalHistories(List<ProfessionalHistory> professionalHistories) {
 		this.professionalHistories = professionalHistories;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	

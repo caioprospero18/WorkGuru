@@ -4,10 +4,14 @@
     <div>
       <strong><h1>{{job.title}}</h1></strong>
       <a [routerLink]="['/enterprises/view', job.enterprise.id]"><p>{{job.enterprise.name}}</p></a>
+      <a [routerLink]="['/jobs/update', job.id]" class=" p-button-icon-only">
+        <i class="pi pi-pen-to-square"></i>
+      </a>
     </div>
   </div>
   <div id="level">
     <p>{{job.location}}</p>
+
     <div>
       <img src="assets/level_icon.png" />
       <p>{{ showLevel(job) }}</p>
@@ -19,7 +23,8 @@
     <p>{{ showSalary(job) }}</p>
     <p>{{ showJobArea(job) }}</p>
     <div>
-      <a *ngIf="auth.jwtPayload?.user_type === 'P'" pButton (click)="applyJob()" label="Candidatar-se"></a>
+      <a *ngIf="!applied && auth.jwtPayload?.user_type === 'P' && job.status === 'ABERTA'" pButton (click)="confirmApply()" label="Candidatar-se"></a>
+      <a *ngIf="applied" pButton class="btnDisabled" disabled label="Candidatado"></a>
     </div>
   </div>
 
@@ -31,6 +36,7 @@
   <div>
     <strong><p>Sobre a vaga</p></strong>
     <br>
+    <p>{{showStatus(job)}}</p>
     <p>{{job.publishDate}}</p>
   </div>
   <p>{{job.description}}</p>

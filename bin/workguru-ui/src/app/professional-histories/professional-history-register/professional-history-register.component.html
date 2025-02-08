@@ -1,0 +1,52 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
+
+      <div class="p-grid" >
+
+          <div class="inputs">
+            <div class="p-col-12 p-md-6 p-fluid" id="name">
+              <label>Nome da Empresa*</label>
+              <input pInputText name="enterpriseName" type="text"
+              [(ngModel)]="professionalHistory.enterpriseName" #enterpriseName="ngModel" required minlength="3" maxlength="50">
+              <app-message [control]="enterpriseName" error="required" text="Informe um nome"></app-message>
+              <app-message [control]="enterpriseName" error="minlength"
+                  text="Mínimo de {{ enterpriseName.errors?.minlength?.requiredLength }} caracteres. Você digitou apenas {{ enterpriseName.errors?.minlength?.actualLength }}"></app-message>
+            </div>
+
+            <div class="p-col-12 p-md-3 p-fluid">
+              <label>Cargo*</label>
+              <input pInputText name="position" type="text"
+              [(ngModel)]="professionalHistory.position" #position="ngModel" required>
+            </div>
+          </div>
+
+        <div class="inputs">
+          <div class="p-col-12 p-md-6 p-fluid" >
+            <label>Data de entrada*</label>
+            <p-calendar  icon="pi pi-calendar" name="start" dateFormat="dd/mm/yy" [inline]="false"
+            [(ngModel)]="professionalHistory.start" #start="ngModel" required></p-calendar>
+            <app-message [control]="start" error="required" text="Informe uma data"></app-message>
+          </div>
+
+          <div class="p-col-12 p-md-6 p-fluid" >
+            <label>Data de saída</label>
+            <p-calendar  icon="pi pi-calendar" name="finish" dateFormat="dd/mm/yy" [inline]="false"
+            [(ngModel)]="professionalHistory.finish" #finish="ngModel"></p-calendar>
+          </div>
+        </div>
+
+        <div class="p-col-12 p-md-3 p-fluid" id="desc">
+          <label>Descrição das atividades*</label>
+          <input pInputText name="description" type="text"
+          [(ngModel)]="professionalHistory.description" #description="ngModel" >
+        </div>
+
+        <div id="btn">
+          <div class="button-container">
+            <button pButton type="submit" label="Salvar" ></button>
+          </div>
+        </div>
+
+      </div>
+  </form>
+</div>

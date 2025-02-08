@@ -14,7 +14,7 @@ import { CandidateService } from '../../candidates/candidate.service';
   styleUrl: './job-view.component.css'
 })
 export class JobViewComponent implements OnInit{
-
+  applied: boolean = false
   job!: Job
   candidate!: Candidate
   constructor(
@@ -44,15 +44,41 @@ export class JobViewComponent implements OnInit{
       this.jobService.findById(id)
         .then(job => {
           this.job = job;
+          this.isApplied();
         })
         .catch(error => this.errorHandler.handle(error));
+    }
+
+    isApplied(){
+      if(this.auth.jwtPayload?.user_type === 'P'){
+        this.jobService.isApplied(this.job.id, this.auth.jwtPayload?.user_id).subscribe(
+          (isCandidatado) => {
+            this.applied = isCandidatado;
+          },
+          (error) => {
+            console.error('Erro ao verificar candidatura', error);
+          }
+        );
+
+      }
+      return false;
+    }
+
+    confirmApply(){
+      const confirm = window.confirm("Você tem certeza que deseja se candidatar a esta vaga?");
+      if (confirm) {
+        this.applyJob();
+        window.location.reload();
+      } else {
+      console.log('Candidatura cancelada');
+    }
     }
 
     applyJob(){
       this.candidateService.applyJob(this.job.id, this.auth.jwtPayload?.user_id);
     }
 
-    
+
     showModel(job:Job): string{
       if(job.model == 'HIBRIDO'){
         return 'Híbrido'
@@ -100,6 +126,16 @@ export class JobViewComponent implements OnInit{
         return 'Estágio'
       } else {
         return 'Treinee'
+      }
+    }
+
+    showStatus(job:Job): string{
+      if(job.status == 'ABERTA'){
+        return 'Aberta'
+      } else if (job.status == 'EM_ANDAMENTO'){
+        return 'Em andamanto'
+      } else {
+        return 'Fechada'
       }
     }
 

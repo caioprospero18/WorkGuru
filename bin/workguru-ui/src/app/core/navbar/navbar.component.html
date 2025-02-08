@@ -1,0 +1,29 @@
+<nav class="navbar">
+
+  <div class="logo">
+    <img src="assets/workguru-icon.png" alt="WorkGuru Logo">
+    <a id ="workguru" href="/home">WorkGuru</a>
+  </div>
+
+  <div class="dropdown">
+    <section *ngIf="auth.hasPermission('ROLE_REGISTER_USER')" class="dropdown-label">
+      <p id="user">{{ auth.jwtPayload?.name }}</p>
+      <img src="assets/arrow-down.svg" alt="Menu de Usuário">
+      <div class="dropdown-content">
+        <a *ngIf="auth.jwtPayload?.user_type === 'P'" [routerLink]="['/candidates/view',auth.jwtPayload?.user_id]">Meu Perfil</a>
+        <a *ngIf="auth.jwtPayload?.user_type === 'E'" [routerLink]="['enterprises/view/',auth.jwtPayload?.user_id]">Meu Perfil</a>
+        <a href="">Minhas Vagas</a>
+        <div *ngIf="auth.hasPermission('ROLE_REGISTER_JOB')">
+          <a routerLink="/jobs/new">Nova Vaga</a>
+        </div>
+        <a href="javascript:;" (click)="logout()">Sair</a>
+      </div>
+    </section>
+  </div>
+
+
+
+
+
+
+</nav>

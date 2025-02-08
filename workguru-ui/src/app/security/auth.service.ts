@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { MessageService } from 'primeng/api';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,8 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private jwtHelper: JwtHelperService
+    private jwtHelper: JwtHelperService,
+    
   ) {
     this.loadToken();
   }
@@ -46,6 +49,8 @@ export class AuthService {
     ]
 
     window.location.href = this.oauthAuthorizeUrl + '?' +  params.join('&');
+
+
   }
 
   async getNewAccessTokenWithCode(code: string, state: string): Promise<any> {

@@ -1,0 +1,38 @@
+<div class="header">
+  <div id="img">
+    <img src='assets/enterprise_icon.png'>
+    <div>
+      <strong><h1>{{job.title}}</h1></strong>
+      <a [routerLink]="['/enterprises/view', job.enterprise.id]"><p>{{job.enterprise.name}}</p></a>
+    </div>
+  </div>
+  <div id="level">
+    <p>{{job.location}}</p>
+    <div>
+      <img src="assets/level_icon.png" />
+      <p>{{ showLevel(job) }}</p>
+    </div>
+    <div>
+      <img src="assets/location_icon.png" />
+      <p>{{ showModel(job) }}</p>
+    </div>
+    <p>{{ showSalary(job) }}</p>
+    <p>{{ showJobArea(job) }}</p>
+    <div>
+      <a *ngIf="auth.jwtPayload?.user_type === 'P'" pButton (click)="applyJob()" label="Candidatar-se"></a>
+    </div>
+  </div>
+
+</div>
+
+<br>
+
+<div class="container">
+  <div>
+    <strong><p>Sobre a vaga</p></strong>
+    <br>
+    <p>{{job.publishDate}}</p>
+  </div>
+  <p>{{job.description}}</p>
+
+</div>

@@ -15,12 +15,14 @@ import { JobRegisterComponent } from './job-register/job-register.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { JobViewComponent } from './job-view/job-view.component';
+import { JobUpdateComponent } from './job-update/job-update.component';
 
 @NgModule({
   declarations: [
     JobsListComponent,
     JobRegisterComponent,
     JobViewComponent,
+    JobUpdateComponent,
   ],
   imports: [
     BrowserModule,

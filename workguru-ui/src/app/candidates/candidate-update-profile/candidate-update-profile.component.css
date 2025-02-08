@@ -24,7 +24,7 @@ h1{
   flex-direction: column;
 }
 
-#name input, #email input{
+#name input, #email input, #title input, #description input{
   width: 700px;
 }
 
@@ -44,6 +44,11 @@ button{
   border-radius: 10px;
   background: linear-gradient(90deg, #551466,#000000);
   font-size: 20px;
+}
+
+#description input{
+  height: 300px;
+  word-wrap: break-word;
 }
 
 
