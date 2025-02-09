@@ -2,12 +2,12 @@
   <div id="img">
     <img src='assets/user_icon.png'>
     <strong><h1>{{candidate.name}}</h1></strong>
-    <a [routerLink]="['/candidates/update', candidate.id]" class="p-button p-button-icon-only">
+    <a *ngIf="auth.jwtPayload?.user_type === 'P'"[routerLink]="['/candidates/update', candidate.id]" class="p-button p-button-icon-only">
       <i class="pi pi-pen-to-square"></i>
     </a>
   </div>
   <div id="footer">
-    <p>{{candidate.title}}</p>
+    <p></p>
     <p>{{candidate.address?.city || ''}}, {{candidate.address?.state || ''}}</p>
   </div>
 </div>
@@ -51,7 +51,7 @@
   </div>
   <div>
     <strong><p>Sobre:</p></strong>
-    <p>{{candidate.description}}</p>
+    <p></p>
   </div>
 
 </div>

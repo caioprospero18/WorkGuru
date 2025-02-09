@@ -25,6 +25,7 @@ export class CandidateViewProfileComponent implements OnInit{
         private candidateService: CandidateService,
         private errorHandler: ErrorHandlerService,
         private route: ActivatedRoute,
+        public auth: AuthService,
         private sanitizer: DomSanitizer)
       { this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('/graduations/new'),
         this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('/professional_histories/new');}
