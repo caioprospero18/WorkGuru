@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -46,8 +46,6 @@ public class Candidate extends User{
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
-	private String title;
-	private String description;
 	@Embedded
 	private Address address;
 	@ManyToMany(fetch = FetchType.LAZY) // fetch = buscar - eager = ancioso
@@ -55,7 +53,6 @@ public class Candidate extends User{
 	inverseJoinColumns = @JoinColumn(name = "job_id"))
 	private List<Job> job;
 	@OneToMany(mappedBy = "candidate")
-	@JsonManagedReference
 	private List<Graduation> graduations;
 	@OneToMany(mappedBy = "candidate")
 	@JsonManagedReference
@@ -113,18 +110,6 @@ public class Candidate extends User{
 	}
 	public void setProfessionalHistories(List<ProfessionalHistory> professionalHistories) {
 		this.professionalHistories = professionalHistories;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
 	}
 	
 	

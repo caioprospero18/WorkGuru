@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
@@ -64,6 +65,7 @@ public class Job {
 	@ManyToMany(fetch = FetchType.EAGER) // fetch = buscar - eager = ancioso
 	@JoinTable(name = "job_candidate", joinColumns = @JoinColumn(name = "job_id"), 
 	inverseJoinColumns = @JoinColumn(name = "candidate_id"))
+	@JsonBackReference
 	private List<Candidate> candidate;
 	
 	public Long getId() {
