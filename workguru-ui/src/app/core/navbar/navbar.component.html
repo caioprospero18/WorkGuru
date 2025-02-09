@@ -2,7 +2,7 @@
 
   <div class="logo">
     <img src="assets/workguru-icon.png" alt="WorkGuru Logo">
-    <a id ="workguru" href="/home">WorkGuru</a>
+    <a id ="workguru" href="/jobs">WorkGuru</a>
   </div>
 
   <div class="dropdown">
@@ -12,11 +12,10 @@
       <div class="dropdown-content">
         <a *ngIf="auth.jwtPayload?.user_type === 'P'" [routerLink]="['/candidates/view',auth.jwtPayload?.user_id]">Meu Perfil</a>
         <a *ngIf="auth.jwtPayload?.user_type === 'E'" [routerLink]="['enterprises/view/',auth.jwtPayload?.user_id]">Meu Perfil</a>
-        <a href="">Minhas Vagas(Coming Soon)</a>
+        <a href="">Minhas Vagas</a>
         <div *ngIf="auth.hasPermission('ROLE_REGISTER_JOB')">
           <a routerLink="/jobs/new">Nova Vaga</a>
         </div>
-        <a [routerLink]="['/jobs']">Todas as vagas</a>
         <a href="javascript:;" (click)="logout()">Sair</a>
       </div>
     </section>
