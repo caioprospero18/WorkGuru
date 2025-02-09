@@ -5,7 +5,7 @@
       <strong><h1>{{enterprise.name}}</h1></strong>
       <a pButton label="Ver vagas"></a>
     </div>
-    <a [routerLink]="['/enterprises/update', enterprise.id]" class=" p-button-icon-only">
+    <a *ngIf="auth.jwtPayload?.user_type === 'E'" [routerLink]="['/enterprises/update', enterprise.id]" class=" p-button-icon-only">
       <i class="pi pi-pen-to-square"></i>
     </a>
   </div>

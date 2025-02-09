@@ -17,7 +17,7 @@ export class EnterpriseViewProfileComponent implements OnInit{
   enterprise!: Enterprise
     constructor(
         private enterpriseService: EnterpriseService,
-        private auth: AuthService,
+        public auth: AuthService,
         private errorHandler: ErrorHandlerService,
         private messageService: MessageService,
         private route: ActivatedRoute,
